@@ -38,4 +38,15 @@
       autoNumlock = true;
     };
   };
+
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "dbus-run-session Hyprland";
+        user = "chiya";
+      };
+      default_session = initial_session;
+    };
+  };
 }
