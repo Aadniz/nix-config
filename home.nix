@@ -7,6 +7,8 @@
     ./filesystem/filesystem.nix
     ./wm/hyprland.nix
     ./git/git.nix
+    ./shell/sh.nix
+    ./app/app.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

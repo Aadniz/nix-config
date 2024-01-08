@@ -11,6 +11,7 @@
       ./security/sshd.nix
       ./app/app.nix
       ./wm/wm.nix
+      ./shell/sh.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -81,6 +82,7 @@
     packages = with pkgs; [
       firefox
       tree
+      zsh
     ];
     initialHashedPassword = "$6$m28ZHJp5bx7rIyJs$snUC6gI8q8XSiK/9EGnzDyuMTnMpKDCLjczHjbwZ23.QRTWtnzrmUTTz8O7eqgVsCJtWksFxjieCSFzqx8zwU.";
   };

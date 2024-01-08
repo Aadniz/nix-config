@@ -187,11 +187,11 @@
        env = QT_QPA_PLATFORMTHEME,qt5ct
 
        input {
-         kb_layout = us
+         kb_layout = no
          kb_options = caps:escape
-         repeat_delay = 350
+         repeat_delay = 200
          repeat_rate = 50
-         accel_profile = adaptive
+         accel_profile = flat
          follow_mouse = 2
        }
 
