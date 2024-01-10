@@ -22,4 +22,5 @@
     #  XDG_BOOK_DIR = "${config.home.homeDirectory}/Media/Books";
     #};
   };
+  #xdg.portal.enable = true;
 }
