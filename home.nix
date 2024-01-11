@@ -5,7 +5,7 @@
 {
   imports = [
     ./filesystem/filesystem.nix
-    ./wm/hyprland.nix
+    ./wm/wm.nix
     ./git/git.nix
     ./shell/sh.nix
     ./app/app.nix

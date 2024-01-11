@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./emacs/emacs.nix
-    ./rofi.nix
+    ./sway/sway.nix
+    ./hyprland.nix
   ];
 }

@@ -28,7 +28,6 @@
     xdg-utils
     xdg-desktop-portal
     xdg-desktop-portal-gtk
-    xdg-desktop-portal-wlr
     qt5.qtwayland
     qt6.qmake
     qt6.qtwayland
@@ -48,7 +47,7 @@
     CLUTTER_BACKEND = "wayland";
     XDG_CURRENT_DESKTOP = "Hyprland";
     XDG_SESSION_DESKTOP = "Hyprland";
-    #GTK_USE_PORTAL = "1";
+    GTK_USE_PORTAL = "1";
     NIXOS_XDG_OPEN_USE_PORTAL = "1";
     WLR_RENDERER_ALLOW_SOFTWARE = "1";
   };
