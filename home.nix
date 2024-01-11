@@ -9,6 +9,7 @@
     ./git/git.nix
     ./shell/sh.nix
     ./app/app.nix
+    ./misc/misc.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

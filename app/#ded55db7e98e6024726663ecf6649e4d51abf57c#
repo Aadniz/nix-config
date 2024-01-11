@@ -5,5 +5,4 @@
     ./emacs/emacs.nix
     ./rofi.nix
   ];
-
 }

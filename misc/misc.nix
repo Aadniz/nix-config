@@ -2,8 +2,5 @@
 
 {
   imports = [
-    ./emacs/emacs.nix
-    ./rofi.nix
   ];
-
 }
