@@ -2,7 +2,7 @@
   description = "Blah flake";
 
 
-  outputs = { self, nixpkgs, home-manager, nix-doom-emacs, stylix, eaf, eaf-browser, org-nursery, org-yaap, org-timeblock, phscroll, blocklist-hosts, rust-overlay, hyprland-plugins, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
 
   let
     # ---- SYSTEM SETTINGS ---- #
@@ -17,6 +17,7 @@
     email = "pus@null.net"; # email (used for certain configurations)
     dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
     term = "kitty"; # Default terminal command;
+    wallpaper = "~/Pictures/kitan_5980.jpg";
 
     # create patched nixpkgs
     nixpkgs-patched = (import nixpkgs { inherit system; }).applyPatches {
@@ -34,7 +35,7 @@
       inherit system;
       config = { allowUnfree = true;
                  allowUnfreePredicate = (_: true); };
-      overlays = [ rust-overlay.overlays.default ];
+      # overlays = [ rust-overlay.overlays.default ];
     };
 
     # configure lib
@@ -43,7 +44,11 @@
     nixosConfigurations = {
       nix = lib.nixosSystem {
         inherit system;
-        modules = [ ./configuration.nix ];
+        modules = [ ./nixos/configuration.nix ];
+        specialArgs = {
+          # pass config variables from above
+          inherit username;
+        };
       };
     };
     homeConfigurations = {
@@ -58,17 +63,7 @@
           inherit email;
           inherit dotfilesDir;
           inherit term;
-          inherit (inputs) nix-doom-emacs;
-          #inherit (inputs) nix-flatpak;
-          inherit (inputs) stylix;
-          inherit (inputs) eaf;
-          inherit (inputs) eaf-browser;
-          inherit (inputs) org-nursery;
-          inherit (inputs) org-yaap;
-          inherit (inputs) org-side-tree;
-          inherit (inputs) org-timeblock;
-          inherit (inputs) phscroll;
-          inherit (inputs) hyprland-plugins;
+          inherit wallpaper;
         };
       };
     };

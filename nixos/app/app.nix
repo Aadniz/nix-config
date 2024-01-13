@@ -11,5 +11,6 @@
     vlc
     discord
     firefox
+    pywal
   ];
 }

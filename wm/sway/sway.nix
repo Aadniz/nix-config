@@ -57,6 +57,8 @@ in
     xdg-utils
     brillo
     wl-clipboard
+    playerctl
+    pamixer
   ];
 
   programs.zsh.loginExtra = ''
@@ -119,13 +121,18 @@ in
         "${modifier}+q" = "exec rofi -show run";
 
         # Audio
-        "XF86AudioMute" = "exec pamixer -t && pkill -RTMIN+1 ${pkgs.i3blocks}";
-        "XF86AudioLowerVolume" = "exec pamixer -d 1 && pkill -RTMIN+1 ${pkgs.i3blocks}";
-        "XF86AudioRaiseVolume" = "exec pamixer -i 1 && pkill -RTMIN+1 ${pkgs.i3blocks}";
-        "XF86AudioPlay" = "exec playerctl play-pause && pkill -RTMIN+10 ${pkgs.i3blocks}";
-        "XF86AudioNext" = "exec playerctl next && pkill -RTMIN+10 ${pkgs.i3blocks}";
-        "XF86AudioPrev" = "exec playerctl previous && pkill -RTMIN+10 ${pkgs.i3blocks}";
+        "XF86AudioMute" = "exec ${pkgs.pamixer} -t && pkill -RTMIN+1 ${pkgs.i3blocks}";
+        "XF86AudioLowerVolume" = "exec ${pkgs.pamixer} -d 1 && pkill -RTMIN+1 ${pkgs.i3blocks}";
+        "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer} -i 1 && pkill -RTMIN+1 ${pkgs.i3blocks}";
+        "XF86AudioPlay" = "exec ${pkgs.playerctl} play-pause && pkill -RTMIN+10 ${pkgs.i3blocks}";
+        "XF86AudioNext" = "exec ${pkgs.playerctl} next && pkill -RTMIN+10 ${pkgs.i3blocks}";
+        "XF86AudioPrev" = "exec ${pkgs.playerctl} previous && pkill -RTMIN+10 ${pkgs.i3blocks}";
 
+        "${modifier}+space" = "floating toggle";
+        "${modifier}+a" = "focus parent";
+        "${modifier}+d" = "focus mode_toggle";
+        "${modifier}+Shift+minus" = "move scratchpad";
+        "${modifier}+minus" = "scratchpad show";
 
         "Shift+Print" = "exec grim - | wl-copy";
         "Shift+Alt+Print" = ''exec grim -g "$(slurp)" - | wl-copy'';
