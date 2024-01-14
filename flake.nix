@@ -17,21 +17,26 @@
     email = "pus@null.net"; # email (used for certain configurations)
     dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
     term = "kitty"; # Default terminal command;
-    wallpaper = "~/Pictures/kitan_3746.jpg"; #kitan_5980.jpg";
-    # Colors are generated automatically from the wallpaper
-    #theme = import ./theme;
+    wallpaper = "~/Pictures/kitan_5980.jpg"; #kitan_5980.jpg";
 
-    absColorsJsonPath = /home/${username}/.cache/wal/colors.json;
-    defColorsJsonPath = ./theme/colors.json;
-    colorsJsonPath = if builtins.pathExists absColorsJsonPath then absColorsJsonPath else defColorsJsonPath;
-    theme = builtins.fromJSON (builtins.readFile colorsJsonPath) //
-    {
-      primary = theme.colors.color9;
-      secondary = theme.colors.color2;
-      third = theme.colors.color8;
-      bright = theme.colors.color14;
-      dark = theme.colors.color0;
-    };
+    # Out of the colors generated from pywal, which one should be used to what?
+    primary = 1;
+    secondary = 2;
+    third = 4;
+    bright = 7;
+    dark = 0;
+
+    #absColorsJsonPath = /home/${username}/.cache/wal/colors.json;
+    #defColorsJsonPath = ./theme/colors.json;
+    #colorsJsonPath = if builtins.pathExists absColorsJsonPath then absColorsJsonPath else defColorsJsonPath;
+    #theme = builtins.fromJSON (builtins.readFile colorsJsonPath) //
+    #{
+    #  primary = theme.colors.color9;
+    #  secondary = theme.colors.color2;
+    #  third = theme.colors.color8;
+    #  bright = theme.colors.color14;
+    #  dark = theme.colors.color0;
+    #};
 
     # create patched nixpkgs
     nixpkgs-patched = (import nixpkgs { inherit system; }).applyPatches {
@@ -50,6 +55,18 @@
       config = { allowUnfree = true;
                  allowUnfreePredicate = (_: true); };
       # overlays = [ rust-overlay.overlays.default ];
+    };
+
+    # Colors are generated automatically from the wallpaper
+    theme = import ./theme {
+      inherit primary;
+      inherit secondary;
+      inherit third;
+      inherit bright;
+      inherit dark;
+      inherit username;
+      #inherit wallpaper;
+      #inherit pkgs;
     };
 
     # configure lib

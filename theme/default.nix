@@ -1,23 +1,24 @@
-{ config, lib, pkgs, wallpaper, ... }:
+{ username, primary ? 1, secondary ? 2, third ? 8, bright ? 14, dark ? 0 }:
 
 let
-  absColorsJsonPath = "${config.xdg.cacheHome}/wal/colors.json";
-  defColorsJsonPath = "./colors.json";
+  absColorsJsonPath = /home/${username}/.cache/wal/colors.json;
+  defColorsJsonPath = ./colors.json;
   colorsJsonPath = if builtins.pathExists absColorsJsonPath then absColorsJsonPath else defColorsJsonPath;
-  theme = builtins.fromJSON (builtins.readFile colorsJsonPath) //
-    {
-      primary = theme.colors.color9;
-      secondary = theme.colors.color2;
-      third = theme.colors.color8;
-      bright = theme.colors.color14;
-      dark = theme.colors.color0;
-    };
+  #pkgs.mkShell {
+  #  buildInputs = [ pkgs.pywal ];
+  #  shellHook = ''
+  #    ${pkgs.pywal}/bin/wal -tsen -i ${wallpaper}
+  #    cat ~/.cache/wal/colors.json > ${colorsJsonPath}
+  #  '';
+  #};
+  theme = builtins.fromJSON (builtins.readFile colorsJsonPath);
+  getColor = num: theme.colors."color${toString num}";
 in
-{
-  home.file.${wallpaper} = {
-    onChange = ''
-      ${pkgs.pywal}/bin/wal -tsen -i ${wallpaper} && cat ${colorsJsonPath}
-    '';
-  };
-  inherit theme;
-}
+  theme //
+  {
+    primary = getColor primary;
+    secondary = getColor secondary;
+    third = getColor third;
+    bright = getColor bright;
+    dark = getColor dark;
+  }
