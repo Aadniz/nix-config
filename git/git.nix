@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, username, ... }:
 
 {
+  home.activation.createSshSockets = ''
+    mkdir -p ${config.home.homeDirectory}/.ssh/sockets
+  '';
   programs.git = {
     enable = true;
     userName  = "D3faIt";
@@ -17,7 +20,7 @@
     enable = true;
 
     controlMaster = "auto";
-    controlPath = "~/.ssh/sockets/master-%r@%n:%p";
+    controlPath = "${config.home.homeDirectory}/.ssh/sockets/master-%r@%n:%p";
     controlPersist = "10m";
 
     matchBlocks = let

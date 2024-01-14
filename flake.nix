@@ -17,7 +17,9 @@
     email = "pus@null.net"; # email (used for certain configurations)
     dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
     term = "kitty"; # Default terminal command;
-    wallpaper = "~/Pictures/kitan_5980.jpg";
+    wallpaper = "~/Pictures/kitan_3746.jpg"; #kitan_5980.jpg";
+    # Colors are generated automatically from the wallpaper
+    colors = import ./colors.nix;
 
     # create patched nixpkgs
     nixpkgs-patched = (import nixpkgs { inherit system; }).applyPatches {
@@ -64,6 +66,7 @@
           inherit dotfilesDir;
           inherit term;
           inherit wallpaper;
+          inherit colors;
         };
       };
     };

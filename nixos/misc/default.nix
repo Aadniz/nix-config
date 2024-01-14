@@ -1,8 +1,12 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ./audio.nix
+    ./netdata.nix
+  ];
 
   environment.systemPackages = with pkgs; [
-    sway
+    python3
   ];
 }
