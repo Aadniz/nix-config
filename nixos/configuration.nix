@@ -9,9 +9,9 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./security/sshd.nix
-      ./app/app.nix
-      ./wm/wm.nix
-      ./shell/sh.nix
+      ./app
+      ./wm
+      ./shell
       ./misc
     ];
 

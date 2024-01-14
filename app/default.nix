@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./emacs/emacs.nix
+    ./emacs
     ./rofi.nix
     ./spotify.nix
   ];

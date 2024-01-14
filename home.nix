@@ -4,12 +4,12 @@
 
 {
   imports = [
-    ./filesystem/filesystem.nix
-    ./wm/wm.nix
-    ./git/git.nix
-    ./shell/sh.nix
-    ./app/app.nix
-    ./misc/misc.nix
+    ./filesystem
+    ./wm
+    ./git
+    ./shell
+    ./app
+    ./misc
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
