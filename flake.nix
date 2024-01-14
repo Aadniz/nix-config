@@ -17,7 +17,9 @@
     email = "pus@null.net"; # email (used for certain configurations)
     dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
     term = "kitty"; # Default terminal command;
-    wallpaper = "~/Pictures/kitan_5980.jpg";
+    wallpaper = "~/Pictures/kitan_3746.jpg"; #kitan_5980.jpg";
+    # Colors are generated automatically from the wallpaper
+    colors = import ./colors.nix;
 
     # create patched nixpkgs
     nixpkgs-patched = (import nixpkgs { inherit system; }).applyPatches {
@@ -38,9 +40,42 @@
       # overlays = [ rust-overlay.overlays.default ];
     };
 
+    spotify-adblock = pkgs.rustPlatform.buildRustPackage rec {
+      pname = "spotify-adblock";
+      version = "1.0.2-unstable-2023-04-09";
+
+      src = pkgs.fetchFromGitHub {
+        owner = "abba23";
+        repo = pname;
+        rev = "22847a7bfa87edf4ca58ee950fd8977d20f0d337";
+        sha256 = "sha256-5tZ+Y7dhzb6wmyQ+5FIJDHH0KqkXbiB259Yo7ATGjSU=";
+      };
+
+      configUrl = "https://raw.githubusercontent.com/${src.owner}/${src.repo}/main/config.toml";
+
+      cargoSha256 = "sha256-cergN3x/iQO5GlBmvgNsmSyh8XVEbNPMYhixvf3HGWI=";
+
+      postInstall = ''
+        mkdir -p $out/etc/spotify-adblock
+        cp config.toml $out/etc/spotify-adblock
+      '';
+
+      meta = with pkgs.lib; {
+        description = "Adblocker for Spotify";
+        homepage = "https://github.com/abba23/spotify-adblock";
+        license = licenses.unlicense;
+        maintainers = [ ];
+      };
+    };
+
+    spotify-adblock-wrapper = spotify-adblock;
+
     # configure lib
     lib = nixpkgs.lib;
     in {
+      packages.${system} = {
+        spotify-adblock = spotify-adblock-wrapper;
+      };
     nixosConfigurations = {
       nix = lib.nixosSystem {
         inherit system;
@@ -64,6 +99,8 @@
           inherit dotfilesDir;
           inherit term;
           inherit wallpaper;
+          inherit colors;
+          inherit spotify-adblock;
         };
       };
     };
@@ -112,6 +149,10 @@
     };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
+      flake = false;
+    };
+    spotify-adblock-src = {
+      url = "github:abba23/spotify-adblock";
       flake = false;
     };
   };

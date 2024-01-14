@@ -3,37 +3,10 @@
 # Big creds to https://github.com/RicArch97/nixos-config/blob/b2a94a998b9ada4635ba1ce702691098f799b100/modules/desktop/sway.nix
 # and https://github.com/RaitoBezarius/nixos-home/blob/70a7d0503da62963c03cee40962f945f552dd6f1/sway.nix
 
-let
-  cfg = config.wayland.windowManager;
-  workspaceNumberToFrenchSymbol = {
-    "1" = "ampersand";
-    "2" = "eacute";
-    "3" = "quotedbl";
-    "4" = "apostrophe";
-    "5" = "parenleft";
-    "6" = "minus";
-    "7" = "egrave";
-    "8" = "underscore";
-    "9" = "ccedilla";
-    "10" = "agrave";
-  };
-  workspaces = lib.range 1 10;
-  mkWorkspaceSym = symFn: valueFn: mod:
-    lib.listToAttrs (map (index:
-    let sym = workspaceNumberToFrenchSymbol.${toString index};
-    in { name = (symFn mod sym index); value = valueFn index; }) workspaces);
-  mkMoveToWorkspace = mkWorkspaceSym
-    (mod: sym: _: "${mod}+${sym}")
-    (index: "workspace ${toString index}");
-  mkMoveContainerToWorkspace = mkWorkspaceSym
-    # Nix has no % operator ???
-    (mod: sym: index: if index >= 6 then (if index == 10 then "${mod}+Shift+0" else "${mod}+Shift+${toString index}")
-    else "${mod}+Shift+${sym}")
-    (index: "move container to workspace number ${toString index}");
-in
 {
   imports = [
     ./hardware.nix
+#    ./bar.nix
   ];
 
   #home.file.".config/sway/config".source =
@@ -55,6 +28,7 @@ in
     waypipe
     wf-recorder
     xdg-utils
+    firefox-wayland
     brillo
     wl-clipboard
     playerctl
@@ -101,32 +75,48 @@ in
       };
 
       startup = [
-        # Idle configuration
-      #  { command = ''swayidle -w \
-      #    timeout 300 'swaylock -f -c 000000' \
-      #    timeout 600 'swaymsg "output * dpms off"' \
-      #      resume 'swaymsg "output * dpms on"' \
-      #    before-sleep 'swaylock -f -c 000000'
-      #    '';
-      #  }
+        {command = "${pkgs.swaysome}/bin/swaysome init 1";}
       ];
 
 
-      keybindings = lib.mkOptionDefault ({
-        "${modifier}+KP_Enter" = "exec kitty";
-        "${modifier}+Ctrl+Return" = "exec kitty --class floatingKitty";
-        "${modifier}+Ctrl+KP_Enter" = "exec kitty --class floatingKitty";
+      keybindings = let
+        inherit (config.home.manager.wayland.windowManager.sway.config);
+        # Default movement keys (arrow keys, TKL keyboard)
+        left = "Left";
+        down = "Down";
+        up = "Up";
+        right = "Right";
+        # Generate a list of lists, each inner list containing a key(number) and workspace
+        workspaces = lib.genList (x: [(toString (x)) (toString (x))]) 10;
+      in
+      {
+        "${modifier}+Return" = "exec ${terminal}";
+        "${modifier}+KP_Enter" = "exec ${terminal}";
+        "${modifier}+Ctrl+Return" = "exec ${terminal} --class floatingKitty";
+        "${modifier}+Ctrl+KP_Enter" = "exec ${terminal} --class floatingKitty";
         "${modifier}+Escape" = "kill";
         "${modifier}+Delete" = "kill";
-        "${modifier}+q" = "exec rofi -show run";
+        "${modifier}+q" = "exec ${pkgs.rofi}/bin/rofi -show run";
 
         # Audio
-        "XF86AudioMute" = "exec ${pkgs.pamixer} -t && pkill -RTMIN+1 ${pkgs.i3blocks}";
-        "XF86AudioLowerVolume" = "exec ${pkgs.pamixer} -d 1 && pkill -RTMIN+1 ${pkgs.i3blocks}";
-        "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer} -i 1 && pkill -RTMIN+1 ${pkgs.i3blocks}";
-        "XF86AudioPlay" = "exec ${pkgs.playerctl} play-pause && pkill -RTMIN+10 ${pkgs.i3blocks}";
-        "XF86AudioNext" = "exec ${pkgs.playerctl} next && pkill -RTMIN+10 ${pkgs.i3blocks}";
-        "XF86AudioPrev" = "exec ${pkgs.playerctl} previous && pkill -RTMIN+10 ${pkgs.i3blocks}";
+        "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t && pkill -RTMIN+1 ${pkgs.i3blocks}/bin/i3blocks";
+        "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 1 && pkill -RTMIN+1 ${pkgs.i3blocks}/bin/i3blocks";
+        "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 1 && pkill -RTMIN+1 ${pkgs.i3blocks}/bin/i3blocks";
+        "XF86AudioPlay" = "exec ${pkgs.playerctl} play-pause && pkill -RTMIN+10 ${pkgs.i3blocks}/bin/i3blocks";
+        "XF86AudioNext" = "exec ${pkgs.playerctl} next && pkill -RTMIN+10 ${pkgs.i3blocks}/bin/i3blocks";
+        "XF86AudioPrev" = "exec ${pkgs.playerctl} previous && pkill -RTMIN+10 ${pkgs.i3blocks}/bin/i3blocks";
+
+        # Moving focus
+        "${modifier}+${left}" = "focus left";
+        "${modifier}+${down}" = "focus down";
+        "${modifier}+${up}" = "focus up";
+        "${modifier}+${right}" = "focus right";
+        "${modifier}+Shift+${left}" = "move left";
+        "${modifier}+Shift+${down}" = "move down";
+        "${modifier}+Shift+${up}" = "move up";
+        "${modifier}+Shift+${right}" = "move right";
+        "Alt+Tab" = "workspace back_and_forth";
+        "${modifier}+Tab" = "workspace next_on_output";
 
         "${modifier}+space" = "floating toggle";
         "${modifier}+a" = "focus parent";
@@ -139,14 +129,65 @@ in
         "Print" = "exec --no-startup-id flameshot gui";
         "${modifier}+l" = "exec swaylock -f -c 000000";
         "${modifier}+p" = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
-        # TODO: quick edit /etc/nixos as root
-        # TODO: quick commit to my repository, the changes.
-        "${modifier}+Shift+a" = "gksudo nrs --no-build-nix";
-        "${modifier}+m" = "move workspace to output left";
         "${modifier}+r" = "mode resize";
-        "${modifier}+s" = "scratchpad show";
-        "${modifier}+Shift+s" = "move scratchpad";
-      } // (mkMoveToWorkspace modifier) // (mkMoveContainerToWorkspace modifier));
+      }
+      # Merge KP_number key to focus workspace number with keybind set
+      // lib.listToAttrs (builtins.map
+        (x: {
+          name = "${modifier}+KP_${builtins.elemAt x 0}";
+          value = "exec ${pkgs.swaysome}/bin/swaysome focus ${builtins.elemAt x 1}";
+        })
+        workspaces)
+      # Merge KP_number key to move to workspace number with keybind set
+      // lib.listToAttrs (builtins.map
+        (x: {
+          name = "${modifier}+Shift+KP_${builtins.elemAt x 0}";
+          value = "exec ${pkgs.swaysome}/bin/swaysome move ${builtins.elemAt x 1}";
+        })
+        workspaces)
+      # Merge number key to focus workspace number with keybind set
+      // lib.listToAttrs (builtins.map
+        (x: {
+          name = "${modifier}+${builtins.elemAt x 0}";
+          value = "exec ${pkgs.swaysome}/bin/swaysome focus ${builtins.elemAt x 1}";
+        })
+        workspaces)
+      # Merge number key to move to workspace number with keybind set
+      // lib.listToAttrs (builtins.map
+        (x: {
+          name = "${modifier}+Shift+${builtins.elemAt x 0}";
+          value = "exec ${pkgs.swaysome}/bin/swaysome move ${builtins.elemAt x 1}";
+        })
+        workspaces);
+
+    colors.focused = {
+      border = "#f5b6ac";
+      background = "#f5b6ac";
+      text = "#222d3a";
+      indicator = "#f5b6ac";
+      childBorder = "#cc0000";
+    };
+    colors.unfocused = {
+      border = "#222d3a";
+      background = "#222d3a";
+      text = "#a79fa1";
+      indicator = "#222d3a";
+      childBorder = "#cc0000";
+    };
+    colors.focusedInactive = {
+      border = "#222d3a";
+      background = "#222d3a";
+      text = "#a79fa1";
+      indicator = "#222d3a";
+      childBorder = "#cc0000";
+    };
+    colors.urgent = {
+      border = "#ed97f3";
+      background = "#ed97f3";
+      text = "#222d3a";
+      indicator = "#ed97f3";
+      childBorder = "#cc0000";
+    };
 
       modes.resize = {
         Left = "resize shrink width 10px";

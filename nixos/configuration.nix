@@ -12,15 +12,21 @@
       ./app/app.nix
       ./wm/wm.nix
       ./shell/sh.nix
+      ./misc/misc.nix
     ];
 
-  # Use the systemd-boot EFI boot loader.
-  #boot.loader.systemd-boot.enable = true;
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.initrd.luks.devices."luks-13fb18db-3f3b-4863-b6cd-41972e738bc1".device = "/dev/disk/by-uuid/13fb18db-3f3b-4863-b6cd-41972e738bc1";
   networking.hostName = "nix"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+
+  # Enable networking
+  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
@@ -46,18 +52,42 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowInsecure = true;
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # Enable the X11 windowing system.
+  services.xserver.enable = true;
 
-  boot.initrd.luks.devices = {
-    root = {
-      name = "root";
-      device = "/dev/disk/by-uuid/f608d21e-45b2-475f-a528-4917601e6b44";
-      preLVM = true;
-      allowDiscards = true;
-    };
+  # Enable the KDE Plasma Desktop Environment.
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+
+  # Configure keymap in X11
+  services.xserver = {
+    layout = "no";
+    xkbVariant = "";
   };
+
+  # Configure console keymap
+  console.keyMap = "no";
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+
+  # Enable sound with pipewire.
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
+  };
+
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -65,10 +95,6 @@
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
-
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -78,11 +104,11 @@
   users.users.chiya = {
     isNormalUser = true;
     home = "/home/chiya";
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      firefox
       tree
       zsh
+      thunderbird
     ];
     initialHashedPassword = "$6$m28ZHJp5bx7rIyJs$snUC6gI8q8XSiK/9EGnzDyuMTnMpKDCLjczHjbwZ23.QRTWtnzrmUTTz8O7eqgVsCJtWksFxjieCSFzqx8zwU.";
   };

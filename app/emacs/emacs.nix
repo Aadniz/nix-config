@@ -7,11 +7,11 @@ in
   xdg = {
     enable = true;
     configFile = {
-      "doom-config/config.el".source = ./config.el;
-      "doom-config/init.el".source = ./init.el;
-      "doom-config/packages.el".source = ./packages.el;
-      "doom-config/custom.el".source = ./custom.el;
-      "doom-config/splash.png".source = splash-image;
+      "doom/config.el".source = ./config.el;
+      "doom/init.el".source = ./init.el;
+      "doom/packages.el".source = ./packages.el;
+      "doom/custom.el".source = ./custom.el;
+      "doom/splash.png".source = splash-image;
     };
   };
 
