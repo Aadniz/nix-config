@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/chiya/Pictures/kitan_5980.jpg",
+    "alpha": "100",
+
+    "special": {
+        "background": "#0c0d1c",
+        "foreground": "#dfe5f5",
+        "cursor": "#dfe5f5"
+    },
+    "colors": {
+        "color0": "#0c0d1c",
+        "color1": "#987780",
+        "color2": "#6787B1",
+        "color3": "#609BF6",
+        "color4": "#B09DB2",
+        "color5": "#8DB5F3",
+        "color6": "#A6CCFD",
+        "color7": "#dfe5f5",
+        "color8": "#9ca0ab",
+        "color9": "#987780",
+        "color10": "#6787B1",
+        "color11": "#609BF6",
+        "color12": "#B09DB2",
+        "color13": "#8DB5F3",
+        "color14": "#A6CCFD",
+        "color15": "#dfe5f5"
+    }
+}

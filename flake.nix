@@ -19,16 +19,28 @@
     term = "kitty"; # Default terminal command;
     wallpaper = "~/Pictures/kitan_3746.jpg"; #kitan_5980.jpg";
     # Colors are generated automatically from the wallpaper
-    colors = import ./colors.nix;
+    #theme = import ./theme;
+
+    absColorsJsonPath = /home/${username}/.cache/wal/colors.json;
+    defColorsJsonPath = ./theme/colors.json;
+    colorsJsonPath = if builtins.pathExists absColorsJsonPath then absColorsJsonPath else defColorsJsonPath;
+    theme = builtins.fromJSON (builtins.readFile colorsJsonPath) //
+    {
+      primary = theme.colors.color9;
+      secondary = theme.colors.color2;
+      third = theme.colors.color8;
+      bright = theme.colors.color14;
+      dark = theme.colors.color0;
+    };
 
     # create patched nixpkgs
     nixpkgs-patched = (import nixpkgs { inherit system; }).applyPatches {
       name = "nixpkgs-patched";
       src = nixpkgs;
       patches = [
-                  ./patches/emacs-no-version-check.patch
-                  ./patches/nixos-nixpkgs-268027.patch
-                ];
+        ./patches/emacs-no-version-check.patch
+        ./patches/nixos-nixpkgs-268027.patch
+      ];
     };
 
     # configure pkgs
@@ -66,7 +78,7 @@
           inherit dotfilesDir;
           inherit term;
           inherit wallpaper;
-          inherit colors;
+          inherit theme;
         };
       };
     };

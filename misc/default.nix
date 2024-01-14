@@ -3,4 +3,9 @@
 {
   imports = [
   ];
+
+
+  home.packages = with pkgs; [
+    ffmpeg
+  ];
 }

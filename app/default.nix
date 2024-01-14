@@ -8,6 +8,7 @@
   ];
 
   home.packages = with pkgs; [
+    R
     git
     gotop
     obs-studio

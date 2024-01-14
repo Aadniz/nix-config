@@ -1,13 +1,14 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, theme, ... }:
 
 # Big creds to https://github.com/RicArch97/nixos-config/blob/b2a94a998b9ada4635ba1ce702691098f799b100/modules/desktop/sway.nix
 # and https://github.com/RaitoBezarius/nixos-home/blob/70a7d0503da62963c03cee40962f945f552dd6f1/sway.nix
-
 {
   imports = [
     ./hardware.nix
 #    ./bar.nix
   ];
+
+  #home.file."deleteme".text = colors.colors.color2;
 
   #home.file.".config/sway/config".source =
   #  config.lib.file.mkOutOfStoreSymlink ./dotfiles/sway;
@@ -161,32 +162,32 @@
         workspaces);
 
     colors.focused = {
-      border = "#f5b6ac";
-      background = "#f5b6ac";
-      text = "#222d3a";
-      indicator = "#f5b6ac";
-      childBorder = "#cc0000";
+      border = theme.primary;
+      background = theme.primary;
+      text = theme.dark;
+      indicator = theme.primary;
+      childBorder = theme.primary;
     };
     colors.unfocused = {
-      border = "#222d3a";
-      background = "#222d3a";
-      text = "#a79fa1";
-      indicator = "#222d3a";
-      childBorder = "#cc0000";
+      border = theme.dark;
+      background = theme.dark;
+      text = theme.bright;
+      indicator = theme.dark;
+      childBorder = theme.dark;
     };
     colors.focusedInactive = {
-      border = "#222d3a";
-      background = "#222d3a";
-      text = "#a79fa1";
-      indicator = "#222d3a";
-      childBorder = "#cc0000";
+      border = theme.dark;
+      background = theme.dark;
+      text = theme.bright;
+      indicator = theme.dark;
+      childBorder = theme.dark;
     };
     colors.urgent = {
-      border = "#ed97f3";
-      background = "#ed97f3";
-      text = "#222d3a";
-      indicator = "#ed97f3";
-      childBorder = "#cc0000";
+      border = theme.secondary;
+      background = theme.secondary;
+      text = theme.dark;
+      indicator = theme.secondary;
+      childBorder = theme.dark;
     };
 
       modes.resize = {
