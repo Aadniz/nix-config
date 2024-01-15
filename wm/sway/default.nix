@@ -5,7 +5,7 @@
 {
   imports = [
     ./hardware.nix
-#    ./bar.nix
+    #./bar.nix
   ];
 
   #home.file."deleteme".text = colors.colors.color2;
@@ -125,9 +125,14 @@
         "${modifier}+Shift+minus" = "move scratchpad";
         "${modifier}+minus" = "scratchpad show";
 
-        "Shift+Print" = "exec grim - | wl-copy";
-        "Shift+Alt+Print" = ''exec grim -g "$(slurp)" - | wl-copy'';
-        "Print" = "exec --no-startup-id flameshot gui";
+        # Screenshot
+        "Print" = ''exec wl-copy < $(${pkgs.sway-contrib.grimshot}/bin/grimshot save area "$HOME/Pictures/Shutter/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png")'';
+        "Shift+Print" = ''exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area'';
+        "Ctrl+Print" = ''exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy output'';
+        "Ctrl+Shift+Print" = ''exec wl-copy < $(${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save output "$HOME/Pictures/Shutter/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png")'';
+        "${modifier}+Print" = ''exec wl-copy < $(${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save screen "$HOME/Pictures/Shutter/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png")'';
+        "Mod1+Print" = ''exec wl-copy < $(${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save active "$HOME/Pictures/Shutter/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png")'';
+
         "${modifier}+l" = "exec swaylock -f -c 000000";
         "${modifier}+p" = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
         "${modifier}+r" = "mode resize";
