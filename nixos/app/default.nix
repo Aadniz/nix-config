@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./virtualization.nix
+    ./virtualization
   ];
 
   environment.systemPackages = with pkgs; [

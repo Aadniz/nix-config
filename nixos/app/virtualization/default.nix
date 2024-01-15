@@ -1,7 +1,15 @@
 { config, lib, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ virt-manager virtualbox distrobox ];
+  imports = [
+    ./waydroid.nix
+  ];
+
+  environment.systemPackages = with pkgs; [
+    virt-manager
+    virtualbox
+    distrobox
+  ];
   virtualisation.libvirtd = {
     allowedBridges = [
       "nm-bridge"

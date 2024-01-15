@@ -18,7 +18,7 @@
     neofetch
     discord
     discord-canary
-    element-desktop
+    element-desktop-wayland
     microsoft-edge-dev
   ];
 }

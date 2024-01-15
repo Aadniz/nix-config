@@ -7,5 +7,7 @@
 
   home.packages = with pkgs; [
     ffmpeg
+    termdown
+    vulkan-tools
   ];
 }
