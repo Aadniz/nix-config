@@ -17,7 +17,7 @@
     email = "pus@null.net"; # email (used for certain configurations)
     dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
     term = "kitty"; # Default terminal command;
-    wallpaper = "~/Pictures/kitan_5980.jpg"; #kitan_5980.jpg";
+    #wallpaper = "~/Pictures/kitan_5980.jpg"; #kitan_5980.jpg";
 
     # Out of the colors generated from pywal, which one should be used to what?
     primary = 1;
@@ -68,6 +68,7 @@
       #inherit wallpaper;
       #inherit pkgs;
     };
+    wallpaper = theme.wallpaper;#"~/Pictures/kitan_5980.jpg";
 
     # configure lib
     lib = nixpkgs.lib;

@@ -5,6 +5,7 @@
     ./emacs
     ./rofi.nix
     ./spotify.nix
+    ./kitty.nix
   ];
 
   home.packages = with pkgs; [
@@ -14,6 +15,7 @@
     obs-studio
     btop
     elisa
+    krita
     chromium
     neofetch
     discord

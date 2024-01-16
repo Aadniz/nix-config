@@ -1,9 +1,10 @@
 { username, primary ? 1, secondary ? 2, third ? 8, foreground ? 14, background ? 0 }:
 
 let
-  absColorsJsonPath = /home/${username}/.cache/wal/colors.json;
+  #absColorsJsonPath = "/home/${username}/.cache/wal/colors.json";
+  #absColorsJsonPath = "./wal-cache.json";
   defColorsJsonPath = ./colors.json;
-  colorsJsonPath = if builtins.pathExists absColorsJsonPath then absColorsJsonPath else defColorsJsonPath;
+  colorsJsonPath = defColorsJsonPath;
   #pkgs.mkShell {
   #  buildInputs = [ pkgs.pywal ];
   #  shellHook = ''

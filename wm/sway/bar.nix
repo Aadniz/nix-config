@@ -24,5 +24,30 @@ in
     };
     position = "top";
     command = "${pkgs.sway}/bin/swaybar";
+    colors = {
+        background = theme.background;
+        statusline = theme.foreground;
+        separator = theme.third;
+        inactiveWorkspace = {
+          border = theme.background;
+          background = theme.background;
+          text = theme.foreground;
+        };
+        activeWorkspace = {
+          border = theme.primary;
+          background = theme.primary;
+          text = theme.background;
+        };
+        focusedWorkspace = {
+          border = theme.primary;
+          background = theme.primary;
+          text = theme.background;
+        };
+        urgentWorkspace = {
+          border = theme.secondary;
+          background = theme.secondary;
+          text = theme.background;
+        };
+      };
   }];
 }

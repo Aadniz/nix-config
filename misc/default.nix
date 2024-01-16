@@ -9,6 +9,7 @@
     ffmpeg
     file
     bc
+    jq
     mpd
     sway-contrib.grimshot
     termdown
@@ -16,5 +17,4 @@
     fira-code
     font-awesome_5
   ];
-
 }
