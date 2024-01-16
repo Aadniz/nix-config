@@ -1,4 +1,4 @@
-{ username, primary ? 1, secondary ? 2, third ? 8, bright ? 14, dark ? 0 }:
+{ username, primary ? 1, secondary ? 2, third ? 8, foreground ? 14, background ? 0 }:
 
 let
   absColorsJsonPath = /home/${username}/.cache/wal/colors.json;
@@ -19,6 +19,6 @@ in
     primary = getColor primary;
     secondary = getColor secondary;
     third = getColor third;
-    bright = getColor bright;
-    dark = getColor dark;
+    foreground = getColor foreground;
+    background = getColor background;
   }

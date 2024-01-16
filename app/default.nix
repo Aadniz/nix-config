@@ -18,7 +18,8 @@
     neofetch
     discord
     discord-canary
-    element-desktop-wayland
+    element-desktop
     microsoft-edge-dev
+    godot_4
   ];
 }

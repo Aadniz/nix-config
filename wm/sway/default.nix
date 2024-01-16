@@ -5,7 +5,7 @@
 {
   imports = [
     ./hardware.nix
-    #./bar.nix
+    ./bar.nix
   ];
 
   #home.file."deleteme".text = colors.colors.color2;
@@ -34,12 +34,12 @@
     wl-clipboard
     playerctl
     pamixer
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
   ];
 
   programs.zsh.loginExtra = ''
     if [[ -z $DISPLAY ]] && [[ $(tty) = "/dev/tty1" ]]; then
-      export XDG_CURRENT_DESKTOP=sway
-      export XDG_SESSION_TYPE=wayland
       exec sway
     fi
   '';
@@ -54,13 +54,8 @@
     xwayland = true;
     systemd.enable = true;
     extraSessionCommands = ''
-      export XDG_SESSION_TYPE=wayland
       export XDG_CURRENT_DESKTOP=sway
-      export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-      export QT_AUTO_SCREEN_SCALE_FACTOR=0
-      export QT_SCALE_FACTOR=1
-      export GDK_SCALE=1
-      export GDK_DPI_SCALE=1
+      export XDG_SESSION_TYPE=wayland
       export MOZ_ENABLE_WAYLAND=1
       export _JAVA_AWT_WM_NONREPARENTING=1
     '';
@@ -71,7 +66,7 @@
 
       fonts = {
         names = [ "pango:Fira Mono for Powerline" "FontAwesome 10" ];
-        size = 9.0;
+        size = 10.0;
         style = "Normal";
       };
 
@@ -98,14 +93,15 @@
         "${modifier}+Escape" = "kill";
         "${modifier}+Delete" = "kill";
         "${modifier}+q" = "exec ${pkgs.rofi}/bin/rofi -show run";
+        "${modifier}+Shift+c" = "reload";
 
         # Audio
-        "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t && pkill -RTMIN+1 ${pkgs.i3blocks}/bin/i3blocks";
-        "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 1 && pkill -RTMIN+1 ${pkgs.i3blocks}/bin/i3blocks";
-        "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 1 && pkill -RTMIN+1 ${pkgs.i3blocks}/bin/i3blocks";
-        "XF86AudioPlay" = "exec ${pkgs.playerctl} play-pause && pkill -RTMIN+10 ${pkgs.i3blocks}/bin/i3blocks";
-        "XF86AudioNext" = "exec ${pkgs.playerctl} next && pkill -RTMIN+10 ${pkgs.i3blocks}/bin/i3blocks";
-        "XF86AudioPrev" = "exec ${pkgs.playerctl} previous && pkill -RTMIN+10 ${pkgs.i3blocks}/bin/i3blocks";
+        "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t && pkill -RTMIN+1 i3blocks";
+        "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 1 && pkill -RTMIN+1 i3blocks";
+        "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 1 && pkill -RTMIN+1 i3blocks";
+        "XF86AudioPlay" = "exec ${pkgs.playerctl} play-pause && pkill -RTMIN+10 i3blocks";
+        "XF86AudioNext" = "exec ${pkgs.playerctl} next && pkill -RTMIN+10 i3blocks";
+        "XF86AudioPrev" = "exec ${pkgs.playerctl} previous && pkill -RTMIN+10 i3blocks";
 
         # Moving focus
         "${modifier}+${left}" = "focus left";
@@ -169,30 +165,30 @@
     colors.focused = {
       border = theme.primary;
       background = theme.primary;
-      text = theme.dark;
+      text = theme.background;
       indicator = theme.primary;
       childBorder = theme.primary;
     };
     colors.unfocused = {
-      border = theme.dark;
-      background = theme.dark;
-      text = theme.bright;
-      indicator = theme.dark;
-      childBorder = theme.dark;
+      border = theme.background;
+      background = theme.background;
+      text = theme.foreground;
+      indicator = theme.background;
+      childBorder = theme.background;
     };
     colors.focusedInactive = {
-      border = theme.dark;
-      background = theme.dark;
-      text = theme.bright;
-      indicator = theme.dark;
-      childBorder = theme.dark;
+      border = theme.background;
+      background = theme.background;
+      text = theme.foreground;
+      indicator = theme.background;
+      childBorder = theme.background;
     };
     colors.urgent = {
       border = theme.secondary;
       background = theme.secondary;
-      text = theme.dark;
+      text = theme.background;
       indicator = theme.secondary;
-      childBorder = theme.dark;
+      childBorder = theme.background;
     };
 
       modes.resize = {

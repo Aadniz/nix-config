@@ -23,8 +23,8 @@
     primary = 1;
     secondary = 2;
     third = 4;
-    bright = 7;
-    dark = 0;
+    foreground = 7;
+    background = 0;
 
     #absColorsJsonPath = /home/${username}/.cache/wal/colors.json;
     #defColorsJsonPath = ./theme/colors.json;
@@ -62,8 +62,8 @@
       inherit primary;
       inherit secondary;
       inherit third;
-      inherit bright;
-      inherit dark;
+      inherit foreground;
+      inherit background;
       inherit username;
       #inherit wallpaper;
       #inherit pkgs;
