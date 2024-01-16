@@ -6,6 +6,7 @@
   imports = [
     ./hardware.nix
     ./bar.nix
+    ./dunst.nix
   ];
 
   #home.file."deleteme".text = colors.colors.color2;
