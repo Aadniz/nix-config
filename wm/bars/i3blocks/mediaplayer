@@ -31,6 +31,12 @@ use Env qw(BLOCK_INSTANCE);
 use constant DELAY => 50; # Delay in ms to let network-based players (spotify) reflect new data.
 use constant SPOTIFY_STR => 'spotify';
 
+use constant PRIMARY_COLOR => $ENV{'PRIMARY_COLOR'};
+use constant SECONDARY_COLOR => $ENV{'SECONDARY_COLOR'};
+use constant THIRD_COLOR => $ENV{'THIRD_COLOR'};
+use constant BACKGROUND_COLOR => $ENV{'BACKGROUND_COLOR'};
+use constant FOREGROUND_COLOR => $ENV{'FOREGROUND_COLOR'};
+
 my @metadata = ();
 my $player_arg = "";
 my $label_set = False;
@@ -161,13 +167,13 @@ sub playerctl {
 	chomp $shuffle;
 	my $shuffle_icon = "";
 	if ($shuffle eq "On") {
-		$shuffle_icon = "  <span color='#a79fa1'></span>"
+		$shuffle_icon = "  <span color='".SECONDARY_COLOR."'></span>"
 	}
 
     if (@metadata){
         my $details = join(" - ", @metadata);
         $details =~ s/&/&amp;/g;
-        print("<span color='#f5b6ac'>$label</span>  ", "$details", "$shuffle_icon\n");
+        print("<span color='".PRIMARY_COLOR."'>$label</span>  ", "$details", "$shuffle_icon\n");
     } else{
         exit(0)
     }
