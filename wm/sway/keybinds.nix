@@ -9,6 +9,18 @@
         right = "Right";
         # Generate a list of lists, each inner list containing a key(number) and workspace
         workspaces = lib.genList (x: [(toString (x)) (toString (x))]) 10;
+        numpad = {
+          "0" = "KP_Insert";
+          "1" = "KP_End";
+          "2" = "KP_Down";
+          "3" = "KP_Next";
+          "4" = "KP_Left";
+          "5" = "KP_Begin";
+          "6" = "KP_Right";
+          "7" = "KP_Home";
+          "8" = "KP_Up";
+          "9" = "KP_Prior";
+        };
       in
       {
         wayland.windowManager.sway.config.keybindings = {
@@ -69,6 +81,20 @@
         
         "${modifier}+r" = "mode resize";
       }
+      # Merge KP_number key to focus workspace number with keybind set
+      // lib.listToAttrs (builtins.map
+        (x: {
+          name = "${modifier}+${numpad.${builtins.elemAt x 0}}";
+          value = "exec ${pkgs.swaysome}/bin/swaysome focus ${builtins.elemAt x 1}";
+        })
+        workspaces)
+      # Merge KP_number key to move to workspace number with keybind set
+      // lib.listToAttrs (builtins.map
+        (x: {
+          name = "${modifier}+Shift+${numpad.${builtins.elemAt x 0}}";
+          value = "exec ${pkgs.swaysome}/bin/swaysome move ${builtins.elemAt x 1}";
+        })
+        workspaces)
       # Merge KP_number key to focus workspace number with keybind set
       // lib.listToAttrs (builtins.map
         (x: {

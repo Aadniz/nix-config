@@ -23,7 +23,6 @@ in
       size = 10.0;
     };
     position = "top";
-    command = "${pkgs.sway}/bin/swaybar";
     colors = {
         background = theme.background;
         statusline = theme.foreground;
