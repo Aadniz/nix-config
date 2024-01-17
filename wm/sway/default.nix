@@ -42,6 +42,7 @@ in
     xdg-desktop-portal
     xdg-desktop-portal-gtk
     dmenu
+    sway-contrib.grimshot
   ];
 
   programs.zsh.loginExtra = ''
@@ -71,7 +72,7 @@ in
       terminal = term;
 
       fonts = {
-        names = [ "pango:Fira Mono for Powerline" "FontAwesome 10" ];
+        names = [ "Iosevka" "Font Awesome 6 Free" "Font Awesome 6 Brands" ];
         size = 10.0;
         style = "Normal";
       };

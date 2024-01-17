@@ -11,10 +11,8 @@
     bc
     jq
     mpd
-    sway-contrib.grimshot
+    htop
     termdown
     vulkan-tools
-    fira-code
-    font-awesome_5
   ];
 }

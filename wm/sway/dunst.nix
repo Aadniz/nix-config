@@ -37,14 +37,14 @@
 
         font = "Monospace 12";
 
-        width = 300;
+        width = 400;
         # The maximum height of a single notification, excluding the frame.
-        height = 50;
+        # height = 50;
         # Position the notification in the top right corner
         origin = "top-right";
 
         # Offset from the origin
-        offset = "9x53";
+        offset = "30x60";
 
         # Scale factor. It is auto-detected if value is 0.
         scale = 0;
@@ -52,7 +52,7 @@
         # Maximum number of notification (0 means no limit)
         notification_limit = 0;
         monitor = 0;
-        follow = "none";
+        follow = "mouse";
         progress_bar = true;
         # Set the progress bar height. This includes the frame, so make sure
         # it's at least twice as big as the frame width.
@@ -65,13 +65,13 @@
         # Draw a line of "separator_height" between notifs
         separator_height = 0;
         # Padding between text and separator.
-        padding = 8;
-        horizontal_padding = 8;
+        padding = 16;
+        horizontal_padding = 16;
         text_icon_padding = 0;
-        frame_width = 0; # no frame / no border
-        frame_color = ''"#aaaaaa00"'';
+        frame_width = 2; # no frame / no border
+        frame_color = ''"${dunstbg}"'';
         separator_color = "frame";
-        sort = "yes"; # by urgency
+        sort = "no"; # by urgency
 
         # The format of the message.  Possible variables are:
         #   %a  appname
