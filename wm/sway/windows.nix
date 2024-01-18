@@ -9,5 +9,17 @@
       };
       command = "floating enable, resize set width 800 height 600";
     }
+    {
+      criteria = {
+        app_id = "msedge-www.bing.com__search-Default";
+      };
+      command = "move scratchpad, resize set 1200 px 1300 px, scratchpad show";
+    }
+    {
+      criteria = {
+        app_id = "anki";
+      };
+      command = "floating enable, resize set 1400 px 1000 px";
+    }
   ];
 }

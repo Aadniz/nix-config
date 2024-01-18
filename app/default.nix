@@ -15,6 +15,7 @@
     obs-studio
     btop
     elisa
+    zoom
     krita
     chromium
     neofetch

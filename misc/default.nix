@@ -14,6 +14,5 @@
     mpd
     htop
     termdown
-    vulkan-tools
   ];
 }
