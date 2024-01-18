@@ -6,6 +6,7 @@
     ./rofi.nix
     ./spotify.nix
     ./kitty.nix
+    ./unison.nix
   ];
 
   home.packages = with pkgs; [
