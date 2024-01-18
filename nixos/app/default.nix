@@ -3,6 +3,7 @@
 {
   imports = [
     ./virtualization
+    ./amdgpu-fan
   ];
 
   environment.systemPackages = with pkgs; [

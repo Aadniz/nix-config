@@ -20,4 +20,17 @@
       ];
     };
   };
+
+  services.amdgpu-fan = {
+    enable = true;
+    settings = {
+      speed_matrix = [
+        [0 0]
+        [40 60]
+        [55 90]
+        [60 100]
+      ];
+      temp_drop = 8;
+    };
+  };
 }

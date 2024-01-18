@@ -1,10 +1,9 @@
 [
-  {app_id="floatingKitty";}
   {class="Vlc";}
   {class="vlc";}
   {class="feh";}
   {class="Insomnia";}
-  {class="Steam";}
+  {class="steam";}
   {class="Mario spel";}
   {class="code-oss";}
   {window_role="toolbox";}
@@ -23,7 +22,7 @@
   {app_id="org.getmonero.monero-wallet-gui";}
   {app_id="transmission-gtk";}
   {class="Week 39";}
-  {app_id="zoom";}
+  {class="zoom";}
   {app_id="Waydroid";}
   {app_id="lutris";}
   {app_id="zenity";}
@@ -31,4 +30,5 @@
   {title="Developer Tools —";}
   { instance = "Godot_ProjectList"; }
   { instance = "Godot_Engine"; }
+  {app_id="xdg-desktop-portal-gtk";}
 ]

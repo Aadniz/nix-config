@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib,  ... }:
 
 {
   imports = [
@@ -15,7 +15,7 @@
     obs-studio
     btop
     elisa
-    zoom
+    zoom-us # Not pkgs.zoom
     krita
     chromium
     neofetch
@@ -24,5 +24,6 @@
     element-desktop
     microsoft-edge-dev
     godot_4
+    steam
   ];
 }

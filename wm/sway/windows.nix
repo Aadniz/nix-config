@@ -21,5 +21,11 @@
       };
       command = "floating enable, resize set 1400 px 1000 px";
     }
+    {
+      criteria = {
+        app_id="floatingKitty";
+      };
+      command = "floating enable, resize set 1300 px 800 px";
+    }
   ];
 }
