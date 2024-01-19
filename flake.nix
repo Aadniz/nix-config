@@ -26,17 +26,6 @@
     foreground = 7;
     background = 0;
 
-    #absColorsJsonPath = /home/${username}/.cache/wal/colors.json;
-    #defColorsJsonPath = ./theme/colors.json;
-    #colorsJsonPath = if builtins.pathExists absColorsJsonPath then absColorsJsonPath else defColorsJsonPath;
-    #theme = builtins.fromJSON (builtins.readFile colorsJsonPath) //
-    #{
-    #  primary = theme.colors.color9;
-    #  secondary = theme.colors.color2;
-    #  third = theme.colors.color8;
-    #  bright = theme.colors.color14;
-    #  dark = theme.colors.color0;
-    #};
 
     # create patched nixpkgs
     nixpkgs-patched = (import nixpkgs { inherit system; }).applyPatches {

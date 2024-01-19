@@ -14,6 +14,7 @@
       ./shell
       ./misc
       ./hardware
+      ./networking
     ];
 
   # Bootloader.
@@ -105,7 +106,7 @@
   users.users.chiya = {
     isNormalUser = true;
     home = "/home/chiya";
-    extraGroups = [ "wheel" "networkmanager" "video" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "video" "wireshark" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
       zsh
