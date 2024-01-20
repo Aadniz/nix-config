@@ -9,6 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     python3
+    inetutils
     fira-code
     font-awesome
     iosevka
