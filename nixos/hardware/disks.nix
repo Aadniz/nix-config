@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, username, ... }:
 let
   archDisk = {
     mountLocation = "/mnt/arch";
@@ -36,7 +36,7 @@ in
       device = "/dev/disk/by-uuid/4367cd83-4a0c-460e-add8-82a3a5fb3bb1";
       fsType = "ext4";
     };
-    "/home/chiya/Downloads" = {
+    "/home/${username}/Downloads" = {
       device = "/mnt/bigdata/Downloads";
       options = [ "bind" ];
     };
@@ -54,7 +54,7 @@ in
 
   # This maps all /mnt/arch/{Pictures, Music, Documents, ...} to ~/{Pictures, Music, Documents, ...}
   // builtins.listToAttrs (map (dir: {
-    name = "/home/chiya/${dir}";
+    name = "/home/${username}/${dir}";
     value = {
       device = "${archDisk.mountLocation}/home/chiya/${dir}";
       options = [ "bind" ];

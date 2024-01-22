@@ -73,7 +73,7 @@
       };
     };
     homeConfigurations = {
-      chiya = home-manager.lib.homeManagerConfiguration {
+      ${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./home.nix ];
         extraSpecialArgs = {

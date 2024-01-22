@@ -32,5 +32,7 @@
     godot_4
     steam
     tor-browser
+    okular
+    zotero
   ];
 }

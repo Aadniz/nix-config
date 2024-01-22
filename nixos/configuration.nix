@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, username, ... }:
 
 {
   imports =
@@ -103,9 +103,9 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.root.initialHashedPassword = "$6$m28ZHJp5bx7rIyJs$snUC6gI8q8XSiK/9EGnzDyuMTnMpKDCLjczHjbwZ23.QRTWtnzrmUTTz8O7eqgVsCJtWksFxjieCSFzqx8zwU.";
-  users.users.chiya = {
+  users.users.${username} = {
     isNormalUser = true;
-    home = "/home/chiya";
+    home = "/home/${username}";
     extraGroups = [ "wheel" "networkmanager" "video" "wireshark" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
