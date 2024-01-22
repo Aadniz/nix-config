@@ -34,5 +34,7 @@
     tor-browser
     okular
     zotero
+    insomnia
+    neovim
   ];
 }

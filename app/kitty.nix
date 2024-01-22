@@ -13,6 +13,10 @@ programs.kitty = {
       name = "Fira code";
     };
 
+    keybindings = {
+      "kitty_mod+s" = "next_window";
+    };
+
     settings = {
       scrollback_lines = 10000;
       placement_strategy = "center";
@@ -59,6 +63,11 @@ programs.kitty = {
       color15 = theme.colors.color15;
       #color16 = theme.colors.color16;
       #color17 = theme.colors.color17;
+
+      #enabled_layouts = "Tall:bias=65, Fat:bias=65, Stack, Grid, Horizontal, Vertical";
+      tab_bar_style = "fade";
+      tab_fade = "1 1 1";
+      term = "xterm-256color";
     };
 
     #theme = "Catppuccin-Mocha";
