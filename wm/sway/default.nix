@@ -18,7 +18,7 @@ in
   #home.file.".config/sway/config".source =
   #  config.lib.file.mkOutOfStoreSymlink ./dotfiles/sway;
   #home.file.".config/waybar/config".source = ./dotfiles/waybar/config;
-  #home.file.".config/waybar/style.css".source = ./dotfiles/waybar/style.css;
+  #home.file.".config/waybar/style.css".soure = ./dtfiles/waybar/style.css;
 
   dconf.enable = true;
 
@@ -72,8 +72,8 @@ in
       terminal = term;
 
       fonts = {
-        names = [ "Iosevka" "Font Awesome 6 Free" "Font Awesome 6 Brands" ];
-        size = 10.0;
+        names = [ "Font Awesome 6 Edited" "Font Awesome 6 Brands" "Iosevka" ];
+        size = 11.0;
         style = "Normal";
       };
 

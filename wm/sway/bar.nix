@@ -18,9 +18,9 @@ in
   wayland.windowManager.sway.config.bars = [{
     statusCommand = "${pkgs.i3blocks}/bin/i3blocks -c ${i3blocksConfigFile}";
     fonts = {
-      names = [ "pango:Fira Mono for Powerline" "FontAwesome 10" ];
+      names = [ "pango:Font-Awesome-6-Edited 11" "pango:Fira Mono for Powerline 11" ];
       style = "Regular";
-      size = 10.0;
+      size = 11.0;
     };
     position = "top";
     colors = {

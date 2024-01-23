@@ -42,9 +42,9 @@ fi
 
 # Print short_text, full_text
 printf "<span color=\"$icon_color\">${label}</span>"
-printf "%.${decimals}f%%${spacer}\n" "$cpu_usage"
+printf "  %.${decimals}f%%${spacer}\n" "$cpu_usage"
 printf "<span color=\"$icon_color\">${label}</span>"
-printf "%.${decimals}f%%\n" "$cpu_usage"
+printf "  %.${decimals}f%%\n" "$cpu_usage"
 echo "$color"
 
 exit 0

@@ -12,14 +12,10 @@
   ];
 
   home.packages = with pkgs; [
-    R
+    R  # Calculator
     git
     gotop
     obs-studio
-    # OBS Studio plugin that allows you to screen capture on wlroots based wayland compositors
-    obs-studio-plugins.wlrobs
-    # Audio device and application capture for OBS Studio using PipeWire
-    obs-studio-plugins.obs-pipewire-audio-capture
     btop
     elisa
     zoom-us # Not pkgs.zoom
@@ -33,8 +29,8 @@
     steam
     tor-browser
     okular
-    zotero
-    insomnia
+    zotero  # Source finder application
+    insomnia  # API debugging tool
     neovim
   ];
 }
