@@ -17,14 +17,14 @@
     email = "pus@null.net"; # email (used for certain configurations)
     dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
     term = "kitty"; # Default terminal command;
-    wallpaper = ./wallpapers/kitan_5980.jpg; # TODO: Would wish to go outside of scope if possible here
+    wallpaper = ./wallpapers/kitan_5980_upscaled.jpg; # TODO: Would wish to go outside of scope if possible here
 
     # Out of the colors generated from pywal, which one should be used to what?
-    primary = 1;
-    secondary = 2;
+    primary = 15;
+    secondary = 6;
     third = 4;
-    foreground = 7;
-    background = 0;
+    foreground = 3;
+    background = 7;
 
 
     # create patched nixpkgs

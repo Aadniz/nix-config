@@ -22,13 +22,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-13fb18db-3f3b-4863-b6cd-41972e738bc1".device = "/dev/disk/by-uuid/13fb18db-3f3b-4863-b6cd-41972e738bc1";
-  networking.hostName = "nix"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
