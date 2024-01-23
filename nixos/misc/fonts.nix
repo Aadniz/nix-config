@@ -1,40 +1,47 @@
 { config, lib, pkgs, ... }:
 let
   # Define the custom font package
-  customFont = pkgs.stdenv.mkDerivation {
-    name = "custom-font";
-    src = ./fontawesome-edited.ttf ; # Path to your custom font file
+  patchFont = pkgs.stdenv.mkDerivation {
+    name = "font-awesome-edited";
+    src = ./fontawesome-edited.ttf ;
     unpackPhase = ":";
     installPhase = ''
       mkdir -p $out/share/fonts
       cp $src $out/share/fonts/fontawesome-edited.ttf
     '';
     meta = with pkgs.lib; {
-      description = "Your custom font";
-      license = licenses.mit; # Adjust this to match your font's license
+      description = "Edited alter to Font Awesome 6 Free";
     };
   };
 
-  # Define a script to merge fonts
+  # Merging the fonts into a new one
   mergeFontsScript = pkgs.writeShellScriptBin "merge-fonts" ''
     #!/usr/bin/env bash
     set -euo pipefail
 
     FONTFORGE_COMMANDS=$(mktemp)
-    #echo "Open(\"$1\"); MergeFonts(\"$2\"); SetFontNames(\"Font-Awesome-6-Edited\", \"Font-Awesome-6-Edited\", \"Font-Awesome-6-Edited\"); Generate(\"$3\")" > "$FONTFORGE_COMMANDS"
-    echo "Open(\"$1\"); MergeFonts(\"$2\"); SetFontNames(\"Font-Awesome-6-Edited\", \"Font-Awesome-6-Edited\", \"Font-Awesome-6-Edited\"); SetTTFName(0x409, 1, \"Font Awesome 6 Edited\"); SetTTFName(0x409, 2, \"Regular\"); Generate(\"$3\")" > "$FONTFORGE_COMMANDS"
+
+    cat > "$FONTFORGE_COMMANDS" << EOF
+        Open("$1");
+        MergeFonts("$2");
+        SetFontNames("Font-Awesome-6-Edited", "Font-Awesome-6-Edited", "Font-Awesome-6-Edited");
+        SetTTFName(0x409, 1, "Font Awesome 6 Edited");
+        SetTTFName(0x409, 2, "Regular");
+        Generate("$3");
+    EOF
+
     fontforge -script "$FONTFORGE_COMMANDS"
     rm "$FONTFORGE_COMMANDS"
   '';
 
-  # Define the merged font package
-  mergedFont = pkgs.stdenv.mkDerivation {
+  # TODO: kind of stupid to use emacs-all-the-icons-fonts here
+  font-awesome-edited = pkgs.stdenv.mkDerivation {
     name = "merged-font";
     buildInputs = [ pkgs.fontforge ];
     builder = pkgs.writeScript "builder.sh" ''
       source $stdenv/setup
       mkdir -p $out/share/fonts
-      ${mergeFontsScript}/bin/merge-fonts ${pkgs.emacs-all-the-icons-fonts}/share/fonts/all-the-icons/fontawesome.ttf ${customFont}/share/fonts/fontawesome-edited.ttf $out/share/fonts/fontawesome-edited.ttf
+      ${mergeFontsScript}/bin/merge-fonts ${pkgs.emacs-all-the-icons-fonts}/share/fonts/all-the-icons/fontawesome.ttf ${patchFont}/share/fonts/fontawesome-edited.ttf $out/share/fonts/fontawesome-edited.ttf
     '';
   };
 in
@@ -52,6 +59,6 @@ in
     ipafont
     kochi-substitute
     fontforge-gtk
-    mergedFont
+    font-awesome-edited
   ];
 }

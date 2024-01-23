@@ -13,13 +13,6 @@ in
     ./keybinds.nix
   ];
 
-  #home.file."deleteme".text = colors.colors.color2;
-
-  #home.file.".config/sway/config".source =
-  #  config.lib.file.mkOutOfStoreSymlink ./dotfiles/sway;
-  #home.file.".config/waybar/config".source = ./dotfiles/waybar/config;
-  #home.file.".config/waybar/style.css".soure = ./dtfiles/waybar/style.css;
-
   dconf.enable = true;
 
   home.packages = with pkgs; [
