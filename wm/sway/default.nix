@@ -65,7 +65,7 @@ in
       terminal = term;
 
       fonts = {
-        names = [ "Font Awesome 6 Edited" "Font Awesome 6 Brands" "Iosevka" ];
+        names = [  "Iosevka" "Font Awesome 6 Edited" "Font Awesome 6 Brands"];
         size = 11.0;
         style = "Normal";
       };

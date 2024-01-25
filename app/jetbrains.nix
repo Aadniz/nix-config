@@ -9,6 +9,9 @@
     jetbrains.rider
     jetbrains.webstorm
     jetbrains.datagrip
+    #cargo
+    rustup
+    gcc
     jetbrains.rust-rover
     jetbrains.pycharm-professional
   ];

@@ -9,6 +9,7 @@
     ./unison.nix
     ./discord.nix
     ./protonmail.nix
+    ./jetbrains.nix
   ];
 
   home.packages = with pkgs; [
