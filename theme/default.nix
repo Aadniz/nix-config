@@ -11,17 +11,17 @@ let
   #};
 
   dominant_colours = pkgs.rustPlatform.buildRustPackage rec {
-    pname = "dominant_colours";
-    version = "1.1.8";
+    name = "dominant_colours";
+    #version = "1.1.8";
 
     src = pkgs.fetchFromGitHub {
-      owner = "alexwlchan";
-      repo = pname;
+      owner = "Aadniz";
+      repo = name;
       rev = "main";
-      sha256 = "kkTvIt4yc+7/sASZhyLUui/jPXoQhNy8CsqjJXn0tZU="; # replace with the actual sha256 of the repo
+      sha256 = "0Paw7t2tbwXn6buJ0r7t7tdeLT0QmsZ/AbRcA4hRv/o=";
     };
 
-    cargoSha256 = "eJCp1Itn0+wFigEjdlaec3cSJW9CkHRjRvA7Kp//9hU="; # replace with the actual cargoSha256
+    cargoSha256 = "MRzsxv8FsNyVbmOXZpoV0dPTLE5gX7msd1D/5Kqo8Sg="; # replace with the actual cargoSha256
 
     buildInputs = [ pkgs.gcc ];
 
@@ -35,7 +35,7 @@ let
     export HOME=$(pwd)
     export XDG_CACHE_HOME=$(pwd)
     export XDG_CONFIG_HOME=$(pwd)
-    ${dominant_colours}/bin/dominant_colours ${wallpaperInStore} --max-colours 16 --no-palette > colors.txt
+    ${dominant_colours}/bin/dominant_colours ${wallpaperInStore} --terminal-colours --seed 20 --no-palette > colors.txt
     echo '{' > colors.json
     for i in {0..15}
     do

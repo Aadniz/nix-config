@@ -20,11 +20,11 @@
     wallpaper = ./wallpapers/kitan_5980_upscaled.jpg; # TODO: Would wish to go outside of scope if possible here
 
     # Out of the colors generated from pywal, which one should be used to what?
-    primary = 15;
-    secondary = 6;
-    third = 4;
-    foreground = 3;
-    background = 7;
+    primary = 9;
+    secondary = 10;
+    third = 14;
+    foreground = 15;
+    background = 0;
 
 
     # create patched nixpkgs
