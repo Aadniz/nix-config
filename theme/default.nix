@@ -17,8 +17,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "Aadniz";
       repo = name;
-      rev = "main";
-      sha256 = "0Paw7t2tbwXn6buJ0r7t7tdeLT0QmsZ/AbRcA4hRv/o=";
+      rev = "theming";
+      sha256 = "i2RKUdLn5oxBvoaOpyfoZ6yruN3ca48IBq/shJaJmIY=";
     };
 
     cargoSha256 = "MRzsxv8FsNyVbmOXZpoV0dPTLE5gX7msd1D/5Kqo8Sg="; # replace with the actual cargoSha256
@@ -35,7 +35,7 @@ let
     export HOME=$(pwd)
     export XDG_CACHE_HOME=$(pwd)
     export XDG_CONFIG_HOME=$(pwd)
-    ${dominant_colours}/bin/dominant_colours ${wallpaperInStore} --terminal-colours --seed 20 --no-palette > colors.txt
+    ${dominant_colours}/bin/dominant_colours ${wallpaperInStore} --terminal-colours --seed 14 --no-palette --max-brightness > colors.txt
     echo '{' > colors.json
     for i in {0..15}
     do
