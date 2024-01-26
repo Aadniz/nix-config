@@ -17,6 +17,7 @@
     git
     gotop
     obs-studio
+    xdg-desktop-portal-wlr # Needed for sharing screen
     btop
     elisa
     zoom-us # Not pkgs.zoom
@@ -33,5 +34,6 @@
     zotero  # Source finder application
     insomnia  # API debugging tool
     neovim
+    nicotine-plus
   ];
 }

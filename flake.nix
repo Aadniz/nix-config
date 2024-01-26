@@ -20,9 +20,9 @@
     wallpaper = ./wallpapers/kitan_5980_upscaled.jpg; # TODO: Would wish to go outside of scope if possible here
 
     # Out of the colors generated from pywal, which one should be used to what?
-    primary = 9;
-    secondary = 10;
-    third = 14;
+    primary = 13;
+    secondary = 14;
+    third = 10;
     foreground = 15;
     background = 0;
 

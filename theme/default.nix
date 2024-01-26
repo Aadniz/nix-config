@@ -21,7 +21,7 @@ let
       sha256 = "i2RKUdLn5oxBvoaOpyfoZ6yruN3ca48IBq/shJaJmIY=";
     };
 
-    cargoSha256 = "MRzsxv8FsNyVbmOXZpoV0dPTLE5gX7msd1D/5Kqo8Sg="; # replace with the actual cargoSha256
+    cargoSha256 = "MRzsxv8FsNyVbmOXZpoV0dPTLE5gX7msd1D/5Kqo8Sg=";
 
     buildInputs = [ pkgs.gcc ];
 
@@ -35,7 +35,7 @@ let
     export HOME=$(pwd)
     export XDG_CACHE_HOME=$(pwd)
     export XDG_CONFIG_HOME=$(pwd)
-    ${dominant_colours}/bin/dominant_colours ${wallpaperInStore} --terminal-colours --seed 14 --no-palette --max-brightness > colors.txt
+    ${dominant_colours}/bin/dominant_colours ${wallpaperInStore} --terminal-colours --seed 3 --no-palette --max-brightness > colors.txt
     echo '{' > colors.json
     for i in {0..15}
     do
