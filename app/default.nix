@@ -10,6 +10,7 @@
     ./discord.nix
     ./protonmail.nix
     ./jetbrains.nix
+    ./nicotine-plus.nix
   ];
 
   home.packages = with pkgs; [
@@ -31,8 +32,9 @@
     tor-browser
     okular
     zotero  # Source finder application
+    gnome.nautilus
     insomnia  # API debugging tool
     neovim
-    nicotine-plus
+    feh
   ];
 }
