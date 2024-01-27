@@ -48,24 +48,28 @@ in
 {
 
   fonts.packages = with pkgs; [
-    fira-code
-    font-awesome
-    iosevka
-    source-sans-pro
-    source-serif-pro
     #(nerdfonts.override { fonts = [ "DroidSansMono" ]; })
-    font-awesome_5
     (nerdfonts.override { fonts = [ "CascadiaCode" "JetBrainsMono" "FiraCode" ]; })
-    emacs-all-the-icons-fonts
-    ipafont
-    kochi-substitute
-    fontforge-gtk
-    font-awesome-edited
     carlito
     dejavu_fonts
+    emacs-all-the-icons-fonts
+    fira-code
+    font-awesome
+    font-awesome-edited
+    font-awesome_5
+    fontforge-gtk
+    iosevka
     ipafont
     kochi-substitute
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
     source-code-pro
+    source-han-sans
+    source-han-sans-japanese
+    source-han-serif-japanese
+    source-sans-pro
+    source-serif-pro
     ttf_bitstream_vera
   ];
 }

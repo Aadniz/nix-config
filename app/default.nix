@@ -36,5 +36,6 @@
     insomnia  # API debugging tool
     neovim
     feh
+    libreoffice
   ];
 }

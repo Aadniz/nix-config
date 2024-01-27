@@ -1,4 +1,4 @@
-{ config, lib, pkgs, term, ... }:
+{ config, lib, pkgs, term, theme, ... }:
 
       let
         # Default movement keys (arrow keys, TKL keyboard)
@@ -33,6 +33,7 @@
         "${modifier}+q" = "exec ${pkgs.rofi}/bin/rofi -show run";
         "${modifier}+Shift+c" = "reload";
         "${modifier}+space" = "floating toggle";
+        "${modifier}+Backspace" = ''exec swaylock -f -c 000000 --line-color "${theme.background}" --ring-color "${theme.background}" --key-hl-color "${theme.primary}" --inside-color 000000'';
 
         # Audio
         "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t && pkill -RTMIN+1 i3blocks";
