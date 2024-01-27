@@ -6,6 +6,7 @@
     ./netdata.nix
     ./dunst.nix
     ./fonts.nix
+    ./ime.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -13,8 +14,8 @@
     inetutils  # Telnet
   ];
 
-    services = {
-      # Needed occasionally to help the parental units with PC problems
-      #teamviewer.enable = true;
-    };
+  services = {
+    # Needed occasionally to help the parental units with PC problems
+    #teamviewer.enable = true;
+  };
 }

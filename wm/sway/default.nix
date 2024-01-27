@@ -18,6 +18,7 @@ in
   home.packages = with pkgs; [
     swaylock
     grim
+    qt5.qtwayland
     slurp
     swappy
     flameshot
@@ -32,8 +33,6 @@ in
     wl-clipboard
     playerctl
     pamixer
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
     dmenu
     sway-contrib.grimshot
   ];
@@ -65,7 +64,7 @@ in
       terminal = term;
 
       fonts = {
-        names = [  "Iosevka" "Font Awesome 6 Edited" "Font Awesome 6 Brands"];
+        names = [  "Iosevka" "FontAwesome" "Font Awesome 6 Edited" "Font Awesome 6 Brands"];
         size = 11.0;
         style = "Normal";
       };

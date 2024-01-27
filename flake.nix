@@ -2,7 +2,7 @@
   description = "Blah flake";
 
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
 
   let
     # ---- SYSTEM SETTINGS ---- #
@@ -27,26 +27,17 @@
     background = 0;
 
 
-    # create patched nixpkgs
-    nixpkgs-patched = (import nixpkgs { inherit system; }).applyPatches {
-      name = "nixpkgs-patched";
-      src = nixpkgs;
-      patches = [
-        ./patches/emacs-no-version-check.patch
-        ./patches/nixos-nixpkgs-268027.patch
-      ];
-    };
-
     # configure pkgs
-    #pkgs = nixpkgs.legacyPackages.${system};
-    pkgs = import nixpkgs-patched {
+    pkgs = import nixpkgs {
       inherit system;
-      config = { allowUnfree = true;
-                 allowUnfreePredicate = (_: true); };
-      # overlays = [ rust-overlay.overlays.default ];
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = (_: true);
+      };
     };
 
     # Colors are generated automatically from the wallpaper
+    # TODO: hopefully one day I can make this look prettier
     theme = import ./theme {
       inherit primary;
       inherit secondary;
@@ -57,27 +48,28 @@
       inherit wallpaper;
       inherit pkgs;
     };
-    #wallpaper = theme.wallpaper;#"~/Pictures/kitan_5980.jpg";
 
-    # configure lib
+
     lib = nixpkgs.lib;
-    in {
+  in {
+
+    # The system configuration
     nixosConfigurations = {
       nix = lib.nixosSystem {
         inherit system;
         modules = [ ./nixos/configuration.nix ];
         specialArgs = {
-          # pass config variables from above
           inherit username;
         };
       };
     };
+
+    # The home configuration
     homeConfigurations = {
       ${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home.nix ];
+        modules = [ ./home.nix nur.nixosModules.nur ];
         extraSpecialArgs = {
-          # pass config variables from above
           inherit username;
           inherit name;
           inherit hostname;
@@ -99,6 +91,7 @@
     nix-doom-emacs.url = "github:librephoenix/nix-doom-emacs?ref=pgtk-patch";
     stylix.url = "github:danth/stylix";
     rust-overlay.url = "github:oxalica/rust-overlay";
+    nur.url = github:nix-community/NUR;
     #nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.2.0";
     eaf = {
       url = "github:emacs-eaf/emacs-application-framework";

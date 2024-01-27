@@ -46,7 +46,8 @@ let
   };
 in
 {
-  environment.systemPackages = with pkgs; [
+
+  fonts.packages = with pkgs; [
     fira-code
     font-awesome
     iosevka
@@ -60,5 +61,11 @@ in
     kochi-substitute
     fontforge-gtk
     font-awesome-edited
+    carlito
+    dejavu_fonts
+    ipafont
+    kochi-substitute
+    source-code-pro
+    ttf_bitstream_vera
   ];
 }

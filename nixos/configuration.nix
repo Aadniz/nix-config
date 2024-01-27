@@ -26,21 +26,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  #console = {
-  #  font = "Lat2-Terminus16";
-  #  keyMap = "no";
-  #  useXkbConfig = true; # use xkb.options in tty.
-  #};
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
   # Supposedly better for the SSD.
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
 
@@ -49,10 +34,6 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
   services.xserver = {

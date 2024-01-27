@@ -1,8 +1,10 @@
-{ config, lib, pkgs, spotify-adblock, ... }:
+{ config, lib, pkgs, nur, ... }:
 
 {
   # TODO: spotify adblock
   home.packages = with pkgs; [
-    spotify
+    #spotify
+    config.nur.repos.nltch.spotify-adblock
+    config.nur.repos.nltch.ciscoPacketTracer8
   ];
 }

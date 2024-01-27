@@ -3,6 +3,7 @@
 {
   imports = [
     ./scripts
+    ./fcitx5.nix
   ];
 
 
@@ -12,6 +13,7 @@
     bc
     jq
     mpd
+    ibus
     htop
     termdown
   ];
