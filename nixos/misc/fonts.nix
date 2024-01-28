@@ -46,6 +46,9 @@ let
   };
 in
 {
+  environment.systemPackages = with pkgs; [
+    fontforge-gtk
+  ];
 
   fonts.packages = with pkgs; [
     #(nerdfonts.override { fonts = [ "DroidSansMono" ]; })
@@ -57,7 +60,6 @@ in
     font-awesome
     font-awesome-edited
     font-awesome_5
-    fontforge-gtk
     iosevka
     ipafont
     kochi-substitute
