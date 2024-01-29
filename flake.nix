@@ -2,7 +2,7 @@
   description = "Blah flake";
 
 
-  outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, aadniz, ... }@inputs:
 
   let
     # ---- SYSTEM SETTINGS ---- #
@@ -18,6 +18,10 @@
     dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
     term = "kitty"; # Default terminal command;
     wallpaper = ./wallpapers/kitan_5980_upscaled.jpg; # TODO: Would wish to go outside of scope if possible here
+
+    # ----- ARE YOU ME OR NOT -----
+    hasPrivateAccess = (let result = builtins.tryEval (import "${aadniz}"); in result.success);
+
 
     # Out of the colors generated from pywal, which one should be used to what?
     primary = 13;
@@ -68,7 +72,12 @@
     homeConfigurations = {
       ${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home.nix nur.nixosModules.nur ];
+        modules =
+          let
+            baseModules = [ ./home.nix nur.nixosModules.nur ];
+            aadnizModule = if hasPrivateAccess then [(import "${aadniz}/default.nix")] else [];
+          in
+            baseModules ++ aadnizModule;
         extraSpecialArgs = {
           inherit username;
           inherit name;
@@ -88,45 +97,15 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nix-doom-emacs.url = "github:librephoenix/nix-doom-emacs?ref=pgtk-patch";
     stylix.url = "github:danth/stylix";
     rust-overlay.url = "github:oxalica/rust-overlay";
     nur.url = github:nix-community/NUR;
-    #nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.2.0";
-    eaf = {
-      url = "github:emacs-eaf/emacs-application-framework";
-      flake = false;
-    };
-    eaf-browser = {
-      url = "github:emacs-eaf/eaf-browser";
-      flake = false;
-    };
-    org-nursery = {
-      url = "github:chrisbarrett/nursery";
-      flake = false;
-    };
-    org-yaap = {
-      url = "gitlab:tygrdev/org-yaap";
-      flake = false;
-    };
-    org-side-tree = {
-      url = "github:localauthor/org-side-tree";
-      flake = false;
-    };
-    org-timeblock = {
-      url = "github:ichernyshovvv/org-timeblock";
-      flake = false;
-    };
-    phscroll = {
-      url = "github:misohena/phscroll";
-      flake = false;
-    };
-    blocklist-hosts = {
-      url = "github:StevenBlack/hosts";
-      flake = false;
-    };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
+      flake = false;
+    };
+    aadniz = {
+      url = "git+ssh://github.com/Aadniz/nix-config-bridge.git";
       flake = false;
     };
   };

@@ -37,5 +37,7 @@
     neovim
     feh
     libreoffice
+    protontricks
+    deluge-gtk
   ];
 }

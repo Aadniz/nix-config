@@ -7,34 +7,35 @@ let
 in
 {
   imports = [
-    ./hardware.nix
     ./bar.nix
     ./dunst.nix
+    ./hardware.nix
     ./keybinds.nix
   ];
 
   dconf.enable = true;
 
   home.packages = with pkgs; [
-    swaylock
+    brillo
+    dmenu
+    firefox-wayland
+    flameshot
     grim
+    i3blocks
+    pamixer
+    playerctl
     qt5.qtwayland
     slurp
     swappy
-    flameshot
-    swaysome
+    sway-contrib.grimshot
     swayidle
-    i3blocks
+    swaysome
     waypipe
     wf-recorder
-    xdg-utils
-    firefox-wayland
-    brillo
     wl-clipboard
-    playerctl
-    pamixer
-    dmenu
-    sway-contrib.grimshot
+    xdg-utils
+    config.nur.repos."999eagle".swayaudioidleinhibit
+    swaylock
   ];
 
   programs.zsh.loginExtra = ''
@@ -71,6 +72,7 @@ in
 
       startup = [
         {command = "${pkgs.swaysome}/bin/swaysome init 1";}
+        {command = "${config.nur.repos."999eagle".swayaudioidleinhibit}/bin/sway-audio-idle-inhibit -w"; }
       ];
 
       #floating.criteria = [
