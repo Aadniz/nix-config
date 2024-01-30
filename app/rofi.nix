@@ -5,8 +5,6 @@
     enable = true;
     cycle = false;
 
-    package = pkgs.rofi-wayland;
-
     extraConfig = {
       modi = "drun,filebrowser";
       font = "Noto Sans CJK JP 12";

@@ -31,7 +31,7 @@ in
     "${modifier}+Ctrl+KP_Enter" = "exec ${term} --class floatingKitty";
     "${modifier}+Escape" = "kill";
     "${modifier}+Delete" = "kill";
-    "${modifier}+q" = "exec ${pkgs.rofi}/bin/rofi -show run";
+    "${modifier}+q" = "exec ${pkgs.rofi}/bin/rofi -show drun";
     "${modifier}+Shift+c" = "reload";
     "${modifier}+space" = "floating toggle";
     "${modifier}+Backspace" = "exec ${lockCommand}";
