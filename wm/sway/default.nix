@@ -34,6 +34,7 @@ in
     wf-recorder
     wl-clipboard
     xdg-utils
+    gnome3.adwaita-icon-theme
     config.nur.repos."999eagle".swayaudioidleinhibit
     swaylock
   ];

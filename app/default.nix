@@ -10,7 +10,6 @@
     ./discord.nix
     ./protonmail.nix
     ./jetbrains.nix
-    ./nicotine-plus.nix
   ];
 
   home.packages = with pkgs; [
@@ -40,5 +39,7 @@
     protontricks
     deluge-gtk
     p7zip
+    ark
+    nicotine-plus
   ];
 }

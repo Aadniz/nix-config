@@ -4,6 +4,7 @@
   imports = [
     ./scripts
     ./fcitx5.nix
+    ./gtk.nix
   ];
 
 
