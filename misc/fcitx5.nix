@@ -38,7 +38,7 @@ in {
 
       InputPanel = {
         Font = "Sans 13";
-        NormalColor = "${theme.color1}";
+        NormalColor = "${theme.foreground}";
         HighlightCandidateColor = "${theme.color2}";
         HighlightColor = "${theme.color2}";
         HighlightBackgroundColor = "${theme.color3}";
@@ -53,9 +53,9 @@ in {
       };
 
       "InputPanel/Background" = {
-        Color = "${theme.color3}";
-        BorderColor = "${theme.color3}";
-        BorderWidth = 1;
+        Color = "${theme.color8}";
+        BorderColor = "${theme.color8}";
+        BorderWidth = 2;
       };
 
       "InputPanel/Background/Margin" = {
@@ -66,7 +66,7 @@ in {
       };
 
       "InputPanel/Highlight" = {
-        Color = "${theme.color4}";
+        Color = "${theme.background}";
       };
 
       "InputPanel/Highlight/Margin" = {
@@ -79,7 +79,7 @@ in {
       Menu = {
         Font = "Sans 12";
         NormalColor = "${theme.background}";
-        HighlightColor = "${theme.color8}";
+        HighlightColor = "${theme.primary}";
         Spacing = 3;
       };
 
