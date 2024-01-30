@@ -38,10 +38,10 @@ in {
 
       InputPanel = {
         Font = "Sans 13";
-        NormalColor = "#${theme.color1}";
-        HighlightCandidateColor = "#${theme.color2}";
-        HighlightColor = "#${theme.color2}";
-        HighlightBackgroundColor = "#${theme.color3}";
+        NormalColor = "${theme.color1}";
+        HighlightCandidateColor = "${theme.color2}";
+        HighlightColor = "${theme.color2}";
+        HighlightBackgroundColor = "${theme.color3}";
         Spacing = 3;
       };
 
@@ -53,8 +53,8 @@ in {
       };
 
       "InputPanel/Background" = {
-        Color = "#${theme.color3}";
-        BorderColor = "#${theme.color3}";
+        Color = "${theme.color3}";
+        BorderColor = "${theme.color3}";
         BorderWidth = 1;
       };
 
@@ -66,7 +66,7 @@ in {
       };
 
       "InputPanel/Highlight" = {
-        Color = "#${theme.color4}";
+        Color = "${theme.color4}";
       };
 
       "InputPanel/Highlight/Margin" = {
@@ -77,14 +77,14 @@ in {
       };
 
       Menu = {
-        Font = "Sans 10";
-        NormalColor = "#${theme.background}";
-        HighlightColor = "#${theme.color8}";
+        Font = "Sans 12";
+        NormalColor = "${theme.background}";
+        HighlightColor = "${theme.color8}";
         Spacing = 3;
       };
 
       "Menu/Background" = {
-        Color = "#${theme.color3}";
+        Color = "${theme.color3}";
       };
 
       "Menu/Background/Margin" = {
@@ -102,7 +102,7 @@ in {
       };
 
       "Menu/Highlight" = {
-        Color = "#${theme.color5}";
+        Color = "${theme.color5}";
       };
 
       "Menu/HighlightMargin" = {
@@ -113,7 +113,7 @@ in {
       };
 
       "Menu/Separator" = {
-        Color = "#${theme.color6}";
+        Color = "${theme.color6}";
       };
 
       "Menu/CheckBox" = {
@@ -149,17 +149,17 @@ in {
         EnumerateGroupBackwardKeys = "";
       };
       "Hotkey/ActivateKeys" = {
-        "0" = "Control+Alt+space";
+        "0" = "Control+<";
       };
       "Hotkey/DeactivateKeys" = {
-        "0" = "Control+Alt+space";
+        "0" = "Control+<";
       };
     };
     "fcitx5/conf/classicui.conf".text = toINI' {
       globalSection = {
-        Font = "IBM Plex Sans JP Text 10";
-        MenuFont = "IBM Plex Sans JP Text 10";
-        TrayFont = "IBM Plex Sans JP SmBld Demi-Bold 10";
+        Font = "IBM Plex Sans JP Text 12";
+        MenuFont = "IBM Plex Sans JP Text 12";
+        TrayFont = "IBM Plex Sans JP SmBld Demi-Bold 12";
         Theme = "darkrose";
       };
       sections = {};

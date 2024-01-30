@@ -39,5 +39,6 @@
     libreoffice
     protontricks
     deluge-gtk
+    p7zip
   ];
 }
