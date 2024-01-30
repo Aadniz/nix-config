@@ -73,7 +73,7 @@ in
 
       startup = [
         {command = "${pkgs.swaysome}/bin/swaysome init 1";}
-        {command = "${config.nur.repos."999eagle".swayaudioidleinhibit}/bin/sway-audio-idle-inhibit -w"; }
+        {command = "${config.nur.repos."999eagle".swayaudioidleinhibit}/bin/sway-audio-idle-inhibit"; }
       ];
 
       #floating.criteria = [
