@@ -21,8 +21,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-13fb18db-3f3b-4863-b6cd-41972e738bc1".device = "/dev/disk/by-uuid/13fb18db-3f3b-4863-b6cd-41972e738bc1";
-
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
 

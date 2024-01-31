@@ -19,9 +19,8 @@
     term = "kitty"; # Default terminal command;
     wallpaper = ./wallpapers/kitan_5980_upscaled.jpg; # TODO: Would wish to go outside of scope if possible here
 
-    # --override-input aadniz "./path/to/private/folder"
-    privateConf = if inputs ? aadniz then [ "${inputs.aadniz}/default.nix" ] else [ ];
-    privateHome = if inputs ? aadniz then [ "${inputs.aadniz}/home.nix" ] else [ ];
+    privateSystem = "${inputs.private}/system";
+    privateHome = "${inputs.private}/home";
 
     # Out of the colors generated from pywal, which one should be used to what?
     primary = 13;
@@ -61,7 +60,7 @@
     nixosConfigurations = {
       nix = lib.nixosSystem {
         inherit system;
-        modules = [ ./nixos/configuration.nix ] ++ privateConf;
+        modules = [ ./nixos/configuration.nix privateSystem];
         specialArgs = {
           inherit username;
         };
@@ -72,7 +71,7 @@
     homeConfigurations = {
       ${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home.nix nur.nixosModules.nur ] ++ privateHome;
+        modules = [ ./home.nix nur.nixosModules.nur privateHome];
         extraSpecialArgs = {
           inherit username;
           inherit name;
@@ -102,6 +101,7 @@
     };
 
     # I hate this workaround
-    aadniz.url = "path:./hack";
+    # --override-input private "./path/to/private/folder"
+    private.url = "path:./hack";
   };
 }

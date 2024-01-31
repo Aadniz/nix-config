@@ -13,7 +13,8 @@
       ll =     "ls -aslhpx --group-directories-first";
       ytmp3 =  "yt-dlp -x --audio-format mp3 --no-mtime --add-metadata --xattrs --embed-thumbnail -o '%(title)s.%(ext)s' ";
       yt =     "yt-dlp --add-metadata ";
-      update = "sudo nixos-rebuild switch";
+      upgrade-system = "sudo nixos-rebuild switch --flake ~/.dotfiles";
+      upgrade-home = "home-manager switch --flake ~/.dotfiles";
     };
     #histSize = 10000;
     #histFile = "${config.xdg.dataHome}/zsh/history";
@@ -30,5 +31,4 @@
       ];
     };
   };
-
 }
