@@ -1,8 +1,8 @@
 {
-  description = "Blah flake";
+  description = "My nix config";
 
 
-  outputs = { self, nixpkgs, home-manager, nur, aadniz, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
 
   let
     # ---- SYSTEM SETTINGS ---- #
@@ -19,9 +19,9 @@
     term = "kitty"; # Default terminal command;
     wallpaper = ./wallpapers/kitan_5980_upscaled.jpg; # TODO: Would wish to go outside of scope if possible here
 
-    # ----- ARE YOU ME OR NOT -----
-    hasPrivateAccess = (let result = builtins.tryEval (import "${aadniz}"); in result.success);
-
+    # --override-input aadniz "./path/to/private/folder"
+    privateConf = if inputs ? aadniz then [ "${inputs.aadniz}/default.nix" ] else [ ];
+    privateHome = if inputs ? aadniz then [ "${inputs.aadniz}/home.nix" ] else [ ];
 
     # Out of the colors generated from pywal, which one should be used to what?
     primary = 13;
@@ -61,7 +61,7 @@
     nixosConfigurations = {
       nix = lib.nixosSystem {
         inherit system;
-        modules = [ ./nixos/configuration.nix ];
+        modules = [ ./nixos/configuration.nix ] ++ privateConf;
         specialArgs = {
           inherit username;
         };
@@ -72,12 +72,7 @@
     homeConfigurations = {
       ${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules =
-          let
-            baseModules = [ ./home.nix nur.nixosModules.nur ];
-            aadnizModule = if hasPrivateAccess then [(import "${aadniz}/default.nix")] else [];
-          in
-            baseModules ++ aadnizModule;
+        modules = [ ./home.nix nur.nixosModules.nur ] ++ privateHome;
         extraSpecialArgs = {
           inherit username;
           inherit name;
@@ -87,6 +82,7 @@
           inherit term;
           inherit wallpaper;
           inherit theme;
+          inherit inputs;
         };
       };
     };
@@ -104,9 +100,8 @@
       url = "github:hyprwm/hyprland-plugins";
       flake = false;
     };
-    aadniz = {
-      url = "git+ssh://github.com/Aadniz/nix-config-bridge.git";
-      flake = false;
-    };
+
+    # I hate this workaround
+    aadniz.url = "path:./hack";
   };
 }
