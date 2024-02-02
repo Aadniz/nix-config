@@ -60,4 +60,7 @@ in
       options = [ "bind" ];
     };
   }) archDisk.mountDirs);
+
+  # No need to preserve whats in /tmp
+  boot.tmp.cleanOnBoot = true;
 }

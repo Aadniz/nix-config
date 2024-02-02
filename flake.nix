@@ -81,7 +81,6 @@
           inherit term;
           inherit wallpaper;
           inherit theme;
-          inherit inputs;
         };
       };
     };

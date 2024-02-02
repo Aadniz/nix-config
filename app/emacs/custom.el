@@ -6,7 +6,7 @@
     (message "Syncing org files with unison...")
     (let ((output (with-output-to-string
                     (with-current-buffer standard-output
-                      (unless (= 0 (call-process-shell-command "unison org-files"))
+                      (unless (= 0 (call-process-shell-command "unison org-files -ui text"))
                         (error "Error: SYNCING FAILED! please run \"unison org-files\" manually"))))))
       (message "Org files synced successfully"))))
 (add-hook 'after-save-hook #'sync-to-unison)

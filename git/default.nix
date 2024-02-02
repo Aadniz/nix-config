@@ -1,13 +1,15 @@
 { config, lib, pkgs, username, ... }:
 
 {
-  home.activation.createSshSockets = ''
-    mkdir -p ${config.home.homeDirectory}/.ssh/sockets
-  '';
   programs.git = {
     enable = true;
     userName  = "Aadniz";
     userEmail = "8147434+Aadniz@users.noreply.github.com";
+    extraConfig = {
+      color.ui = true;
+      core.askPass = ""; # needs to be empty to use terminal for ask pass
+      credential.helper = "store"; # This is not any secure at all!!
+    };
   };
 
   # ???

@@ -1,6 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
+  home.activation.createSshSockets = ''
+    mkdir -p ${config.home.homeDirectory}/.ssh/sockets
+  '';
+
   programs.ssh = {
     enable = true;
 

@@ -17,5 +17,6 @@
     ibus
     htop
     termdown
+    python3
   ];
 }
