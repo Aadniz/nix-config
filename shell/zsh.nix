@@ -14,7 +14,9 @@
       ytmp3 =  "yt-dlp -x --audio-format mp3 --no-mtime --add-metadata --xattrs --embed-thumbnail -o '%(title)s.%(ext)s' ";
       yt =     "yt-dlp --add-metadata ";
       upgrade-system = "sudo nixos-rebuild switch --flake ~/.dotfiles";
+      us = "sudo nixos-rebuild switch --flake ~/.dotfiles";
       upgrade-home = "home-manager switch --flake ~/.dotfiles";
+      uh = "home-manager switch --flake ~/.dotfiles";
     };
     #histSize = 10000;
     #histFile = "${config.xdg.dataHome}/zsh/history";
