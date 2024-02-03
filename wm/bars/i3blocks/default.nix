@@ -1,33 +1,22 @@
-{ i3blocksConfigDir, i3blocksConfigFile, theme, ... }:
+{ pkgs, i3blocksConfigDir, i3blocksConfigFile, theme, ... }:
 let
   dateScript = "${i3blocksConfigDir}/date";
   audioScript = "${i3blocksConfigDir}/volume-pulseaudio";
   memoryScript = "${i3blocksConfigDir}/memory";
   cpuScript = "${i3blocksConfigDir}/cpu_usage";
   mediaplayerScript = "${i3blocksConfigDir}/mediaplayer";
+  statusScript = "${i3blocksConfigDir}/status_script";
+  python-zmq-packages = ps: with ps; [ python.pkgs.pyzmq ];
+  python-zmq = pkgs.python3.withPackages python-zmq-packages;
 in
 {
 
-  home.file."${dateScript}" = {
-    source = ./date;
-  };
-
-  home.file."${audioScript}" = {
-    source = ./volume-pulseaudio;
-  };
-
-  home.file."${memoryScript}" = {
-    source = ./memory;
-  };
-
-  home.file."${cpuScript}" = {
-    source = ./cpu_usage;
-  };
-
-  home.file."${mediaplayerScript}" = {
-    source = ./mediaplayer;
-  };
-
+  home.file."${dateScript}".source = ./date;
+  home.file."${audioScript}".source = ./volume-pulseaudio;
+  home.file."${memoryScript}".source = ./memory;
+  home.file."${cpuScript}".source = ./cpu_usage;
+  home.file."${mediaplayerScript}".source = ./mediaplayer;
+  home.file."${statusScript}".text = "";
   home.file."${i3blocksConfigFile}".text = ''
 # Global properties
 separator=false
@@ -49,6 +38,11 @@ instance=spotify
 interval=5
 signal=10
 command=perl ${mediaplayerScript}
+
+
+[status_script]
+interval=10
+command=${python-zmq}/bin/python ${statusScript}
 
 [cpu_usage]
 interval=3

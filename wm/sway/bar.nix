@@ -13,7 +13,7 @@ in
     rhythmbox
   ];
 
-  imports = [(import ../bars/i3blocks { inherit i3blocksConfigDir i3blocksConfigFile theme; })];
+  imports = [(import ../bars/i3blocks { inherit pkgs i3blocksConfigDir i3blocksConfigFile theme; })];
 
   wayland.windowManager.sway.config.bars = [{
     statusCommand = "${pkgs.i3blocks}/bin/i3blocks -c ${i3blocksConfigFile}";
