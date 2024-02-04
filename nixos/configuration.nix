@@ -18,7 +18,11 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 5;
+    editor = false;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Set your time zone.
@@ -34,9 +38,9 @@
   services.xserver.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "no";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Configure console keymap
