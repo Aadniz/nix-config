@@ -18,5 +18,6 @@
     htop
     termdown
     python3
+    poetry
   ];
 }

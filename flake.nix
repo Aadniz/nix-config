@@ -17,13 +17,13 @@
     email = "pus@null.net"; # email (used for certain configurations)
     dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
     term = "kitty"; # Default terminal command;
-    wallpaper = ./wallpapers/kitan_5980_upscaled.jpg; # TODO: Would wish to go outside of scope if possible here
+    wallpaper = ./wallpapers/kitan_6372.jpg; # TODO: Would wish to go outside of scope if possible here
 
     privateSystem = "${inputs.private}/system";
     privateHome = "${inputs.private}/home";
 
     # Out of the colors generated from pywal, which one should be used to what?
-    primary = 13;
+    primary = 9;
     secondary = 14;
     third = 10;
     foreground = 15;
