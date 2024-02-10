@@ -1,12 +1,18 @@
 { config, lib, pkgs, theme, ... }:
 
 {
+  nixpkgs.overlays = [
+    (self: super: {
+      kitty-image-viewer-simplified = self.callPackage ./img.nix { };
+    })
+  ];
 
   home.packages = with pkgs; [
     kitty
+    kitty-image-viewer-simplified
   ];
 
-programs.kitty = {
+  programs.kitty = {
     enable = true;
     font = {
       size = 10;

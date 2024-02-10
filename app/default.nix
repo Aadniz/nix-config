@@ -5,7 +5,7 @@
     ./emacs
     ./rofi.nix
     ./spotify.nix
-    ./kitty.nix
+    ./kitty
     ./unison.nix
     ./discord.nix
     ./protonmail.nix
