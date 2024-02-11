@@ -9,6 +9,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    package = pkgs.hyprland;
     plugins = [
     #  (pkgs.callPackage ./hyprbars.nix { inherit hyprland-plugins; } )
     ];
@@ -19,12 +20,23 @@
       ];
       bind = [
         "$mod, Return, exec, ${lib.getExe pkgs.kitty}"
+        "$mod, Q, exec, ${pkgs.rofi}/bin/rofi -show drun"
       ];
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
         enable_swallow = true;
       };
+      monitor = [
+        # Middle monitor
+        "DP-1,2560x1440@165Hz,2560x1440,1"
+        # Left monitor
+        "DP-2,2560x1440@165Hz,0x1440,1"
+        # Right monitor
+        "HDMI-A-1,2560x1440@164.999Hz,5120x1440,1"
+        # Top monitor
+        "DP-3,3440x1440@164.999Hz,2120x0,1"
+      ];
     };
     extraConfig = ''
       #exec-once = swayidle -w timeout 90 '${pkgs.gtklock}/bin/gtklock -d' timeout 210 'suspend-unless-render' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep "${pkgs.gtklock}/bin/gtklock -d"
@@ -51,8 +63,6 @@
        bind=ALTSHIFT,TAB,bringactivetotop
        bind=SUPER,Y,workspaceopt,allfloat
 
-       bind=ALT,Return,exec,kitty
-
        bind = SUPER,R,pass,^(com\.obsproject\.Studio)$
        bind = SUPERSHIFT,R,pass,^(com\.obsproject\.Studio)$
 
@@ -63,7 +73,8 @@
        bind=SUPER,code:47,exec,fuzzel
        bind=SUPER,X,exec,fnottctl dismiss
        bind=SUPERSHIFT,X,exec,fnottctl dismiss all
-       bind=SUPER,Q,killactive
+       bind=SUPER,Escape,killactive
+       bind=SUPER,Delete,killactive
        bind=SUPERSHIFT,Q,exit
        bindm=SUPER,mouse:272,movewindow
        bindm=SUPER,mouse:273,resizewindow
@@ -175,11 +186,6 @@
        bind=SUPER,P,exec,keepmenu
        bind=SUPERSHIFT,P,exec,hyprprofile-dmenu
 
-       #monitor=eDP-1,1920x1080,1000x1200,1
-       #monitor=HDMI-A-1,1920x1200,1920x0,1
-       #monitor=DP-1,1920x1200,0x0,1
-       monitor=Virtual-1, 2560x1080, 0x0, 1
-
        xwayland {
          force_zero_scaling = true
        }
@@ -212,7 +218,7 @@
        }
 
     '';
-    xwayland = { enable = true; };
+    xwayland.enable = true;
     systemd.enable = true;
   };
 }
