@@ -1,11 +1,10 @@
 { config, pkgs, ... }:
 
-# https://github.com/Stunkymonkey/nixos/blob/5f08e0654883f62cba3400536d1ebfcf106d7e72/profiles/sway/screen-sharing.nix
-
 {
   imports = [
     ./sway
     ./hyprland.nix
+    #./pinnacle.nix
   ];
 
   home.packages = with pkgs; [
@@ -17,14 +16,9 @@
 
   xdg.portal = {
     enable = true;
-    xdgOpenUsePortal = true;
-    config = {
-      common.default = ["wlr" "gtk"];
-      wlr.enable = true;
-      sway.default = ["gtk" "sway"];
-    };
-
-    extraPortals = with pkgs; [
+    config.wlr.enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal
       pkgs.xdg-desktop-portal-gtk
     ];
   };

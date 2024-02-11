@@ -1,33 +1,34 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, wallpaper, ... }:
 
 {
+
+  home.sessionVariables = {
+    "_JAVA_AWT_WM_NONREPARENTING" = "1";
+    "NIXOS_OZONE_WL" = "1";
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
     plugins = [
     #  (pkgs.callPackage ./hyprbars.nix { inherit hyprland-plugins; } )
     ];
-    settings = { };
+    settings = {
+      "$mod" = "SUPER";
+      exec-once = [
+        "${lib.getExe pkgs.swaybg} --image ${wallpaper}"
+      ];
+      bind = [
+        "$mod, Return, exec, ${lib.getExe pkgs.kitty}"
+      ];
+      misc = {
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
+        enable_swallow = true;
+      };
+    };
     extraConfig = ''
-      exec-once = dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
-
-      exec-once = hyprprofile Personal
-
-      exec-once = pypr
-      exec-once = ydotoold
-      exec-once = STEAM_FRAME_FORCE_CLOSE=1 steam -silent
-      exec-once = nm-applet
-      exec-once = blueman-applet
-      exec-once = GOMAXPROCS=1 syncthing --no-browser
-      exec-once = protonmail-bridge --noninteractive
-      exec-once = waybar
-      exec-once = emacs --daemon
-
       #exec-once = swayidle -w timeout 90 '${pkgs.gtklock}/bin/gtklock -d' timeout 210 'suspend-unless-render' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep "${pkgs.gtklock}/bin/gtklock -d"
       #exec-once = swayidle -w timeout 90 '${pkgs.swaylock}/bin/swaylock -f' timeout 210 'suspend-unless-render' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep "${pkgs.swaylock}/bin/swaylock -f"
-      exec-once = obs-notification-mute-daemon
-
-      exec = ~/.swaybg-stylix
 
       general {
         layout = master
@@ -50,10 +51,10 @@
        bind=ALTSHIFT,TAB,bringactivetotop
        bind=SUPER,Y,workspaceopt,allfloat
 
+       bind=ALT,Return,exec,kitty
+
        bind = SUPER,R,pass,^(com\.obsproject\.Studio)$
        bind = SUPERSHIFT,R,pass,^(com\.obsproject\.Studio)$
-
-       bind=SUPER,RETURN,exec,kitty
 
        bind=SUPERCTRL,S,exec,container-open # qutebrowser only
 
