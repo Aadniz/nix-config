@@ -2,8 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    obs-studio
-    obs-studio-plugins
+    #obs-studio
   ];
 
   programs.obs-studio = {

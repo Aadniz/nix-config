@@ -10,13 +10,13 @@
     ./discord.nix
     ./protonmail.nix
     ./jetbrains.nix
+    ./obs.nix
   ];
 
   home.packages = with pkgs; [
     R  # Calculator
     git
     gotop
-    obs-studio
     btop
     elisa
     zoom-us # Not pkgs.zoom

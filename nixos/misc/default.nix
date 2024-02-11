@@ -7,6 +7,7 @@
     ./dunst.nix
     ./fonts.nix
     ./ime.nix
+    ./v4l2loopback.nix
   ];
 
   environment.systemPackages = with pkgs; [
