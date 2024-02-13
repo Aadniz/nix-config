@@ -148,12 +148,6 @@
        bindm=SUPER,mouse:273,resizewindow
        bind=SUPER,T,togglefloating
 
-       bind=,code:122,exec,pamixer -d 10
-       bind=,code:123,exec,pamixer -i 10
-       bind=,code:121,exec,pamixer -t
-       bind=,code:256,exec,pamixer --default-source -t
-       bind=SHIFT,code:122,exec,pamixer --default-source -d 10
-       bind=SHIFT,code:123,exec,pamixer --default-source -i 10
        bind=,code:232,exec,brightnessctl set 15-
        bind=,code:233,exec,brightnessctl set +15
        bind=,code:237,exec,brightnessctl --device='asus::kbd_backlight' set 1-
