@@ -20,8 +20,84 @@
       ];
       bind = [
         "$mod, Return, exec, ${lib.getExe pkgs.kitty}"
+        "$mod, KP_Enter, exec, ${lib.getExe pkgs.kitty}"
+        "$mod CTRL, Return, exec, ${lib.getExe pkgs.kitty} --class floatingKitty"
+        "$mod CTRL, KP_Enter, exec, ${lib.getExe pkgs.kitty} --class floatingKitty"
+        "$mod, Escape, killactive"
+        "$mod, Delete, killactive"
+        "$mod, q, exec, ${lib.getExe pkgs.rofi} -show drun"
+        "$mod SHIFT, C, exec, hyprctl reload"
+	"$mod SHIFT, Space, togglefloating"
+        "$mod, Backspace, exec, ${lib.getExe pkgs.kitty}"
+
+	# This looks super bad on hyprland
         "$mod, Q, exec, ${pkgs.rofi}/bin/rofi -show drun"
+
+        # Moving focus
+        "$mod,Left, movefocus, l"
+        "$mod,Down, movefocus, d"
+        "$mod,Up, movefocus, u"
+        "$mod,Right, movefocus, r"
+        "$mod SHIFT,Left, movewindoworgroup, l"
+        "$mod SHIFT,Down, movewindoworgroup, d"
+        "$mod SHIFT,Up, movewindoworgroup, u"
+        "$mod SHIFT,Right, movewindoworgroup, r"
+        "Alt,Tab, focuscurrentorlast"
+        "$mod,Tab, cyclenext"
+        #"$mod,A, focus parent"
+        "$mod,Space, focuswindow, floating"
+
+
+        # Scratchpad
+        "$mod Shift,Minus,movetoworkspace,special"
+        "$mod,Minus,togglespecialworkspace"
+
+        # Screenshot
+        '',Print,exec,wl-copy < $(${pkgs.sway-contrib.grimshot}/bin/grimshot save area "$HOME/Pictures/Shutter/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png")''
+        ''SHIFT,Print,exec,${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area''
+        ''CTRL SHIFT, Print, exec,${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy output''
+        ''CTRL,Print,exec,wl-copy < $(${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save output "$HOME/Pictures/Shutter/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png")''
+        ''$mod,Print,exec,wl-copy < $(${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save screen "$HOME/Pictures/Shutter/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png")''
+        ''ALT,Print,exec,wl-copy < $(${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save active "$HOME/Pictures/Shutter/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png")''
+
+	# Misc
+	"$mod, W, fullscreen, 1"
+        "$mod, F, fullscreen, 0"
+
+	# Workspaces
+	"$mod, 1, workspace, 1"
+	"$mod, 2, workspace, 2"
+	"$mod, 3, workspace, 3"
+	"$mod, 4, workspace, 4"
+	"$mod, 5, workspace, 5"
+	"$mod, 6, workspace, 6"
+	"$mod, 7, workspace, 7"
+	"$mod, 8, workspace, 8"
+	"$mod, 9, workspace, 9"
+	"$mod, 0, workspace, 10"
+
+	"$mod SHIFT, 1, movetoworkspace, 1"
+	"$mod SHIFT, 2, movetoworkspace, 2"
+	"$mod SHIFT, 3, movetoworkspace, 3"
+	"$mod SHIFT, 4, movetoworkspace, 4"
+	"$mod SHIFT, 5, movetoworkspace, 5"
+	"$mod SHIFT, 6, movetoworkspace, 6"
+	"$mod SHIFT, 7, movetoworkspace, 7"
+	"$mod SHIFT, 8, movetoworkspace, 8"
+	"$mod SHIFT, 9, movetoworkspace, 9"
+	"$mod SHIFT, 0, movetoworkspace, 10"
       ];
+
+      bindi = [
+        # Audio
+        ",XF86AudioMute,exec,${pkgs.pamixer}/bin/pamixer -t && pkill -RTMIN+1 i3blocks"
+        ",XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 1 && pkill -RTMIN+1 i3blocks"
+        ",XF86AudioRaiseVolume,exec,${pkgs.pamixer}/bin/pamixer -i 1 && pkill -RTMIN+1 i3blocks"
+        ",XF86AudioPlay,exec,${pkgs.playerctl}/bin/playerctl play-pause && pkill -RTMIN+10 i3blocks"
+        ",XF86AudioNext,exec,${pkgs.playerctl}/bin/playerctl next && pkill -RTMIN+10 i3blocks"
+        ",XF86AudioPrev,exec,${pkgs.playerctl}/bin/playerctl previous && pkill -RTMIN+10 i3blocks"
+      ];
+
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
@@ -32,8 +108,8 @@
         "DP-1,2560x1440@165Hz,2560x1440,1"
         # Left monitor
         "DP-2,2560x1440@165Hz,0x1440,1"
-        # Right monitor
-        "HDMI-A-1,2560x1440@164.999Hz,5120x1440,1"
+        # Right monitor (Not 165hz ??)
+        "HDMI-A-1,highrr,5120x1440,1"
         # Top monitor
         "DP-3,3440x1440@164.999Hz,2120x0,1"
       ];
@@ -56,11 +132,6 @@
             gaps_out = 7
        }
 
-       bind=SUPER,SPACE,fullscreen,1
-       bind=ALT,TAB,cyclenext
-       bind=ALT,TAB,bringactivetotop
-       bind=ALTSHIFT,TAB,cyclenext,prev
-       bind=ALTSHIFT,TAB,bringactivetotop
        bind=SUPER,Y,workspaceopt,allfloat
 
        bind = SUPER,R,pass,^(com\.obsproject\.Studio)$
@@ -73,19 +144,9 @@
        bind=SUPER,code:47,exec,fuzzel
        bind=SUPER,X,exec,fnottctl dismiss
        bind=SUPERSHIFT,X,exec,fnottctl dismiss all
-       bind=SUPER,Escape,killactive
-       bind=SUPER,Delete,killactive
-       bind=SUPERSHIFT,Q,exit
        bindm=SUPER,mouse:272,movewindow
        bindm=SUPER,mouse:273,resizewindow
        bind=SUPER,T,togglefloating
-
-       bind=,code:107,exec,grim -g "$(slurp)"
-       bind=SHIFT,code:107,exec,grim -g "$(slurp -o)"
-       bind=SUPER,code:107,exec,grim
-       bind=CTRL,code:107,exec,grim -g "$(slurp)" - | wl-copy
-       bind=SHIFTCTRL,code:107,exec,grim -g "$(slurp -o)" - | wl-copy
-       bind=SUPERCTRL,code:107,exec,grim - | wl-copy
 
        bind=,code:122,exec,pamixer -d 10
        bind=,code:123,exec,pamixer -i 10
@@ -101,36 +162,6 @@
 
        bind=SUPERSHIFT,S,exec,swaylock & sleep 1 && systemctl suspend
        bind=SUPERCTRL,L,exec,swaylock
-
-       bind=SUPER,H,movefocus,l
-       bind=SUPER,J,movefocus,d
-       bind=SUPER,K,movefocus,u
-       bind=SUPER,L,movefocus,r
-
-       bind=SUPERSHIFT,H,movewindow,l
-       bind=SUPERSHIFT,J,movewindow,d
-       bind=SUPERSHIFT,K,movewindow,u
-       bind=SUPERSHIFT,L,movewindow,r
-
-       bind=SUPER,1,exec,hyprworkspace 1
-       bind=SUPER,2,exec,hyprworkspace 2
-       bind=SUPER,3,exec,hyprworkspace 3
-       bind=SUPER,4,exec,hyprworkspace 4
-       bind=SUPER,5,exec,hyprworkspace 5
-       bind=SUPER,6,exec,hyprworkspace 6
-       bind=SUPER,7,exec,hyprworkspace 7
-       bind=SUPER,8,exec,hyprworkspace 8
-       bind=SUPER,9,exec,hyprworkspace 9
-
-       bind=SUPERSHIFT,1,movetoworkspace,1
-       bind=SUPERSHIFT,2,movetoworkspace,2
-       bind=SUPERSHIFT,3,movetoworkspace,3
-       bind=SUPERSHIFT,4,movetoworkspace,4
-       bind=SUPERSHIFT,5,movetoworkspace,5
-       bind=SUPERSHIFT,6,movetoworkspace,6
-       bind=SUPERSHIFT,7,movetoworkspace,7
-       bind=SUPERSHIFT,8,movetoworkspace,8
-       bind=SUPERSHIFT,9,movetoworkspace,9
 
        bind=SUPER,Z,exec,pypr toggle term && hyprctl dispatch bringactivetotop
        bind=SUPER,F,exec,pypr toggle ranger && hyprctl dispatch bringactivetotop
