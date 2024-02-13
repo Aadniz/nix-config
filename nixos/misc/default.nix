@@ -13,6 +13,7 @@
   environment.systemPackages = with pkgs; [
     python3
     inetutils  # Telnet
+    pciutils
   ];
 
   services = {
