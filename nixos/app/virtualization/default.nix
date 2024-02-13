@@ -3,6 +3,7 @@
 {
   imports = [
     ./waydroid.nix
+    ./gpu-passthrough.nix
   ];
 
   environment.systemPackages = with pkgs; [
