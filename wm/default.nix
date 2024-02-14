@@ -3,7 +3,7 @@
 {
   imports = [
     ./sway
-    ./hyprland.nix
+    ./hyprland
     #./pinnacle.nix
   ];
 

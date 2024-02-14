@@ -1,6 +1,17 @@
-{ config, lib, pkgs, wallpaper, ... }:
-
+{ config, lib, pkgs, wallpaper, theme, ... }:
+let
+  rrggbb = s: if builtins.substring 0 1 s == "#" then builtins.substring 1 (builtins.stringLength s) s else s;
+in
 {
+  imports = [
+    #../bars/hybridbar.nix
+    ../bars/eww
+  ];
+
+  home.packages = with pkgs; [
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-hyprland
+  ];
 
   home.sessionVariables = {
     "_JAVA_AWT_WM_NONREPARENTING" = "1";
@@ -15,9 +26,31 @@
     ];
     settings = {
       "$mod" = "SUPER";
+      general = {
+        layout = "master";
+        cursor_inactive_timeout = 30;
+        border_size = 4;
+        no_cursor_warps = false;
+        "col.active_border" = "0xff${rrggbb theme.primary}";
+        "col.inactive_border" = "0xff${rrggbb theme.background}";
+        resize_on_border = true;
+        gaps_in = 0;
+        gaps_out = 0;
+      };
       exec-once = [
         "${lib.getExe pkgs.swaybg} --image ${wallpaper}"
       ];
+      input = {
+        numlock_by_default = true;
+	# Ja her snakker vi norsk ja
+        kb_layout = "no";
+	# I actually really like this
+        kb_options = "caps:escape";
+        repeat_delay = 200;
+        repeat_rate = 50;
+        accel_profile = "flat";
+        follow_mouse = true;
+      };
       bind = [
         "$mod, Return, exec, ${lib.getExe pkgs.kitty}"
         "$mod, KP_Enter, exec, ${lib.getExe pkgs.kitty}"
@@ -97,12 +130,6 @@
         ",XF86AudioNext,exec,${pkgs.playerctl}/bin/playerctl next && pkill -RTMIN+10 i3blocks"
         ",XF86AudioPrev,exec,${pkgs.playerctl}/bin/playerctl previous && pkill -RTMIN+10 i3blocks"
       ];
-
-      misc = {
-        disable_hyprland_logo = true;
-        disable_splash_rendering = true;
-        enable_swallow = true;
-      };
       monitor = [
         # Middle monitor
         "DP-1,2560x1440@165Hz,2560x1440,1"
@@ -113,133 +140,90 @@
         # Top monitor
         "DP-3,3440x1440@164.999Hz,2120x0,1"
       ];
+       decoration = {
+         rounding = 0;
+         inactive_opacity = 0.99;
+         blur = {
+           enabled = true;
+           size = 5;
+           passes = 2;
+           ignore_opacity = true;
+           contrast = 1.17;
+           brightness = 0.8;
+         };
+       };
+
+       
+      master = {
+        no_gaps_when_only = 1;
+        mfact = 0.55;
+        new_is_master = true;
+        new_on_top = true;
+        orientation = "left";
+        inherit_fullscreen = true;
+        always_center_master = true;
+        special_scale_factor = 0.95;
+      };
+      animations = {
+        enabled = true;
+        animation = [
+          "windows, 1, 3, md3_decel, popin 60%"
+          "border, 1, 10, default"
+          "workspaces, 1, 7, fluent_decel, slide"
+          "specialWorkspace, 1, 3, md3_decel, slidevert"
+        ];
+        bezier = [
+          "md3_decel, 0.05, 0.7, 0.1, 1"
+          "fluent_decel, 0.1, 1, 0, 1"
+        ];
+      };
+      misc = {
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
+        enable_swallow = true;
+      };
     };
     extraConfig = ''
+      # Leftover config that hasn't been sqeezed out yet
+
       #exec-once = swayidle -w timeout 90 '${pkgs.gtklock}/bin/gtklock -d' timeout 210 'suspend-unless-render' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep "${pkgs.gtklock}/bin/gtklock -d"
       #exec-once = swayidle -w timeout 90 '${pkgs.swaylock}/bin/swaylock -f' timeout 210 'suspend-unless-render' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep "${pkgs.swaylock}/bin/swaylock -f"
 
-      general {
-        layout = master
-        cursor_inactive_timeout = 30
-        border_size = 4
-        no_cursor_warps = false
-        col.active_border = 0xff454545
-
-        col.inactive_border = 0x33454545
-
-            resize_on_border = true
-            gaps_in = 7
-            gaps_out = 7
-       }
 
        bind=SUPER,Y,workspaceopt,allfloat
 
-       bind = SUPER,R,pass,^(com\.obsproject\.Studio)$
-       bind = SUPERSHIFT,R,pass,^(com\.obsproject\.Studio)$
-
-       bind=SUPERCTRL,S,exec,container-open # qutebrowser only
-
        bind=SUPERCTRL,R,exec,killall .waybar-wrapped && waybar & disown
 
-       bind=SUPER,code:47,exec,fuzzel
-       bind=SUPER,X,exec,fnottctl dismiss
-       bind=SUPERSHIFT,X,exec,fnottctl dismiss all
        bindm=SUPER,mouse:272,movewindow
        bindm=SUPER,mouse:273,resizewindow
-       bind=SUPER,T,togglefloating
-
-       bind=,code:232,exec,brightnessctl set 15-
-       bind=,code:233,exec,brightnessctl set +15
-       bind=,code:237,exec,brightnessctl --device='asus::kbd_backlight' set 1-
-       bind=,code:238,exec,brightnessctl --device='asus::kbd_backlight' set +1
-       bind=,code:255,exec,airplane-mode
 
        bind=SUPERSHIFT,S,exec,swaylock & sleep 1 && systemctl suspend
        bind=SUPERCTRL,L,exec,swaylock
 
-       bind=SUPER,Z,exec,pypr toggle term && hyprctl dispatch bringactivetotop
-       bind=SUPER,F,exec,pypr toggle ranger && hyprctl dispatch bringactivetotop
-       bind=SUPER,N,exec,pypr toggle musikcube && hyprctl dispatch bringactivetotop
-       bind=SUPER,B,exec,pypr toggle btm && hyprctl dispatch bringactivetotop
-       bind=SUPER,E,exec,pypr toggle geary && hyprctl dispatch bringactivetotop
-       bind=SUPER,code:172,exec,pypr toggle pavucontrol && hyprctl dispatch bringactivetotop
        $scratchpadsize = size 80% 85%
-
        $scratchpad = class:^(scratchpad)$
+
+       windowrulev2 = float, class:floatingKitty
        windowrulev2 = float,$scratchpad
        windowrulev2 = $scratchpadsize,$scratchpad
        windowrulev2 = workspace special silent,$scratchpad
        windowrulev2 = center,$scratchpad
-
-       $gearyscratchpad = class:^(geary)$
-       windowrulev2 = float,$gearyscratchpad
-       windowrulev2 = $scratchpadsize,$gearyscratchpad
-       windowrulev2 = workspace special silent,$gearyscratchpad
-       windowrulev2 = center,$gearyscratchpad
-
-       $pavucontrol = class:^(pavucontrol)$
-       windowrulev2 = float,$pavucontrol
-       windowrulev2 = size 86% 40%,$pavucontrol
-       windowrulev2 = move 50% 6%,$pavucontrol
-       windowrulev2 = workspace special silent,$pavucontrol
-       windowrulev2 = opacity 0.80,$pavucontrol
-
-       windowrulev2 = float,title:^(Kdenlive)$
-
-       windowrulev2 = float,class:^(pokefinder)$
-
-       windowrulev2 = opacity 0.85,$gearyscratchpad
-       windowrulev2 = opacity 0.80,title:ORUI
-       windowrulev2 = opacity 0.80,title:Heimdall
-       windowrulev2 = opacity 0.80,title:^(LibreWolf)$
-       windowrulev2 = opacity 0.80,title:^(New Tab - LibreWolf)$
-       windowrulev2 = opacity 0.80,title:^(New Tab - Brave)$
-       windowrulev2 = opacity 0.65,title:^(My Local Dashboard Awesome Homepage - qutebrowser)$
-       windowrulev2 = opacity 0.65,title:\[.*\] - My Local Dashboard Awesome Homepage
-       windowrulev2 = opacity 0.9,class:^(org.keepassxc.KeePassXC)$
        windowrulev2 = opacity 0.75,class:^(org.gnome.Nautilus)$
 
        layerrule = blur,waybar
 
-       bind=SUPER,code:21,exec,pypr zoom
-       bind=SUPER,code:21,exec,hyprctl reload
-
        bind=SUPERCTRL,right,workspace,+1
        bind=SUPERCTRL,left,workspace,-1
-
-       bind=SUPER,I,exec,networkmanager_dmenu
-       bind=SUPER,P,exec,keepmenu
-       bind=SUPERSHIFT,P,exec,hyprprofile-dmenu
 
        xwayland {
          force_zero_scaling = true
        }
 
-       env = WLR_DRM_DEVICES,/dev/dri/card1:/dev/dri/card0
        env = QT_QPA_PLATFORMTHEME,qt5ct
 
-       input {
-         kb_layout = no
-         kb_options = caps:escape
-         repeat_delay = 200
-         repeat_rate = 50
-         accel_profile = flat
-         follow_mouse = 2
-       }
 
        misc {
          mouse_move_enables_dpms = false
-       }
-       decoration {
-         rounding = 8
-         blur {
-           enabled = true
-           size = 5
-           passes = 2
-           ignore_opacity = true
-           contrast = 1.17
-           brightness = 0.8
-         }
        }
 
     '';

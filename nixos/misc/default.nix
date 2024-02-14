@@ -14,6 +14,7 @@
     python3
     inetutils  # Telnet
     pciutils
+    killall
   ];
 
   services = {
