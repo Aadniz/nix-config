@@ -1,4 +1,4 @@
-{ config, lib, pkgs, nur, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   # TODO: spotify adblock
