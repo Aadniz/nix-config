@@ -2,7 +2,7 @@
   description = "My nix config";
 
 
-  outputs = { self, nixpkgs, home-manager, nur, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
 
   let
     # ---- SYSTEM SETTINGS ---- #
@@ -73,7 +73,7 @@
     homeConfigurations = {
       ${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home.nix nur.nixosModules.nur privateHome];
+        modules = [ ./home.nix inputs.nur.nixosModules.nur privateHome];
         extraSpecialArgs = {
           inherit username;
           inherit name;
@@ -96,7 +96,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    nur.url = github:nix-community/NUR;
+    nur.url = "github:nix-community/NUR";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       flake = false;
