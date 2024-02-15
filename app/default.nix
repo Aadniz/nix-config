@@ -11,6 +11,7 @@
     ./protonmail.nix
     ./jetbrains.nix
     ./obs.nix
+    ./nvim.nix
   ];
 
   home.packages = with pkgs; [
@@ -33,7 +34,6 @@
     zotero  # Source finder application
     gnome.nautilus
     insomnia  # API debugging tool
-    neovim
     feh
     libreoffice
     protontricks
@@ -41,5 +41,6 @@
     p7zip
     ark
     nicotine-plus
+    kdenlive
   ];
 }
