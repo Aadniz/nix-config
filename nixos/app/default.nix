@@ -12,5 +12,6 @@
     vlc
     firefox
     pywal
+    konsole
   ];
 }
