@@ -1,11 +1,15 @@
 { config, lib, pkgs, wallpaper, theme, ... }:
 let
+  # Function to change #rrggbb to rrggbb
   rrggbb = s: if builtins.substring 0 1 s == "#" then builtins.substring 1 (builtins.stringLength s) s else s;
+
+
 in
 {
   imports = [
-    #../bars/hybridbar.nix
-    ../bars/eww
+    #../bars/hybridbar.nix  # Did not get this to work
+    #../bars/eww  # too much for what I need
+    ../bars/waybar
   ];
 
   home.packages = with pkgs; [
@@ -27,7 +31,7 @@ in
     settings = {
       "$mod" = "SUPER";
       general = {
-        layout = "master";
+        layout = "dwindle";
         cursor_inactive_timeout = 30;
         border_size = 4;
         no_cursor_warps = false;
@@ -38,7 +42,8 @@ in
         gaps_out = 0;
       };
       exec-once = [
-        "${lib.getExe pkgs.swaybg} --image ${wallpaper}"
+        "${lib.getExe pkgs.swaybg} --image ${wallpaper} --mode fill"
+        "${lib.getExe pkgs.waybar}"
       ];
       input = {
         numlock_by_default = true;
@@ -60,7 +65,7 @@ in
         "$mod, Delete, killactive"
         "$mod, q, exec, ${lib.getExe pkgs.rofi} -show drun"
         "$mod SHIFT, C, exec, hyprctl reload"
-	"$mod SHIFT, Space, togglefloating"
+	"$mod, Space, togglefloating"
         "$mod, Backspace, exec, ${lib.getExe pkgs.kitty}"
 
 	# This looks super bad on hyprland
@@ -78,7 +83,7 @@ in
         "Alt,Tab, focuscurrentorlast"
         "$mod,Tab, cyclenext"
         #"$mod,A, focus parent"
-        "$mod,Space, focuswindow, floating"
+        "$mod, D, focuswindow, floating"
 
 
         # Scratchpad
@@ -96,6 +101,9 @@ in
 	# Misc
 	"$mod, W, fullscreen, 1"
         "$mod, F, fullscreen, 0"
+        "$mod, X, layoutmsg, togglesplit"
+        "$mod, V, layoutmsg, preselect r"
+        "$mod, C, layoutmsg, preselect d"
 
 	# Workspaces
 	"$mod, 1, workspace, 1"
@@ -153,6 +161,11 @@ in
          };
        };
 
+      dwindle = {
+        pseudotile = true;
+        preserve_split = true;
+        no_gaps_when_only = 1;
+      };
        
       master = {
         no_gaps_when_only = 1;
@@ -228,6 +241,8 @@ in
 
     '';
     xwayland.enable = true;
-    systemd.enable = true;
+
+    # Using exec-once instead to contain it within this module a bit more
+    #systemd.enable = true;
   };
 }
