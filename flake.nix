@@ -18,7 +18,7 @@
     dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
     term = "kitty"; # Default terminal command;
     wm = "hyprland";
-    wallpaper = ./wallpapers/kitan_6372.jpg; # TODO: Would wish to go outside of scope if possible here
+    wallpaper = ./wallpapers/11.jpg; # TODO: Would wish to go outside of scope if possible here
 
     privateSystem = "${inputs.private}/system";
     privateHome = "${inputs.private}/home";
@@ -42,16 +42,7 @@
 
     # Colors are generated automatically from the wallpaper
     # TODO: hopefully one day I can make this look prettier
-    theme = import ./theme {
-      inherit primary;
-      inherit secondary;
-      inherit third;
-      inherit foreground;
-      inherit background;
-      inherit username;
-      inherit wallpaper;
-      inherit pkgs;
-    };
+    theme = import ./theme { inherit primary secondary third foreground background username wallpaper pkgs; };
 
 
     lib = nixpkgs.lib;

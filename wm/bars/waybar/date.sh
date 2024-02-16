@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-ICON_COLOR="${PRIMARY_COLOR:-#FF0000}"
+ICON_COLOR="#FF0000"
+
+if [[ $1 == "--color" ]] && [[ -n $2 ]]; then
+    ICON_COLOR=$2
+fi
+
 COPY_COLOR="${SECONDARY_COLOR:-#FF00FF}"
 
 DAY=$(date '+%u')

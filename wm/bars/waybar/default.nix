@@ -1,6 +1,21 @@
 {config, pkgs, theme, ...}:
-
+let
+  mod = a: b: a - b * (builtins.div a b);
+  numbers = ["一" "二" "三" "四" "五" "六" "七" "八" "九" "十"];
+  genIcons = count: if count == 0 then {} else
+    let
+      prev = genIcons (count - 1);
+      number = builtins.elemAt numbers (mod (count - 1) 10);
+    in
+      prev // { "${toString count}" = number; };
+  waybarConfigDir = ".config/waybar";
+  dateScript = "${waybarConfigDir}/scripts/date.sh";
+in
 {
+  home.file."${dateScript}" = {
+    source = ./date.sh;
+    executable = true;
+  };
   programs.waybar = {
     enable = true;
     systemd.enable = false;
@@ -9,7 +24,7 @@
         position = "top";
 	layer = "top";
 	modules-left = ["hyprland/workspaces"];
-	modules-right = ["pulseaudio" "clock"];
+	modules-right = ["cpu" "memory" "pulseaudio" "custom/clock"];
 
         "hyprland/workspaces" = {
 	  disable-scroll = false;
@@ -17,28 +32,33 @@
 	  on-scroll-up = "hyprctl dispatch workspace e-1";
           on-scroll-down = "hyprctl dispatch workspace e+1";
           format = "{icon}";
-          format-icons = {
-            "1" = "いち";
-            "2" = "に";
-            "3" = "さん";
-            "4" = "よん";
-            "5" = "ご";
-	    "6" = "ろく";
-	    "7" = "なな";
-	    "8" = "はち";
-	    "9" = "きゅう";
-	    "10" = "じゅう";
+          format-icons = genIcons 40;
+          persistent-workspaces = {
+            "*" = 10;
           };
         };
 
-        clock = {
-          format = "{:%Y-%m-%d %T}";
+        "custom/clock" = {
+          format = "{}";
+          exec = "$HOME/${dateScript} --color '${theme.primary}'";
           interval = 1;
         };
 
+        memory = {
+          format = " {used}G";
+          format-alt = " {used}/{total} GiB";
+          interval = 30;
+        };
+    
+        cpu = {
+          format = "  {usage}%";
+          format-alt = "  {avg_frequency} GHz";
+          interval = 3;
+        };
+
         pulseaudio = {
-          format = "{volume}% {icon}";
-          format-bluetooth = "{volume}% {icon}󰂰";
+          format = "{icon} {volume}%";
+          format-bluetooth = "{icon}󰂰 {volume}%";
           format-muted = "󰝟";
           format-icons = {
             headphones = "󰋋";
@@ -59,10 +79,10 @@
 
     style = with theme; /* css */ ''
       window#waybar {
-        font-family: "Monocraft";
-	font-size: 10pt;
+        font-family: "Font-Awesome-6-Edited";
+	font-size: 11pt;
 	background-color: ${background};
-	color: ${foreground};
+	color: ${background};
       }
 	
       .modules-left, .modules-center, .modules-right {
@@ -72,16 +92,8 @@
         background-color: ${third};
       }
     	
-      #workspaces, #mpd, #clock, #network, #pulseaudio, #battery, #custom-pa-mute, #custom-camera-blank, #idle_inhibitor, #tray {
+      #workspaces, #cpu, #custom-clock, #memory, #pulseaudio, #battery, #custom-pa-mute, #custom-camera-blank, #idle_inhibitor, #tray {
         margin: 0 8px;
-      }
-    	
-      #custom-pa-mute, #custom-camera-blank {
-        margin-right: 0;
-      }
-    	
-      #idle_inhibitor, #custom-camera-blank {
-        margin-left: 0;
       }
     	
       #workspaces {
@@ -91,8 +103,9 @@
       #workspaces button, #idle_inhibitor, #custom-pa-mute, #custom-camera-blank {
         border: none;
         background-color: transparent;
-        box-shadow: none;  /* dunno why this is set */
-        border-radius: 16px;
+	color: ${background};
+        box-shadow: none;
+	border-radius: 16px;
         transition: background-color 100ms ease, color 100ms ease;
         min-width: 32px;
         min-height: 32px;
@@ -115,7 +128,7 @@
       }
     	
       #workspaces button:hover label {
-        text-shadow: none; /* Adwaita? */
+        text-shadow: none; 
       }
     	
       #workspaces button.active {
