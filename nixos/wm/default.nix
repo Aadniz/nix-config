@@ -1,6 +1,6 @@
-{ config, pkgs, username, wm, ... }:
+{ config, pkgs, username, wm, inputs, ... }:
 let
-  command = if (wm == "sway") then "${pkgs.sway}/bin/sway" else "${pkgs.hyprland}/bin/Hyprland";
+  command = if (wm == "sway") then "${pkgs.sway}/bin/sway" else "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/Hyprland";
 in
 {
   imports = [

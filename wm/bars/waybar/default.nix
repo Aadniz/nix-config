@@ -3,7 +3,7 @@
 {
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
+    systemd.enable = false;
     settings = {
       mainBar = {
         position = "top";
@@ -18,7 +18,7 @@
           on-scroll-down = "hyprctl dispatch workspace e-1";
           format = "{icon}";
           format-icons = {
-            "1" = "いち"; # this is not a material design circle like the other icons
+            "1" = "いち";
             "2" = "に";
             "3" = "さん";
             "4" = "よん";

@@ -61,11 +61,8 @@
     nixosConfigurations = {
       nix = lib.nixosSystem {
         inherit system;
-        modules = [ ./nixos/configuration.nix privateSystem];
-        specialArgs = {
-          inherit username;
-          inherit wm;
-        };
+        modules = [ ./nixos/configuration.nix privateSystem ];
+        specialArgs = { inherit username wm inputs; };
       };
     };
 
@@ -73,18 +70,12 @@
     homeConfigurations = {
       ${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home.nix inputs.nur.nixosModules.nur privateHome];
-        extraSpecialArgs = {
-          inherit username;
-          inherit name;
-          inherit hostname;
-          inherit email;
-          inherit dotfilesDir;
-          inherit term;
-          inherit wallpaper;
-          inherit theme;
-          inherit wm;
-        };
+        modules = [
+	  ./home.nix
+	  inputs.nur.nixosModules.nur
+          privateHome
+	];
+        extraSpecialArgs = { inherit username name hostname email dotfilesDir term wallpaper theme wm inputs; };
       };
     };
   };
@@ -97,9 +88,14 @@
     stylix.url = "github:danth/stylix";
     rust-overlay.url = "github:oxalica/rust-overlay";
     nur.url = "github:nix-community/NUR";
+    hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
-      flake = false;
+      inputs.hyprland.follows = "hyprland";
+    };
+    split-monitor-workspaces = {
+      url = "github:Duckonaut/split-monitor-workspaces";
+      inputs.hyprland.follows = "hyprland";
     };
 
     # I hate this workaround

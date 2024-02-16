@@ -1,9 +1,20 @@
-{ config, lib, pkgs, wallpaper, theme, ... }:
+{ config, lib, pkgs, wallpaper, theme, inputs, ... }:
 let
+
   # Function to change #rrggbb to rrggbb
   rrggbb = s: if builtins.substring 0 1 s == "#" then builtins.substring 1 (builtins.stringLength s) s else s;
-
-
+  numpad = {
+    "0" = "KP_Insert";
+    "1" = "KP_End";
+    "2" = "KP_Down";
+    "3" = "KP_Next";
+    "4" = "KP_Left";
+    "5" = "KP_Begin";
+    "6" = "KP_Right";
+    "7" = "KP_Home";
+    "8" = "KP_Up";
+    "9" = "KP_Prior";
+  };
 in
 {
   imports = [
@@ -24,10 +35,8 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.hyprland;
-    plugins = [
-    #  (pkgs.callPackage ./hyprbars.nix { inherit hyprland-plugins; } )
-    ];
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    plugins = [ inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces ];
     settings = {
       "$mod" = "SUPER";
       general = {
@@ -106,27 +115,48 @@ in
         "$mod, C, layoutmsg, preselect d"
 
 	# Workspaces
-	"$mod, 1, workspace, 1"
-	"$mod, 2, workspace, 2"
-	"$mod, 3, workspace, 3"
-	"$mod, 4, workspace, 4"
-	"$mod, 5, workspace, 5"
-	"$mod, 6, workspace, 6"
-	"$mod, 7, workspace, 7"
-	"$mod, 8, workspace, 8"
-	"$mod, 9, workspace, 9"
-	"$mod, 0, workspace, 10"
+	# TODO: abstract this
+	"$mod, 1, split-workspace, 1"
+	"$mod, 2, split-workspace, 2"
+	"$mod, 3, split-workspace, 3"
+	"$mod, 4, split-workspace, 4"
+	"$mod, 5, split-workspace, 5"
+	"$mod, 6, split-workspace, 6"
+	"$mod, 7, split-workspace, 7"
+	"$mod, 8, split-workspace, 8"
+	"$mod, 9, split-workspace, 9"
+	"$mod, 0, split-workspace, 10"
+	"$mod, KP_END, split-workspace, 1"
+	"$mod, KP_DOWN, split-workspace, 2"
+	"$mod, KP_NEXT, split-workspace, 3"
+	"$mod, KP_LEFT, split-workspace, 4"
+	"$mod, KP_BEGIN, split-workspace, 5"
+	"$mod, KP_RIGHT, split-workspace, 6"
+	"$mod, KP_HOME, split-workspace, 7"
+	"$mod, KP_UP, split-workspace, 8"
+	"$mod, KP_PRIOR, split-workspace, 9"
+	"$mod, KP_INSERT, split-workspace, 10"
 
-	"$mod SHIFT, 1, movetoworkspace, 1"
-	"$mod SHIFT, 2, movetoworkspace, 2"
-	"$mod SHIFT, 3, movetoworkspace, 3"
-	"$mod SHIFT, 4, movetoworkspace, 4"
-	"$mod SHIFT, 5, movetoworkspace, 5"
-	"$mod SHIFT, 6, movetoworkspace, 6"
-	"$mod SHIFT, 7, movetoworkspace, 7"
-	"$mod SHIFT, 8, movetoworkspace, 8"
-	"$mod SHIFT, 9, movetoworkspace, 9"
-	"$mod SHIFT, 0, movetoworkspace, 10"
+	"$mod SHIFT, 1, split-movetoworkspace, 1"
+	"$mod SHIFT, 2, split-movetoworkspace, 2"
+	"$mod SHIFT, 3, split-movetoworkspace, 3"
+	"$mod SHIFT, 4, split-movetoworkspace, 4"
+	"$mod SHIFT, 5, split-movetoworkspace, 5"
+	"$mod SHIFT, 6, split-movetoworkspace, 6"
+	"$mod SHIFT, 7, split-movetoworkspace, 7"
+	"$mod SHIFT, 8, split-movetoworkspace, 8"
+	"$mod SHIFT, 9, split-movetoworkspace, 9"
+	"$mod SHIFT, 0, split-movetoworkspace, 10"
+	"$mod SHIFT, KP_END, split-movetoworkspace, 1"
+	"$mod SHIFT, KP_DOWN, split-movetoworkspace, 2"
+	"$mod SHIFT, KP_NEXT, split-movetoworkspace, 3"
+	"$mod SHIFT, KP_LEFT, split-movetoworkspace, 4"
+	"$mod SHIFT, KP_BEGIN, split-movetoworkspace, 5"
+	"$mod SHIFT, KP_RIGHT, split-movetoworkspace, 6"
+	"$mod SHIFT, KP_HOME, split-movetoworkspace, 7"
+	"$mod SHIFT, KP_UP, split-movetoworkspace, 8"
+	"$mod SHIFT, KP_PRIOR, split-movetoworkspace, 9"
+	"$mod SHIFT, KP_INSERT, split-movetoworkspace, 10"
       ];
 
       bindi = [
@@ -190,6 +220,23 @@ in
           "fluent_decel, 0.1, 1, 0, 1"
         ];
       };
+
+      plugin = {
+        hyprbars = {
+          bar_color = "rgb(2a2a2a)";
+          bar_height = 28;
+          col_text = "rgba(ffffffdd)";
+          bar_text_size = 11;
+          bar_text_font = "Ubuntu Nerd Font";
+
+          buttons = {
+            button_size = 13;
+            "col.maximize" = "rgba(ffffff11)";
+            "col.close" = "rgba(ff111133)";
+          };
+        };
+      };
+
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
@@ -243,6 +290,6 @@ in
     xwayland.enable = true;
 
     # Using exec-once instead to contain it within this module a bit more
-    #systemd.enable = true;
+    #systemd.enable = false;
   };
 }
