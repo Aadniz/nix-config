@@ -16,6 +16,7 @@ in
     source = ./date.sh;
     executable = true;
   };
+
   programs.waybar = {
     enable = true;
     systemd.enable = false;
@@ -24,7 +25,7 @@ in
         position = "top";
 	layer = "top";
 	modules-left = ["hyprland/workspaces"];
-	modules-right = ["cpu" "memory" "pulseaudio" "custom/clock"];
+	modules-right = ["cpu" "memory" "pulseaudio" "clock#date" "custom/kanji-day" "clock#time"];
 
         "hyprland/workspaces" = {
 	  disable-scroll = false;
@@ -38,11 +39,21 @@ in
           };
         };
 
-        "custom/clock" = {
+	"clock#time" = {
+          format = "{:%T}";
+	  interval = 1;
+	};
+
+        "custom/kanji-day" = {
           format = "{}";
-          exec = "$HOME/${dateScript} --color '${theme.primary}'";
+          exec = "echo '月火水木金土日' | cut -c $(( $(date +%u)*3-2 ))-$(( $(date +%u)*3 ))";
           interval = 1;
         };
+
+	"clock#date" = {
+          format = "{:%Y-%m-%d}";
+	  interval = 1;
+	};
 
         memory = {
           format = " {used}G";
@@ -82,7 +93,7 @@ in
         font-family: "Font-Awesome-6-Edited";
 	font-size: 11pt;
 	background-color: ${background};
-	color: ${background};
+	color: ${foreground};
       }
 	
       .modules-left, .modules-center, .modules-right {
@@ -92,7 +103,7 @@ in
         background-color: ${third};
       }
     	
-      #workspaces, #cpu, #custom-clock, #memory, #pulseaudio, #battery, #custom-pa-mute, #custom-camera-blank, #idle_inhibitor, #tray {
+      #workspaces, #cpu, #memory, #pulseaudio, #battery, #custom-pa-mute, #custom-camera-blank, #idle_inhibitor, #tray {
         margin: 0 8px;
       }
     	
@@ -103,7 +114,6 @@ in
       #workspaces button, #idle_inhibitor, #custom-pa-mute, #custom-camera-blank {
         border: none;
         background-color: transparent;
-	color: ${background};
         box-shadow: none;
 	border-radius: 16px;
         transition: background-color 100ms ease, color 100ms ease;
@@ -111,6 +121,24 @@ in
         min-height: 32px;
         padding: 0;
         font-weight: normal;
+      }
+
+      #clock.time {
+        margin: 0 8px 0 0;
+      }
+      #custom-kanji-day {
+        padding: 8px;
+	margin: 0 2px;
+	background-color: ${primary};
+	border-radius: 16px;
+      }
+      #clock.date {
+        margin: 0 0 0 8px;
+      }
+
+      #custom-status-checker {
+	margin: 0 0 0 -100px;
+	font-stretch: ultra-condensed;
       }
     	
       #workspaces button.urgent, #idle_inhibitor.activated, #custom-pa-mute.muted, #custom-camera-blank.blank {
@@ -124,7 +152,7 @@ in
     
       #workspaces button:hover {
         background-image: none; /* remove Adwaita button gradient */
-        background-color: ${color5};
+        background-color: ${secondary};
       }
     	
       #workspaces button:hover label {
@@ -133,7 +161,6 @@ in
     	
       #workspaces button.active {
         background-color: ${primary};
-        color: ${background};
       }
     	
       #workspaces button.active:hover {
@@ -142,7 +169,6 @@ in
     	
       #workspaces button:active, #workspaces button.focused:active {
         background-color: ${foreground};
-        color: ${third};
       }
     '';
   };

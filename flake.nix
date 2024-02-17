@@ -25,7 +25,7 @@
 
     # Out of the colors generated from pywal, which one should be used to what?
     primary = 9;
-    secondary = 14;
+    secondary = 11;
     third = 10;
     foreground = 15;
     background = 0;
