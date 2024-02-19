@@ -17,7 +17,7 @@
     email = "pus@null.net"; # email (used for certain configurations)
     dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
     term = "kitty"; # Default terminal command;
-    wm = "hyprland";
+    wm = "sway";
     wallpaper = ./wallpapers/11.jpg; # TODO: Would wish to go outside of scope if possible here
 
     privateSystem = "${inputs.private}/system";

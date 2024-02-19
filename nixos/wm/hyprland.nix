@@ -24,9 +24,8 @@
     wl-clipboard
     wlr-randr
     wofi
-    xdg-desktop-portal
     xdg-desktop-portal-gtk
-    xdg-desktop-portal-hyprland
+    #xdg-desktop-portal-hyprland
     xdg-utils
     ydotool
   ];

@@ -6,7 +6,7 @@
       "type:keyboard" = {
         xkb_layout = "no";
         xkb_numlock = "enabled";
-        xkb_options = "grp:win_space_toggle";
+        xkb_options = "grp:win_space_toggle,caps:swapescape";
         repeat_delay = "200";
         repeat_rate = "50";
       };

@@ -42,5 +42,6 @@
     ark
     nicotine-plus
     kdenlive
+    blender
   ];
 }

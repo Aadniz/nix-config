@@ -1,4 +1,5 @@
 { config, lib, pkgs, wallpaper, theme, inputs, ... }:
+
 let
 
   # Function to change #rrggbb to rrggbb
@@ -21,11 +22,10 @@ in
     #../bars/hybridbar.nix  # Did not get this to work
     #../bars/eww  # too much for what I need
     ../bars/waybar
+    ./xwaylandvideobridge.nix
   ];
 
   home.packages = with pkgs; [
-    xdg-desktop-portal-wlr
-    xdg-desktop-portal-hyprland
   ];
 
   home.sessionVariables = {
@@ -159,7 +159,7 @@ in
 	"$mod SHIFT, KP_INSERT, split-movetoworkspace, 10"
       ];
 
-      bindi = [
+      binde = [
         # Audio
         ",XF86AudioMute,exec,${pkgs.pamixer}/bin/pamixer -t && pkill -RTMIN+1 i3blocks"
         ",XF86AudioLowerVolume,exec,${pkgs.pamixer}/bin/pamixer -d 1 && pkill -RTMIN+1 i3blocks"
