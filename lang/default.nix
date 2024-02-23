@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./rust.nix
+    #./rust.nix
     ./c.nix
   ];
 

@@ -5,7 +5,6 @@
   home.packages = with pkgs; [
     nodePackages.bash-language-server
     wl-clipboard
-    rustup
     nil
   ];
 
@@ -23,8 +22,6 @@
     coc = {
       enable = true;
       settings = {
-        rust-analyzer.server.path = "rust-analyzer";
-        rust-analyzer.inlayHints.closureReturnTypeHints.enable = false;
         languageserver = {
           haskell = {
             command = "haskell-language-server";
@@ -79,7 +76,6 @@
 
       # formatters and linters
       nixfmt
-      rustfmt
       shfmt
       cbfmt
       stylua
@@ -91,7 +87,6 @@
       # LSP servers
       efm-langserver
       nil
-      rust-analyzer
       taplo
       gopls
       lua
@@ -125,7 +120,6 @@
        editorconfig-vim
        coc-json
        coc-explorer
-       coc-rust-analyzer
        haskell-vim
        gruvbox-community
        vim-gitgutter

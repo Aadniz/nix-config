@@ -22,7 +22,7 @@ in
     #../bars/hybridbar.nix  # Did not get this to work
     #../bars/eww  # too much for what I need
     ../bars/waybar
-    ./xwaylandvideobridge.nix
+    # ./xwaylandvideobridge.nix
   ];
 
   home.packages = with pkgs; [

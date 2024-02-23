@@ -19,5 +19,6 @@
     termdown
     python3
     poetry
+    direnv
   ];
 }
