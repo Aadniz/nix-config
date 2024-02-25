@@ -1,11 +1,18 @@
-{ config, pkgs, ... }:
+{ config, pkgs, wm, ... }:
 
 {
-  imports = [
-    ./sway
-    ./hyprland
-    #./pinnacle.nix
-  ];
+  imports =
+    let
+      wmConfig = if wm == "sway" then
+        [ ./sway ]
+      else if wm == "hyprland" then
+        [ ./hyprland ]
+      else
+        [ ];
+    in
+      wmConfig ++ [
+        #./pinnacle.nix
+      ];
 
   home.packages = with pkgs; [
     remmina

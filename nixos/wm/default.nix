@@ -3,10 +3,18 @@ let
   command = if (wm == "sway") then "${pkgs.sway}/bin/sway" else "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/Hyprland";
 in
 {
-  imports = [
-    ./sway.nix
-    ./hyprland.nix
-  ];
+  imports =
+    let
+      wmConfig = if wm == "sway" then
+        [ ./sway.nix ]
+      else if wm == "hyprland" then
+        [ ./hyprland.nix ]
+      else
+        [ ];
+    in
+      wmConfig ++ [
+        #./pinnacle.nix
+      ];
 
   services.greetd = {
     enable = true;
