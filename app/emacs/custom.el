@@ -1,3 +1,6 @@
+;;; My custom stuff -*- lexical-binding: t; -*-
+(load-file "~/.config/doom/system-vars.el")
+
 ;; Automatically sync org files when saving
 (defun sync-to-unison ()
   "Sync org file with unison."
@@ -12,31 +15,21 @@
 (add-hook 'after-save-hook #'sync-to-unison)
 (add-hook 'find-file-hook #'sync-to-unison)
 
-;; Something openAI wanted
-(defun org-extend-today-until (hour)
-  "Extend the current date until the given hour of the day."
-  (let* ((hour (string-to-number (car (split-string hour ":"))))
-         (now (decode-time))
-         (date (list (nth 4 now) (nth 3 now) (nth 5 now)))
-         (time (encode-time 0 0 hour (nth 2 now) (nth 1 now) (nth 0 now))))
-    (when (time-less-p (current-time) time)
-      (setq date (time-add date (* 24 60 60))))
-    (setq time (encode-time 0 0 hour (nth 2 now) (nth 1 now) (nth 0 now)))
-    (org-time-stamp time t)))
 
 ;; Custom latex pdf exporter for org-mode
 (with-eval-after-load 'ox-latex
-(add-to-list 'org-latex-classes
-             '("org-plain-latex"
-               "\\documentclass{article}
+  (add-to-list 'org-latex-classes
+               '("org-plain-latex"
+                 "\\documentclass{article}
            [NO-DEFAULT-PACKAGES]
            [PACKAGES]
            [EXTRA]"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-               ("\\paragraph{%s}" . "\\paragraph*{%s}")
-               ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
 
 ;; If #+EXPORT: <mode> is defined within the document, it will recognize that as a way to compile the org file.
 ;; Example:
@@ -70,11 +63,13 @@
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 (add-hook 'pdf-view-mode-hook 'auto-revert-mode) ;; <- This does not work for some reason?
 
+
 ;; Move around split windowses
 ;; (windmove-default-keybindings)
 
 ;; Change window using CTRL + Shift + S
 (global-set-key (kbd "C-S-s") 'other-window)
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -82,10 +77,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(nyan-mode crdt helm-pydoc quelpa-use-package org-modern org-jira)))
+   '(nyan-mode crdt quelpa-use-package org-modern)))
+
+(defvar background-color (cdr (assoc 'background user-theme)))
+(defvar foreground-color (cdr (assoc 'foreground user-theme)))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ `(default ((t (:background ,background-color :foreground ,foreground-color)))))

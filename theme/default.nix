@@ -1,14 +1,7 @@
 { username, pkgs, wallpaper, primary ? 1, secondary ? 2, third ? 8, foreground ? 14, background ? 0 }:
 
-# TODO: want to use something more fancy than pywal
-
 let
   wallpaperInStore = pkgs.copyPathToStore wallpaper;
-
-  #rustPlatform = pkgs.makeRustPlatform {
-  #  cargo = pkgs.rust-bin.stable.latest.minimal;
-  #  rustc = pkgs.rust-bin.stable.latest.minimal;
-  #};
 
   dominant_colours = pkgs.rustPlatform.buildRustPackage rec {
     name = "dominant_colours";

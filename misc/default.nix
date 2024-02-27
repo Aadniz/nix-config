@@ -20,5 +20,6 @@
     python3
     poetry
     direnv
+    prettyping
   ];
 }
