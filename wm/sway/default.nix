@@ -54,12 +54,6 @@ in
     };
     xwayland = true;
     systemd.enable = true;
-    extraSessionCommands = ''
-      export XDG_CURRENT_DESKTOP=sway
-      export XDG_SESSION_TYPE=wayland
-      export MOZ_ENABLE_WAYLAND=1
-      export _JAVA_AWT_WM_NONREPARENTING=1
-    '';
     config = rec {
       menu = "${lib.getExe pkgs.wofi} --show run | ${pkgs.findutils}/bin/xargs swaymsg exec --";
       inherit modifier;

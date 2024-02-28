@@ -79,6 +79,8 @@ in
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   # enable sway window manager
   programs.sway = {
     enable = true;
@@ -87,20 +89,4 @@ in
 
   security.pam.services.swaylock = {};
 
-  environment.sessionVariables = {
-    XDG_SESSION_TYPE = "wayland";
-    WLR_NO_HARDWARE_CURSORS = "1";
-    NIXOS_OZONE_WL = "1";
-    MOZ_ENABLE_WAYLAND = "1";
-    SDL_VIDEODRIVER = "wayland";
-    _JAVA_AWT_WM_NONREPARENTING = "1";
-    CLUTTER_BACKEND = "wayland";
-    GTK_USE_PORTAL = "1";
-    NIXOS_XDG_OPEN_USE_PORTAL = "1";
-    WLR_RENDERER_ALLOW_SOFTWARE = "1";
-  }
-  // (if wm == "sway" then {
-      XDG_CURRENT_DESKTOP = "sway";
-      XDG_SESSION_DESKTOP = "sway";
-  } else {});
 }
