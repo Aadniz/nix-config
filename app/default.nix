@@ -42,6 +42,6 @@
     ark
     nicotine-plus
     kdenlive
-    #blender # blender broken?
+    blender
   ];
 }
