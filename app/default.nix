@@ -11,7 +11,7 @@
     ./protonmail.nix
     ./jetbrains.nix
     ./obs.nix
-    ./nvim.nix
+    ./nvim
   ];
 
   home.packages = with pkgs; [

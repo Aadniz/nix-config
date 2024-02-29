@@ -1,4 +1,4 @@
-{config, pkgs, lib, ...}:
+{config, pkgs, lib, inputs, ...}:
 
 # Pretty much yeeted from https://github.com/infinisil/system/blob/07534666e0592d9ceb1fc157dc48baa7b1494d99/config/new-modules/vim.nix
 {
@@ -115,6 +115,8 @@
     ]; 
 
      plugins = with pkgs.vimPlugins; [
+       vim-nix
+       vim-addon-nix
        undotree
        nvim-treesitter.withAllGrammars
        editorconfig-vim
@@ -123,6 +125,16 @@
        haskell-vim
        gruvbox-community
        vim-gitgutter
+
+
+       # For dev of plugins
+       (pkgs.vimUtils.buildVimPlugin {
+         pname = "vim-rest-console";
+         version = "11111111111111111111111111111111111111111";
+         src = inputs.vim-rest-console;
+       })
+
+       vim-pathogen
      ];
 
      extraLuaConfig = /* lua */ ''

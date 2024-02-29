@@ -62,10 +62,10 @@
       ${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-	  ./home.nix
-	  inputs.nur.nixosModules.nur
+          ./home.nix
+          inputs.nur.nixosModules.nur
           privateHome
-	];
+        ];
         extraSpecialArgs = { inherit username name hostname email dotfilesDir term wallpaper theme wm inputs; };
       };
     };
@@ -87,6 +87,10 @@
     split-monitor-workspaces = {
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
+    };
+    vim-rest-console = {
+      flake = false;
+      url = "github:Aadniz/vim-rest-console";
     };
 
     # I hate this workaround
