@@ -49,6 +49,7 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
                                         ;(unpin! t)
 
+(package! cmake-ide) ;; Cmake stuff for emacs
 (package! vimrc-mode) ;; Yes I'm crazy
 (package! org-modern) ;; Makes org mode look very modern
 
