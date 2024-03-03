@@ -8,14 +8,7 @@
   toINI = lib.generators.toINI {};
   toINI' = lib.generators.toINIWithGlobalSection {};
 in {
-  i18n.inputMethod = {
-    enabled = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-mozc
-      fcitx5-gtk
-    ];
-  };
-
+  # https://github.com/water-sucks/nixed/blob/ee7dbd01480d7fea173b050f2a757de2f3665ed1/home/profiles/graphical/fcitx5.nix
   home.sessionVariables = {
     GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
@@ -24,6 +17,13 @@ in {
     GLFW_IM_MODULE = "ibus"; # Fcitx5 has an IBus emulation mode, this is for IME in kitty to work.
   };
 
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-gtk
+    ];
+  };
   xdg.dataFile = {
     "fcitx5/themes/darkrose/arrow.png".source = ../theme/assets/arrow.png;
     "fcitx5/themes/darkrose/radio.png".source = ../theme/assets/radio.png;
