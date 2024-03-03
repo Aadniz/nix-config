@@ -25,5 +25,10 @@ in
         { name = "themes/agnoster"; tags = ["from:oh-my-zsh"]; }
       ];
     };
+
+    initExtra = ''
+      eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
+      alias cd=z
+    '';
   };
 }

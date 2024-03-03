@@ -4,4 +4,9 @@
   imports = [
     ./zsh.nix
   ];
+
+  home.packages = with pkgs; [
+    fzf
+    zoxide
+  ];
 }
