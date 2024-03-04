@@ -92,3 +92,7 @@
 ;; (setq org-jira-working-dir "~/Documents/org/jira/")
 (when (file-exists-p (expand-file-name "sensitive.el" doom-private-dir))
   (load-file (expand-file-name "sensitive.el" doom-private-dir)))
+
+;; https://github.com/doomemacs/doomemacs/issues/7599#issuecomment-1914953178
+(use-package! apheleia)
+(setq +format-on-save-disabled-modes (add-to-list '+format-on-save-disabled-modes 'c++-mode))
