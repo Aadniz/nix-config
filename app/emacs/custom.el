@@ -1,5 +1,5 @@
 ;;; My custom stuff -*- lexical-binding: t; -*-
-(load-file "~/.config/doom/system-vars.el")
+(load-file "~/.config/doom/faces.el")
 
 ;; Automatically sync org files when saving
 (defun sync-to-unison ()
@@ -82,9 +82,3 @@
 (defvar background-color (cdr (assoc 'background user-theme)))
 (defvar foreground-color (cdr (assoc 'foreground user-theme)))
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- `(default ((t (:background ,background-color :foreground ,foreground-color)))))

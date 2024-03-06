@@ -1,6 +1,6 @@
 { pkgs, config, lib, name, hostname, username, email, wm, wallpaper, theme, dotfilesDir, ... }:
 let
-  splash-image = ./assets/110717214_p0_edited.png;
+  splash-image = ./assets/102591953_p0_edited2_icon.png;
 in
 {
 
@@ -11,6 +11,7 @@ in
       "doom/init.el".source = ./init.el;
       "doom/packages.el".source = ./packages.el;
       "doom/custom.el".source = ./custom.el;
+      "doom/faces.el".source = ./faces.el;
       "doom/splash.png".source = splash-image;
     };
   };
@@ -29,6 +30,9 @@ in
     emacs-all-the-icons-fonts
     emacs
     git
+    ispell
+    pandoc
+    lldb # C++, Rust, C debugger
   ];
 
   xdg.configFile."doom/system-vars.el".text = /* lisp */ ''
