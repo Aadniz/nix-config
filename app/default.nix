@@ -2,16 +2,17 @@
 
 {
   imports = [
+    ./discord.nix
     ./emacs
+    ./jetbrains.nix
+    ./kitty
+    ./lutris
+    ./nvim
+    ./obs.nix
+    ./protonmail.nix
     ./rofi.nix
     ./spotify.nix
-    ./kitty
     ./unison.nix
-    ./discord.nix
-    ./protonmail.nix
-    ./jetbrains.nix
-    ./obs.nix
-    ./nvim
   ];
 
   home.packages = with pkgs; [

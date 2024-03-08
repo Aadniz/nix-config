@@ -2,7 +2,7 @@
 
 let
   wallpaperInStore = pkgs.copyPathToStore wallpaper;
-  seed = 9;
+  seed = 5;
 
   dominant_colours = pkgs.rustPlatform.buildRustPackage rec {
     name = "dominant_colours";

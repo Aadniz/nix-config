@@ -18,7 +18,7 @@
     dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
     term = "kitty"; # Default terminal command;
     wm = "sway";
-    wallpaper = ./wallpapers/kitan_6372.jpg; # TODO: Would wish to go outside of scope if possible here
+    wallpaper = ./wallpapers/kitan_5980_upscaled.jpg; # TODO: Would wish to go outside of scope if possible here
 
     privateSystem = "${inputs.private}/system";
     privateHome = "${inputs.private}/home";
