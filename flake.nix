@@ -92,6 +92,8 @@
       flake = false;
       url = "github:Aadniz/vim-rest-console";
     };
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # I hate this workaround
     # --override-input private "./path/to/private/folder"
