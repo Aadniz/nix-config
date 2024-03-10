@@ -13,7 +13,6 @@ in
     # My teacher said oh-my-zsh is bloated
     oh-my-zsh.enable = true;
     shellAliases = myAliases;
-    dotDir = dotfilesDir;
     history = {
       size = 10000;
       save = 10000;
@@ -50,7 +49,7 @@ in
       }
     ];
 
-    initExtraFirst = ''
+    initExtraFirst = /* bash */ ''
       export BULLETTRAIN_PROMPT_ORDER=(
         status
         custom
@@ -75,6 +74,8 @@ in
       export BULLETTRAIN_CUSTOM_MSG=千屋
       export BULLETTRAIN_DIR_BG=${theme.color8}
       export BULLETTRAIN_DIR_FG=${theme.foreground}
+      export BULLETTRAIN_STATUS_ERROR_BG=${theme.color8}
+      export BULLETTRAIN_STATUS_BG=${theme.color8}
     '';
 
     initExtra = ''
