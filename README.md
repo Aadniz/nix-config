@@ -1,6 +1,7 @@
 # Welcome to my nix config
 
-My config **should** be compilable without being me with my private permissions.
+![Wallpaper with neofetch](/docs/screenshots/Screenshot_2024-03-10_08:53:22.png)
+![Working with rust in doom emacs](/docs/screenshots/Screenshot_2024-03-10_08:50:44.png)
 
 ## Installation
 
