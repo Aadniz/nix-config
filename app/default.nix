@@ -13,6 +13,7 @@
     ./rofi.nix
     ./spotify.nix
     ./unison.nix
+    ./feh
   ];
 
   home.packages = with pkgs; [
@@ -38,7 +39,6 @@
     #gnome.nautilus
     cinnamon.nemo-with-extensions
     insomnia  # API debugging tool
-    feh
     libreoffice
     protontricks
     deluge-gtk
