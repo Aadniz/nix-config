@@ -35,7 +35,8 @@
     tor-browser
     okular
     zotero  # Source finder application
-    gnome.nautilus
+    #gnome.nautilus
+    cinnamon.nemo-with-extensions
     insomnia  # API debugging tool
     feh
     libreoffice
