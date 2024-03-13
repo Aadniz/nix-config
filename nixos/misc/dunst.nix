@@ -3,6 +3,8 @@
 {
   environment.systemPackages = with pkgs; [
     dunst
+    libnotify
+    glib
   ];
 
   systemd.user.services."dunst" = {

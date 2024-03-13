@@ -22,8 +22,21 @@ let
     "8" = "KP_Up";
     "9" = "KP_Prior";
   };
+  color-picker = pkgs.writeShellScriptBin "color-picker" /* bash */ ''
+    set -e
+
+    output=$(${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp} -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | grep -v "ImageMagick")
+
+    HASH_COLOR=$(echo -n $output | awk '{print $3}' | tr -d '#')
+    RGB_COLOR=$(echo -n $output | awk '{print $4}')
+
+    convert -size 100x100 xc:"#$HASH_COLOR" "/tmp/$HASH_COLOR.png"
+    echo -n "#$HASH_COLOR" | wl-copy
+    notify-send --icon="/tmp/$HASH_COLOR.png" --transient "Color Picker" "#$HASH_COLOR $RGB_COLOR"
+  '';
 in
 {
+  home.packages = [ color-picker ];
   wayland.windowManager.sway.config.keybindings = {
     "${modifier}+Return" = "exec ${term}";
     "${modifier}+KP_Enter" = "exec ${term}";
@@ -69,6 +82,7 @@ in
     "Ctrl+Print" = ''exec wl-copy < $(${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save output "$HOME/Pictures/Shutter/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png")'';
     "${modifier}+Print" = ''exec wl-copy < $(${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save screen "$HOME/Pictures/Shutter/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png")'';
     "Mod1+Print" = ''exec wl-copy < $(${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save active "$HOME/Pictures/Shutter/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png")'';
+    "${modifier}+Bar" = "exec ${lib.getExe color-picker}";
 
     "${modifier}+v" = "splith";
     "${modifier}+c" = "splitv";
