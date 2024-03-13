@@ -31,4 +31,6 @@
   { instance = "Godot_ProjectList"; }
   { instance = "Godot_Engine"; }
   {app_id="xdg-desktop-portal-gtk";}
+  {app_id="xdg-desktop-portal";}
+  {app_id="nemo";}
 ]
