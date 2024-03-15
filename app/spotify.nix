@@ -12,7 +12,7 @@ in
     enable = true;
 
     enabledCustomApps = with spicePkgs.apps; [
-      lyrics-plus
+      #lyrics-plus
     ];
     enabledExtensions = with spicePkgs.extensions; [
       fullAppDisplayMod
