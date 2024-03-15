@@ -4,16 +4,17 @@
   imports = [
     ./discord.nix
     ./emacs
+    ./feh
     ./jetbrains.nix
     ./kitty
-    ./lutris
+    ./nemo.nix
     ./nvim
     ./obs.nix
     ./protonmail.nix
     ./rofi.nix
     ./spotify.nix
     ./unison.nix
-    ./feh
+    ./wine
   ];
 
   home.packages = with pkgs; [
@@ -37,7 +38,6 @@
     okular
     zotero  # Source finder application
     #gnome.nautilus
-    cinnamon.nemo-with-extensions
     insomnia  # API debugging tool
     libreoffice
     protontricks
@@ -46,6 +46,6 @@
     ark
     nicotine-plus
     kdenlive
-    blender
+    blender-hip
   ];
 }
