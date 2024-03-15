@@ -28,9 +28,7 @@
     chromium
     neofetch
     discord-canary
-    (element-desktop.override (_: {
-      electron = pkgs.electron-bin;  # White screen issue on official pkgs
-    }))
+    element-desktop
     microsoft-edge-dev
     godot_4
     steam
