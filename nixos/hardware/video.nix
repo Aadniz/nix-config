@@ -14,9 +14,9 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      extraPackages = [
-        pkgs.rocmPackages.clr.icd
-        pkgs.rocmPackages.clr
+      extraPackages = with pkgs; [
+        rocmPackages.clr.icd
+        rocmPackages.clr
       ];
     };
   };
