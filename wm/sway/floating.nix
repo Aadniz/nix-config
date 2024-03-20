@@ -30,6 +30,7 @@
   {title="Developer Tools —";}
   { instance = "Godot_ProjectList"; }
   { instance = "Godot_Engine"; }
+  { class = "Godot"; }
   {app_id="xdg-desktop-portal-gtk";}
   {app_id="xdg-desktop-portal";}
   {app_id="nemo";}
