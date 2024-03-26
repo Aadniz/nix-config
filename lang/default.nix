@@ -10,5 +10,6 @@
     nodejs
     bun
     gnumake
+    python310Packages.python-lsp-server
   ];
 }
