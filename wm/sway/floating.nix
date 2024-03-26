@@ -34,4 +34,5 @@
   {app_id="xdg-desktop-portal-gtk";}
   {app_id="xdg-desktop-portal";}
   {app_id="nemo";}
+  {app_id="file-roller";}
 ]
