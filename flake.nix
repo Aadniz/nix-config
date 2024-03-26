@@ -53,7 +53,7 @@
       nix = lib.nixosSystem {
         inherit system;
         modules = [ ./nixos/configuration.nix privateSystem ];
-        specialArgs = { inherit username wm inputs; };
+        specialArgs = { inherit username hostname wm inputs; };
       };
     };
 

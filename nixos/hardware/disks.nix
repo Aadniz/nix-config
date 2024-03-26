@@ -1,4 +1,4 @@
-{ config, lib, pkgs, username, ... }:
+{ config, lib, pkgs, username, hostname, ... }:
 let
   archDisk = {
     mountLocation = "/mnt/arch";
@@ -13,6 +13,21 @@ let
   };
 in
 {
+  # Remote decryption (for practicing nixos)
+  boot.kernelParams = [ "ip=192.168.111.111::192.168.111.1:255.255.255.0:${hostname}:enp38s0:none" ];
+  boot.initrd.availableKernelModules = [ "r8169" "igb" ];
+  boot.initrd.network = {
+    enable = true;
+    ssh = {
+      enable = true;
+      shell = "/bin/cryptsetup-askpass";
+      authorizedKeys = [
+        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCXbtRp0AHkf48ML3xukFzCnQJOeBO9G/mKgKjhHctsMbtlqUk8cwpHp91Jyd3Hz8a84irJnksP59PalTmJrOUk7pob+7WrqUGY3R+nby3U+zUNFTXBy/z3oHeUrgoEXbAPeejS/m2bW7rnq+RARViU0rWM1rw691R8YO+g4S1epxMEEp13/m2OPTTMHwVYlDDwSJ7PApSEYYZ28wRAf9meYP+AO/CtTVlu+vSLpt4k6kEbQYXoNnEEQlbGcrxyNBiPKonpLUXegBX6tlPW79TnrqSp6YZ/mPqeBaPQERQkuVRPejxfaAHUCzdCeax5gwqbQeu06qhR9zWkJVM4xpe5KxYAOyaCePp8RU8qEeqHdBflzSkTouKjdzpCc3gCQU7y4IzXa3fOEwQOZHgsQXdvI0/dH9h71AxD9fLddjAqAcRa/JvJriSHVh1sWnZPxVsC2UDbbL8pfCEbp6wjZqYU7Yc8iHbnnPKyfisOJc9JERkxK327+MyQBf8TiOIm//M= pi@raspberrypi"
+      ];
+      hostKeys = ["/etc/secrets/initrd/id_ed25519"];
+    };
+  };
+
   # Old Arch
   boot.initrd.luks.devices."dm_crypt" = {
     device = "/dev/disk/by-uuid/1bd7c6a2-7c96-4395-b14a-bbf7d8e5577e";
