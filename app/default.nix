@@ -38,6 +38,7 @@
     #gnome.nautilus
     insomnia  # API debugging tool
     libreoffice
+    mpv
     protontricks
     deluge-gtk
     p7zip
