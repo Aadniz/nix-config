@@ -29,7 +29,7 @@
     neofetch
     discord-canary
     element-desktop
-    microsoft-edge-dev
+    microsoft-edge
     godot_4
     steam
     tor-browser
