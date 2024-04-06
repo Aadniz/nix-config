@@ -1,6 +1,7 @@
 [
   {class="Vlc";}
   {class="vlc";}
+  {app_id="mpv";}
   {class="feh";}
   {class="Insomnia";}
   {class="steam";}
@@ -35,4 +36,5 @@
   {app_id="xdg-desktop-portal";}
   {app_id="nemo";}
   {app_id="file-roller";}
+  { class="Matplotlib"; }
 ]
