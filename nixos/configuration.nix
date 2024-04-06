@@ -7,14 +7,15 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./security/sshd.nix
       ./app
-      ./wm
-      ./shell
-      ./misc
+      ./bluetooth
       ./hardware
+      ./hardware-configuration.nix
+      ./misc
       ./networking
+      ./security/sshd.nix
+      ./shell
+      ./wm
     ];
 
   # Bootloader.
