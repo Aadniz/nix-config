@@ -35,7 +35,7 @@ in
     wl-clipboard
     xdg-utils
     gnome3.adwaita-icon-theme
-    config.nur.repos."999eagle".swayaudioidleinhibit
+    sway-audio-idle-inhibit
     swaylock
   ];
 
@@ -67,7 +67,6 @@ in
 
       startup = [
         {command = "${pkgs.swaysome}/bin/swaysome init 1";}
-        {command = "${config.nur.repos."999eagle".swayaudioidleinhibit}/bin/sway-audio-idle-inhibit"; }
       ];
 
       #floating.criteria = [
@@ -134,5 +133,22 @@ in
         ${modifier}+button5 gaps inner current minus 5
       }
     '';
+  };
+
+  # Prevent locking when audio is playing
+  systemd.user.services."sway-audio-idle-inhibit" = {
+    Unit = {
+      Description = "Inhibit audio idle suspend";
+      After = [ "graphical-session-pre.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+
+    Service = {
+      ExecStart =
+        "${pkgs.sway-audio-idle-inhibit}/bin/sway-audio-idle-inhibit";
+      Restart = "on-failure";
+    };
+
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 }
