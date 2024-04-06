@@ -11,5 +11,7 @@
     bun
     gnumake
     python310Packages.python-lsp-server
+    php
+    nodePackages.prettier
   ];
 }
