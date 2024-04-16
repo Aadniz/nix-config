@@ -82,35 +82,31 @@ in
      colors.focused = {
        border = theme.primary;
        background = theme.primary;
-       text = theme.primary;  # Invisible
-       #text = theme.background;
+       text = theme.background;
        indicator = theme.primary;
        childBorder = theme.primary;
      };
      colors.unfocused = {
        border = theme.background;
        background = theme.background;
-       text = theme.background;  # Invisible
-       #text = theme.foreground;
+       text = theme.foreground;
        indicator = theme.background;
        childBorder = theme.background;
      };
      colors.focusedInactive = {
        border = theme.background;
        background = theme.background;
-       text = theme.background;  # Invisible
-       #text = theme.foreground;
+       text = theme.foreground;
        indicator = theme.background;
        childBorder = theme.background;
      };
-      colors.urgent = {
-        border = theme.secondary;
-        background = theme.secondary;
-        text = theme.secondary;  # Invisible
-        #text = theme.background;
-        indicator = theme.secondary;
-        childBorder = theme.background;
-      };
+     colors.urgent = {
+       border = theme.secondary;
+       background = theme.secondary;
+       text = theme.background;
+       indicator = theme.secondary;
+       childBorder = theme.background;
+     };
 
       modes.resize = {
         Left = "resize shrink width 10px";
@@ -125,9 +121,7 @@ in
       floating_minimum_size 250 x 100
       title_align center
       smart_borders on
-      default_border normal 10
-      titlebar_padding 4
-      font pango:monospace 1
+      default_border normal 4
       bindsym --whole-window {
         ${modifier}+button4 gaps inner current plus 5
         ${modifier}+button5 gaps inner current minus 5
