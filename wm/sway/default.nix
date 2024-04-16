@@ -121,6 +121,7 @@ in
       floating_minimum_size 250 x 100
       title_align center
       smart_borders on
+      titlebar_padding 1
       default_border normal 4
       bindsym --whole-window {
         ${modifier}+button4 gaps inner current plus 5
