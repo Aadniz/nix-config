@@ -5,14 +5,14 @@
     ./discord.nix
     ./emacs
     ./feh
-    ./jetbrains.nix
+#    ./jetbrains.nix
     ./kitty
     ./nemo.nix
     ./nvim
     ./obs.nix
     ./protonmail.nix
     ./rofi.nix
-    ./spotify.nix
+#    ./spotify.nix
     ./unison.nix
     ./wine
   ];
