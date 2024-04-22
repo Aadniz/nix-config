@@ -8,43 +8,27 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
+  boot.initrd.luks.devices."luks-7a6c12af-b050-40fe-ac96-124538dfc122".device = "/dev/disk/by-uuid/7a6c12af-b050-40fe-ac96-124538dfc122";
+
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  hardware.opengl = {
-    # Mesa
-    enable = true;
-
-    # Vulkan
-    driSupport = true;
-
-    # Some other stuff?
-    driSupport32Bit = true;
-    extraPackages = with pkgs; [
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-    extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
-    setLdLibraryPath = true;
-  };
-
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/946fedd9-e213-4299-b2f9-8ed2116159e1";
+    { device = "/dev/disk/by-uuid/5782e1d1-4145-476b-8d41-097896242b21";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."luks-db6b7f07-53d6-4602-87ae-2b8e1c405ea7".device = "/dev/disk/by-uuid/db6b7f07-53d6-4602-87ae-2b8e1c405ea7";
-  boot.initrd.luks.devices."luks-13fb18db-3f3b-4863-b6cd-41972e738bc1".device = "/dev/disk/by-uuid/13fb18db-3f3b-4863-b6cd-41972e738bc1";
+  boot.initrd.luks.devices."luks-8b6ff769-e22d-4656-9561-bb4efdb72baf".device = "/dev/disk/by-uuid/8b6ff769-e22d-4656-9561-bb4efdb72baf";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/41E5-3FFC";
+    { device = "/dev/disk/by-uuid/70F6-725B";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/2ff83485-f284-475c-9d52-bed9393907d2"; }
+    [ { device = "/dev/disk/by-uuid/62f10e93-a230-452e-bcca-6d2bd229e2f9"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -53,7 +37,7 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp38s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces."enp42s0f3u6u3".useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp39s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

@@ -9,16 +9,23 @@
   boot.initrd.kernelModules = ["amdgpu"];
   services.xserver.videoDrivers = ["amdgpu"];
 
-  hardware = {
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        rocmPackages.clr.icd
-        rocmPackages.clr
-      ];
-    };
+  hardware.opengl = {
+    # Mesa
+    enable = true;
+
+    # Vulkan
+    driSupport = true;
+
+    # Some other stuff?
+    driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau
+      libvdpau-va-gl
+      rocmPackages.clr.icd
+      rocmPackages.clr
+    ];
+    extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
+    setLdLibraryPath = true;
   };
 
   services.amdgpu-fan = {
