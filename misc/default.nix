@@ -5,6 +5,7 @@
     ./scripts
     ./fcitx5.nix
     ./gtk.nix
+    ./kde.nix
   ];
 
 

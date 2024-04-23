@@ -22,7 +22,7 @@
     git
     gotop
     btop
-    elisa
+    kdePackages.elisa
     zoom-us # Not pkgs.zoom
     krita
     chromium
