@@ -1,6 +1,6 @@
 { pkgs, config, lib, name, hostname, username, email, wm, wallpaper, theme, dotfilesDir, ... }:
 let
-  splash-image = ./assets/102591953_p0_edited2_icon.png;
+  splash-image = ./assets/TransparentGNU2.png;#102591953_p0_edited2_icon.png;
 in
 {
 
