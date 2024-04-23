@@ -15,6 +15,7 @@
     inetutils  # Telnet
     pciutils
     killall
+    ncdu
   ];
 
   services = {
