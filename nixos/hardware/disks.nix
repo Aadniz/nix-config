@@ -1,16 +1,37 @@
 { config, lib, pkgs, username, hostname, ... }:
 let
-  archDisk = {
-    mountLocation = "/mnt/arch";
-    device = "/dev/disk/by-uuid/b258429b-2584-4825-9d8f-c2c9043fb1cf";
+  bigDisk = {
+    mountLocation = "/mnt/bigdata";
+    bindDir = "/home/${username}";
+    device = "/dev/disk/by-uuid/4367cd83-4a0c-460e-add8-82a3a5fb3bb1";
     fsType = "ext4";
     mountDirs = [
-      "Pictures" "Music" "Documents" "Videos" "Webservers" "Games"
-      "AndroidStudioProjects" "Blender" "CLionProjects" "DataGripProjects"
-      "GolandProjects" "IdeaProjects" "NetBeansProjects" "PycharmProjects"
-      "RiderProjects" "RustroverProjects" "WebstormProjects" "Unity"
+      "Music" "Videos" "Games" "Blender" "Unity" "Downloads"
     ];
   };
+  disk500 = {
+    mountLocation = "/mnt/500";
+    bindDir = "/home/${username}";
+    device = "/dev/disk/by-uuid/946fedd9-e213-4299-b2f9-8ed2116159e1";
+    fsType = "ext4";
+    mountDirs = [
+      "Jetbrains"
+    ];
+  };
+
+  # Function to generate filesystem configuration for a disk
+  genFsConfig = disk: {
+    "${disk.mountLocation}" = {
+      device = disk.device;
+      fsType = disk.fsType;
+    };
+  } // builtins.listToAttrs (map (dir: {
+    name = "${disk.bindDir}/${dir}";
+    value = {
+      device = "${disk.mountLocation}/${dir}";
+      options = [ "bind" ];
+    };
+  }) disk.mountDirs);
 in
 {
   # Remote decryption (for practicing nixos)
@@ -28,10 +49,9 @@ in
     };
   };
 
-  # Old Arch
+  # 500 GB disk
   boot.initrd.luks.devices."dm_crypt" = {
-    device = "/dev/disk/by-uuid/1bd7c6a2-7c96-4395-b14a-bbf7d8e5577e";
-    preLVM = true;
+    device = "/dev/disk/by-uuid/db6b7f07-53d6-4602-87ae-2b8e1c405ea7";
   };
 
   # BigData
@@ -41,21 +61,6 @@ in
   };
 
   fileSystems = {
-    "${archDisk.mountLocation}" = {
-      device = archDisk.device;
-      fsType = archDisk.fsType;
-    };
-
-    # The chonky 4 TB disk
-    "/mnt/bigdata" = {
-      device = "/dev/disk/by-uuid/4367cd83-4a0c-460e-add8-82a3a5fb3bb1";
-      fsType = "ext4";
-    };
-    "/home/${username}/Downloads" = {
-      device = "/mnt/bigdata/Downloads";
-      options = [ "bind" ];
-    };
-
     # The very very old Windows filesystem
     "/mnt/windows/GAMES" = {
       device = "/dev/disk/by-uuid/CA72F14B72F13D2F";
@@ -65,16 +70,7 @@ in
       device = "/dev/disk/by-uuid/34DEF1B3DEF16E0C";
       fsType = "ntfs";
     };
-  }
-
-  # This maps all /mnt/arch/{Pictures, Music, Documents, ...} to ~/{Pictures, Music, Documents, ...}
-  // builtins.listToAttrs (map (dir: {
-    name = "/home/${username}/${dir}";
-    value = {
-      device = "${archDisk.mountLocation}/home/chiya/${dir}";
-      options = [ "bind" ];
-    };
-  }) archDisk.mountDirs);
+  } // genFsConfig bigDisk // genFsConfig disk500;
 
   # No need to preserve whats in /tmp
   boot.tmp.cleanOnBoot = true;
