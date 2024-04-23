@@ -14,7 +14,7 @@ in {
       })
     ];
     home.activation.discordSettings = let
-      css = ''
+      css = /* css */ ''
 :root {
   /* set to 'unset' to show */
   --scrollbars: none;
@@ -218,6 +218,9 @@ div[class^="profileEffects_"] {
   display: none;
 }
 div[class*="buttons_"] > div[aria-label*="Nitro"] {
+  display: none;
+}
+div[class*="premiumTrialAcknowledgedBadge_"] {
   display: none;
 }
       '';
