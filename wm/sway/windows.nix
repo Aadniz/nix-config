@@ -13,7 +13,7 @@
       criteria = {
         app_id = "msedge-www.bing.com__search-Default";
       };
-      command = "move scratchpad, resize set 1200 px 1300 px, scratchpad show";
+      command = "move scratchpad, resize set 1200 px 1300 px, border pixel, scratchpad show";
     }
     {
       criteria = {
@@ -25,7 +25,13 @@
       criteria = {
         app_id="floatingKitty";
       };
-      command = "floating enable, resize set 1300 px 800 px";
+      command = "floating enable, resize set 1300 px 800 px, border pixel";
+    }
+    {
+      criteria = {
+        app_id = "nemo";
+      };
+      command = "floating enable, resize set 1300 px 800 px, border pixel";
     }
   ];
 }
