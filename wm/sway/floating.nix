@@ -34,7 +34,8 @@
   { class = "Godot"; }
   {app_id="xdg-desktop-portal-gtk";}
   {app_id="xdg-desktop-portal";}
-  {app_id="nemo";}
   {app_id="file-roller";}
   { class="Matplotlib"; }
+  {app_id="nemo";}
+  {app_id="msedge-www.bing.com__search-Default";}
 ]

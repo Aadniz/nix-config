@@ -31,7 +31,7 @@
       criteria = {
         app_id = "nemo";
       };
-      command = "floating enable, resize set 1300 px 800 px, border pixel";
+      command = "move scratchpad, resize set 1300 px 800 px, border pixel, scratchpad show";
     }
   ];
 }
