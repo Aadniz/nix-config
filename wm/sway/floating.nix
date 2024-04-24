@@ -1,8 +1,6 @@
 [
   {class="Vlc";}
   {class="vlc";}
-  {app_id="mpv";}
-  {class="feh";}
   {class="Insomnia";}
   {class="steam";}
   {class="Mario spel";}

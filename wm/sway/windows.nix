@@ -29,6 +29,18 @@
     }
     {
       criteria = {
+        app_id="mpv";
+      };
+      command = "floating enable, border pixel";
+    }
+    {
+      criteria = {
+        class="feh";
+      };
+      command = "floating enable, border pixel";
+    }
+    {
+      criteria = {
         app_id = "nemo";
       };
       command = "move scratchpad, resize set 1300 px 800 px, border pixel, scratchpad show";
