@@ -20,6 +20,7 @@ in
     dmenu
     firefox-wayland
     flameshot
+    gnome3.adwaita-icon-theme
     grim
     i3blocks
     pamixer
@@ -27,16 +28,16 @@ in
     qt5.qtwayland
     slurp
     swappy
+    sway-audio-idle-inhibit
     sway-contrib.grimshot
     swayidle
+    swaylock
     swaysome
     waypipe
     wf-recorder
     wl-clipboard
+    wofi
     xdg-utils
-    gnome3.adwaita-icon-theme
-    sway-audio-idle-inhibit
-    swaylock
   ];
 
   programs.zsh.loginExtra = ''
