@@ -10,8 +10,6 @@
 in {
   # https://github.com/water-sucks/nixed/blob/ee7dbd01480d7fea173b050f2a757de2f3665ed1/home/profiles/graphical/fcitx5.nix
   home.sessionVariables = {
-    GTK_IM_MODULE = "fcitx";
-    QT_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
     SDL_IM_MODULE = "fcitx";
     GLFW_IM_MODULE = "ibus"; # Fcitx5 has an IBus emulation mode, this is for IME in kitty to work.
