@@ -5,46 +5,47 @@
     ./discord.nix
     ./emacs
     ./feh
-#    ./jetbrains.nix
+#    ./jetbrains.nix  # Just doesn't work well with nixos
     ./kitty
     ./nemo.nix
     ./nvim
     ./obs.nix
     ./protonmail.nix
     ./rofi.nix
-#    ./spotify.nix
+    ./spotify.nix
     ./unison.nix
     ./wine
   ];
 
   home.packages = with pkgs; [
+    #gnome.nautilus
     R  # Calculator
-    git
-    gotop
+    ark
+    blender-hip
     btop
-    kdePackages.elisa
-    zoom-us # Not pkgs.zoom
-    krita
     chromium
-    neofetch
+    deluge-gtk
     discord-canary
     element-desktop
-    microsoft-edge
+    git
     godot_4
+    gotop
+    insomnia  # API debugging tool
+    kdePackages.elisa
+    kdenlive
+    krita
+    libreoffice
+    microsoft-edge
+    mpv
+    neofetch
+    nicotine-plus
+    okular
+    p7zip
+    protontricks
     steam
     tor-browser
-    okular
+    yazi
+    zoom-us # Not pkgs.zoom
     zotero  # Source finder application
-    #gnome.nautilus
-    insomnia  # API debugging tool
-    libreoffice
-    mpv
-    protontricks
-    deluge-gtk
-    p7zip
-    ark
-    nicotine-plus
-    kdenlive
-    blender-hip
   ];
 }
