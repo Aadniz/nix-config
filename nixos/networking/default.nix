@@ -33,5 +33,5 @@
    prefixLength = 24;
  } ];
  networking.defaultGateway = "192.168.111.1";
- networking.nameservers = ["95.215.19.53" "9.9.9.9"];
+ networking.nameservers = [ "9.9.9.9" "95.215.19.53" ];
 }
