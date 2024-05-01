@@ -5,7 +5,6 @@
     ./discord.nix
     ./emacs
     ./feh
-#    ./jetbrains.nix  # Just doesn't work well with nixos
     ./kitty
     ./nemo.nix
     ./nvim
@@ -15,13 +14,13 @@
     ./spotify.nix
     ./unison.nix
     ./wine
+#    ./jetbrains.nix  # Just doesn't work well with nixos
   ];
 
   home.packages = with pkgs; [
     #gnome.nautilus
     R  # Calculator
     ark
-    weechat
     blender-hip
     chromium
     deluge-gtk
@@ -34,15 +33,16 @@
     kdenlive
     krita
     libreoffice
-    microsoft-edge
     mpv
     neofetch
+    nicotine-plus
     nicotine-plus
     okular
     p7zip
     protontricks
     steam
     tor-browser
+    weechat
     yazi
     zoom-us # Not pkgs.zoom
     zotero  # Source finder application
