@@ -21,15 +21,14 @@
     #gnome.nautilus
     R  # Calculator
     ark
+    weechat
     blender-hip
-    btop
     chromium
     deluge-gtk
     discord-canary
     element-desktop
     git
     godot_4
-    gotop
     insomnia  # API debugging tool
     kdePackages.elisa
     kdenlive

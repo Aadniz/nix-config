@@ -15,7 +15,7 @@
     username = "chiya"; # username
     name = "Chiya"; # name/identifier
     email = "pus@null.net"; # email (used for certain configurations)
-    dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
+    dotfilesDir = "/home/${username}/.dotfiles"; # absolute path of the local repo
     term = "kitty"; # Default terminal command;
     wm = "sway";
     wallpaper = ./wallpapers/kitan_5980_upscaled.jpg; # TODO: Would wish to go outside of scope if possible here
@@ -50,10 +50,10 @@
 
     # The system configuration
     nixosConfigurations = {
-      nix = lib.nixosSystem {
+      ${hostname} = lib.nixosSystem {
         inherit system;
         modules = [ ./nixos/configuration.nix privateSystem ];
-        specialArgs = { inherit username hostname wm inputs; };
+        specialArgs = { inherit username hostname wm inputs dotfilesDir; };
       };
     };
 

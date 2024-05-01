@@ -2,25 +2,24 @@
 
 {
   imports = [
-    ./scripts
     ./fcitx5.nix
     ./gtk.nix
     ./kde.nix
+    ./scripts
   ];
 
 
   home.packages = with pkgs; [
+    bc
+    direnv
     ffmpeg
     file
-    bc
+    htop
+    ibus
     jq
     mpd
-    ibus
-    htop
-    termdown
-    python3
-    poetry
-    direnv
     prettyping
+    python3
+    termdown
   ];
 }
