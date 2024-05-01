@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./wireshark.nix
     ./wireguard.nix
+    ./wireshark.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -17,6 +17,9 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  # Disable firewall
+  networking.firewall.enable = false;
 
   # Setup use of br0 instead of raw interface
   networking.useDHCP = false;
