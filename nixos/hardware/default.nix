@@ -4,5 +4,6 @@
   imports = [
     ./video.nix
     ./disks.nix
+    ./kernel.nix
   ];
 }
