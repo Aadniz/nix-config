@@ -41,10 +41,10 @@ in
         name = "bullet-train";
         file = "bullet-train.zsh-theme";
         src = pkgs.fetchFromGitHub {
-          owner = "caiogondim";
+          owner = "Aadniz";
           repo = "bullet-train.zsh";
-          rev = "d60f62c34b3d9253292eb8be81fb46fa65d8f048";
-          sha256 = "sha256-EsoCrKXmAfhSNFvUka+BglBDXM1npef4ddg7SVScxSs=";
+          rev = "8e37c3ab69d4b54bef809508296ae3d9fa1f6a19";
+          sha256 = "sha256-wDmdGcP8TTcca9mOiuaS8Skyk8qXGDCjbXOlikGi/Dw=";
         };
       }
     ];
