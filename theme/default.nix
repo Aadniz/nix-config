@@ -2,7 +2,7 @@
 
 let
   wallpaperInStore = pkgs.copyPathToStore wallpaper;
-  seed = 5;
+  seed = 3;
 
   dominant_colours = pkgs.rustPlatform.buildRustPackage rec {
     name = "dominant_colours";
@@ -29,7 +29,12 @@ let
     export HOME=$(pwd)
     export XDG_CACHE_HOME=$(pwd)
     export XDG_CONFIG_HOME=$(pwd)
-    ${dominant_colours}/bin/dominant_colours ${wallpaperInStore} --terminal-colours --seed ${toString seed} --no-palette --max-brightness > colors.txt
+    ${dominant_colours}/bin/dominant_colours ${wallpaperInStore} \
+        --seed ${toString seed} \
+        --no-palette \
+        --max-colours 128 \
+        --max-brightness \
+        --terminal-colours > colors.txt
     echo '{' > colors.json
     for i in {0..15}
     do
