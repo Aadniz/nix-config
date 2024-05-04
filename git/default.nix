@@ -9,6 +9,8 @@
       color.ui = true;
       core.askPass = ""; # needs to be empty to use terminal for ask pass
       credential.helper = "store"; # This is not any secure at all!!
+      http.postBuffer = 524288000;
+      ssh.postBuffer = 524288000;
     };
   };
 
