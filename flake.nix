@@ -18,14 +18,14 @@
     dotfilesDir = "/home/${username}/.dotfiles"; # absolute path of the local repo
     term = "kitty"; # Default terminal command;
     wm = "sway";
-    wallpaper = ./wallpapers/118359576_p0.png; #kitan_5980_upscaled.jpg; # TODO: Would wish to go outside of scope if possible here
+    wallpaper = ./wallpapers/023_KonekoMari_L.jpg; #kitan_5980_upscaled.jpg; # TODO: Would wish to go outside of scope if possible here
 
     privateSystem = "${inputs.private}/system";
     privateHome = "${inputs.private}/home";
 
     # Out of the colors generated from pywal, which one should be used to what?
-    primary = 10;
-    secondary = 9;
+    primary = 9;
+    secondary = 10;
     third = 11;
     foreground = 15;
     background = 0;
