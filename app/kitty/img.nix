@@ -8,7 +8,7 @@ python3Packages.buildPythonApplication rec {
     owner = "Aadniz";
     repo = pname;
     rev = "master";
-    sha256 = "vbl5R854AnjCkL+RAm7ottqA1ITDiUMcxD6jRCE5LKQ=";
+    sha256 = "9hQaLLBaEGRv2R1O1tsMaOdezqOJPBEbmyg69ta47+s=";
   };
 
   format = "other";
