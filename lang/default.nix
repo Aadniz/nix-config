@@ -10,7 +10,7 @@
     nodejs
     bun
     gnumake
-    python310Packages.python-lsp-server
+    # python310Packages.python-lsp-server  # Broken
     php
     nodePackages.prettier
   ];
