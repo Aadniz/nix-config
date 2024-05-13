@@ -4,10 +4,6 @@ let
   lockCommand = ''${pkgs.swaylock}/bin/swaylock -f -c 000000 --line-color "${theme.background}" --ring-color "${theme.background}" --key-hl-color "${theme.primary}" --inside-color 000000'';
   # Default movement keys (arrow keys, TKL keyboard)
   modifier = "Mod4";
-  left = "Left";
-  down = "Down";
-  up = "Up";
-  right = "Right";
   # Generate a list of lists, each inner list containing a key(number) and workspace
   workspaces = lib.genList (x: [(toString (x)) (toString (x))]) 10;
   numpad = {
@@ -44,7 +40,7 @@ in
     "${modifier}+Ctrl+KP_Enter" = "exec ${term} --class floatingKitty";
     "${modifier}+Escape" = "kill";
     "${modifier}+Delete" = "kill";
-    "${modifier}+q" = "exec ${pkgs.rofi}/bin/rofi -show drun";
+    "${modifier}+q" = "exec ${lib.getExe pkgs.wofi} --insensitive --show drun";
     "${modifier}+Shift+c" = "reload";
     "${modifier}+space" = "floating toggle";
     "${modifier}+Backspace" = "exec ${lockCommand}";
@@ -58,14 +54,22 @@ in
     "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous && pkill -RTMIN+10 i3blocks";
 
     # Moving focus
-    "${modifier}+${left}" = "focus left";
-    "${modifier}+${down}" = "focus down";
-    "${modifier}+${up}" = "focus up";
-    "${modifier}+${right}" = "focus right";
-    "${modifier}+Shift+${left}" = "move left";
-    "${modifier}+Shift+${down}" = "move down";
-    "${modifier}+Shift+${up}" = "move up";
-    "${modifier}+Shift+${right}" = "move right";
+    "${modifier}+Left" = "focus left";
+    "${modifier}+Down" = "focus down";
+    "${modifier}+Up" = "focus up";
+    "${modifier}+Right" = "focus right";
+    "${modifier}+h" = "focus left";
+    "${modifier}+j" = "focus down";
+    "${modifier}+k" = "focus up";
+    "${modifier}+l" = "focus right";
+    "${modifier}+Shift+Left" = "move left";
+    "${modifier}+Shift+Down" = "move down";
+    "${modifier}+Shift+Up" = "move up";
+    "${modifier}+Shift+Right" = "move right";
+    "${modifier}+Shift+h" = "move left";
+    "${modifier}+Shift+j" = "move down";
+    "${modifier}+Shift+k" = "move up";
+    "${modifier}+Shift+l" = "move right";
     "Alt+Tab" = "workspace back_and_forth";
     "${modifier}+Tab" = "workspace next_on_output";
     "${modifier}+a" = "focus parent";
