@@ -43,8 +43,8 @@ in
         src = pkgs.fetchFromGitHub {
           owner = "Aadniz";
           repo = "bullet-train.zsh";
-          rev = "8e37c3ab69d4b54bef809508296ae3d9fa1f6a19";
-          sha256 = "sha256-wDmdGcP8TTcca9mOiuaS8Skyk8qXGDCjbXOlikGi/Dw=";
+          rev = "d566ed5e1a48507ef1c04da2b194bda14e07dbe7";
+          sha256 = "sha256-hK43dI47yLXKGs2TuKoTrchkoHg1+pUtwR8LtQQplk4=";
         };
       }
     ];
@@ -74,7 +74,8 @@ in
       export BULLETTRAIN_CUSTOM_MSG=千屋
       export BULLETTRAIN_DIR_BG=${theme.color8}
       export BULLETTRAIN_DIR_FG=${theme.foreground}
-      export BULLETTRAIN_STATUS_ERROR_BG=${theme.color8}
+      export BULLETTRAIN_STATUS_ERROR_BG=${theme.primary}
+      export BULLETTRAIN_STATUS_ERROR_FG=#FF0000
       export BULLETTRAIN_STATUS_BG=${theme.color8}
     '';
 
