@@ -40,11 +40,6 @@ in
     xdg-utils
   ];
 
-  programs.zsh.loginExtra = ''
-    if [[ -z $DISPLAY ]] && [[ $(tty) = "/dev/tty1" ]]; then
-      exec ${pkgs.sway}/bin/sway
-    fi
-  '';
 
   # Mako systemd service.
   wayland.windowManager.sway = {

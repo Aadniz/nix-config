@@ -4,11 +4,11 @@
 
   home.packages = with pkgs; [
     protonmail-bridge
-    gnome.gnome-keyring
+    #gnome.gnome-keyring
     pass
   ];
 
-  systemd.user.services.gnome3.gnome-keyring.enable = true;
+  #systemd.user.services.gnome3.gnome-keyring.enable = true;
 
   systemd.user.services = {
     protonmail-bridge = {

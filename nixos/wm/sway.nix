@@ -1,4 +1,4 @@
-{ config, lib, pkgs, wm, ... }:
+{ config, lib, pkgs, wm, username, ... }:
 let
   # bash script to let dbus know about important env variables and
   # propagate them to relevent services run at the end of sway config
@@ -78,6 +78,11 @@ in
     # gtk portal needed to make gtk apps happy
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
+
+  # Needed for autologin
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = username;
+  services.displayManager.defaultSession = "sway";
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 

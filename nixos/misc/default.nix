@@ -18,8 +18,11 @@
     ncdu
   ];
 
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
+
   services = {
     # Needed occasionally to help the parental units with PC problems
-    #teamviewer.enable = true;
+    teamviewer.enable = true;
   };
 }
