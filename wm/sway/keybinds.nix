@@ -76,8 +76,8 @@ in
     "${modifier}+d" = "focus mode_toggle";
 
     # Scratchpad
-    "${modifier}+Shift+minus" = "move scratchpad";
-    "${modifier}+minus" = "scratchpad show";
+    "${modifier}+z+minus" = "move scratchpad";
+    "${modifier}+z" = "scratchpad show";
 
     # Screenshot
     "Print" = ''exec wl-copy < $(${pkgs.sway-contrib.grimshot}/bin/grimshot save area "$HOME/Pictures/Shutter/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png")'';
