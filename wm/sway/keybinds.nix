@@ -76,7 +76,7 @@ in
     "${modifier}+d" = "focus mode_toggle";
 
     # Scratchpad
-    "${modifier}+z+minus" = "move scratchpad";
+    "${modifier}+Shift+z" = "move scratchpad";
     "${modifier}+z" = "scratchpad show";
 
     # Screenshot
