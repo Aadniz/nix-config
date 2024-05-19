@@ -4,7 +4,6 @@
   imports = [
     ./virtualization
     ./amdgpu-fan
-    ./nh.nix
   ];
 
   environment.systemPackages = with pkgs; [

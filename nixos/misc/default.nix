@@ -3,10 +3,11 @@
 {
   imports = [
     ./audio.nix
-    ./netdata.nix
     ./dunst.nix
     ./fonts.nix
     ./ime.nix
+    ./netdata.nix
+    ./nh.nix
     ./v4l2loopback.nix
   ];
 
