@@ -29,6 +29,12 @@
     }
     {
       criteria = {
+        app_id="kitty-sway-launcher-desktop";
+      };
+      command = "floating enable, resize set 1300 px 800 px, border pixel";
+    }
+    {
+      criteria = {
         app_id="mpv";
       };
       command = "floating enable, border pixel";
