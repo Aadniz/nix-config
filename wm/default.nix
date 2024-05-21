@@ -11,7 +11,7 @@
         [ ];
     in
       wmConfig ++ [
-        #./pinnacle.nix
+        ./pinnacle
       ];
 
   home.packages = with pkgs; [

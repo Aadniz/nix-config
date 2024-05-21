@@ -13,7 +13,7 @@ in
         [ ];
     in
       wmConfig ++ [
-        #./pinnacle.nix
+        ./pinnacle.nix
       ];
 
   services.greetd = {

@@ -78,6 +78,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
     rust-overlay.url = "github:oxalica/rust-overlay";
+    pinnacle.url = "github:pinnacle-comp/pinnacle";
     nur.url = "github:nix-community/NUR";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {

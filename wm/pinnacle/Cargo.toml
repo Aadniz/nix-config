@@ -1,0 +1,9 @@
+[package]
+name = "pinnacle-config"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+pinnacle-api = { git = "http://github.com/pinnacle-comp/pinnacle" }
+taps = "0.2.2"
+tokio = { version = "1.37.0", features = ["sync"] }
