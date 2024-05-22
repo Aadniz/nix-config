@@ -11,7 +11,6 @@
   boot.extraModprobeConfig ="options vfio-pci ids=10de:13ba,10de:0fbc";
 
   environment.systemPackages = with pkgs; [
-    virt-manager
     qemu
     OVMF
   ];
