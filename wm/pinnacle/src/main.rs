@@ -36,7 +36,7 @@ async fn main() {
     let terminal = "kitty";
 
     input.set_xkb_config(XkbConfig {
-        layout: Some("br"),
+        layout: Some("us"),
         ..Default::default()
     });
 
