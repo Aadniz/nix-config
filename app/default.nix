@@ -33,6 +33,7 @@
     kdenlive
     krita
     libreoffice
+    lutris
     mpv
     neofetch
     nicotine-plus
