@@ -10,6 +10,7 @@
     ./nvim
     ./obs.nix
     ./protonmail.nix
+    ./thunderbird.nix
     ./rofi.nix
     ./spotify.nix
     ./unison.nix

@@ -76,7 +76,6 @@
     packages = with pkgs; [
       tree
       zsh
-      thunderbird
     ];
     initialHashedPassword = "$6$m28ZHJp5bx7rIyJs$snUC6gI8q8XSiK/9EGnzDyuMTnMpKDCLjczHjbwZ23.QRTWtnzrmUTTz8O7eqgVsCJtWksFxjieCSFzqx8zwU.";
   };
