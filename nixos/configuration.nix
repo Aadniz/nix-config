@@ -13,6 +13,7 @@
       ./hardware-configuration.nix
       ./misc
       ./networking
+      ./nix
       ./security/sshd.nix
       ./shell
       ./wm
