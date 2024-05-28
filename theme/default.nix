@@ -12,10 +12,10 @@ let
       owner = "Aadniz";
       repo = name;
       rev = "theming";
-      sha256 = "i2RKUdLn5oxBvoaOpyfoZ6yruN3ca48IBq/shJaJmIY=";
+      sha256 = "sha256-on4Wt738v6uenHsic8vEMVlKXTJHt5W2hhvVnMiGfNs=";
     };
 
-    cargoSha256 = "MRzsxv8FsNyVbmOXZpoV0dPTLE5gX7msd1D/5Kqo8Sg=";
+    cargoSha256 = "lgzfMXS+Xnu1hXgQfd753P8jV/0MWxuo5hUpN2iVow8=";
 
     buildInputs = [ pkgs.gcc ];
 
