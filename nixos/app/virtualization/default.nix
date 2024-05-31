@@ -6,11 +6,6 @@
     ./gpu-passthrough.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    virtualbox
-    distrobox
-  ];
-
   programs.virt-manager.enable = true;
 
   virtualisation.libvirtd = {
@@ -21,5 +16,5 @@
     ];
     qemu.runAsRoot = false;
   };
-  boot.extraModulePackages = with config.boot.kernelPackages; [ virtualbox ];
+  #boot.extraModulePackages = with config.boot.kernelPackages; [ virtualbox ];
 }
