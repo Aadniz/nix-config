@@ -5,6 +5,7 @@
     input = {
       "type:keyboard" = {
         xkb_layout = "us";
+        xkb_variant = "altgr-intl";
         xkb_numlock = "enabled";
         xkb_options = "grp:win_space_toggle,caps:swapescape";
         repeat_delay = "200";
