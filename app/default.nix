@@ -3,6 +3,7 @@
 {
   imports = [
     ./discord.nix
+    ./element
     ./emacs
     ./feh
     ./kitty
@@ -10,16 +11,15 @@
     ./nvim
     ./obs.nix
     ./protonmail.nix
-    ./thunderbird.nix
     ./rofi.nix
     ./spotify.nix
+    ./thunderbird.nix
     ./unison.nix
     ./wine
 #    ./jetbrains.nix  # Just doesn't work well with nixos
   ];
 
   home.packages = with pkgs; [
-    #gnome.nautilus
     R  # Calculator
     anki
     ark
@@ -27,7 +27,6 @@
     chromium
     deluge-gtk
     discord-canary
-    element-desktop
     git
     godot_4
     insomnia  # API debugging tool
