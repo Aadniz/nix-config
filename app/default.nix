@@ -21,6 +21,7 @@
   home.packages = with pkgs; [
     #gnome.nautilus
     R  # Calculator
+    anki
     ark
     blender-hip
     chromium
