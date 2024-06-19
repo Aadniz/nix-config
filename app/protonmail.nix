@@ -8,8 +8,6 @@
     pass
   ];
 
-  systemd.user.services.gnome3.gnome-keyring.enable = true;
-
   systemd.user.services.protonmail-bridge = {
     Unit = {
       Description = "Protonmail Bridge";
