@@ -6,6 +6,7 @@
     ./element
     ./emacs
     ./feh
+    ./jetbrains.nix
     ./kitty
     ./nemo.nix
     ./nvim
@@ -16,7 +17,6 @@
     ./thunderbird.nix
     ./unison.nix
     ./wine
-#    ./jetbrains.nix  # Just doesn't work well with nixos
   ];
 
   home.packages = with pkgs; [
