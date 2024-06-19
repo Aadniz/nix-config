@@ -51,5 +51,17 @@
       };
       command = "move scratchpad, resize set 1300 px 800 px, border pixel, scratchpad show";
     }
+    {
+      criteria.app_id = "kitty";
+      command = "border pixel";
+    }
+    {
+      criteria.app_id = "discord";
+      command = "border pixel";
+    }
+    {
+      criteria.app_id = "Element";
+      command = "border pixel";
+    }
   ];
 }
