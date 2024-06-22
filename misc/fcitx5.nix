@@ -149,11 +149,11 @@ in {
       };
       "Hotkey/ActivateKeys" = {
         #"0" = "Control+<";
-        "0" = "Control+/";
+        "0" = "Control+\\\\";
       };
       "Hotkey/DeactivateKeys" = {
         #"0" = "Control+<";
-        "0" = "Control+/";
+        "0" = "Control+\\\\";
       };
     };
     "fcitx5/conf/classicui.conf".text = toINI' {
