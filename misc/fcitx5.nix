@@ -9,17 +9,18 @@
   toINI' = lib.generators.toINIWithGlobalSection {};
 in {
   # https://github.com/water-sucks/nixed/blob/ee7dbd01480d7fea173b050f2a757de2f3665ed1/home/profiles/graphical/fcitx5.nix
-  home.sessionVariables = {
-    XMODIFIERS = "@im=fcitx";
-    SDL_IM_MODULE = "fcitx";
-    GLFW_IM_MODULE = "ibus"; # Fcitx5 has an IBus emulation mode, this is for IME in kitty to work.
-  };
+  #home.sessionVariables = {
+  #  XMODIFIERS = "@im=fcitx";
+  #  SDL_IM_MODULE = "fcitx";
+  #  GLFW_IM_MODULE = "ibus"; # Fcitx5 has an IBus emulation mode, this is for IME in kitty to work.
+  #};
 
   i18n.inputMethod = {
     enabled = "fcitx5";
     fcitx5.addons = with pkgs; [
         fcitx5-mozc
         fcitx5-gtk
+        fcitx5-configtool
     ];
   };
   xdg.dataFile = {
