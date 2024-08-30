@@ -66,6 +66,7 @@ in
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
+    roboto
     source-code-pro
     source-han-sans
     source-han-sans-japanese

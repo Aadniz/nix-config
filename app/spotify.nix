@@ -3,10 +3,10 @@
 # https://github.com/LavaDesu/flakes/blob/ac103633d3483f2605f54c6af8c5c1478efbe062/modules/user/spicetify.nix
 
 let
-  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in
 {
-  imports = [ inputs.spicetify-nix.homeManagerModule ];
+  imports = [ inputs.spicetify-nix.homeManagerModules.default ];
 
   programs.spicetify = {
     enable = true;
