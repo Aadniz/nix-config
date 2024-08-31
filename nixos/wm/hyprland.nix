@@ -6,7 +6,6 @@
     adwaita-qt
     adwaita-qt6
     fuseiso
-    gnome.adwaita-icon-theme
     gnome.gnome-themes-extra
     grim
     gsettings-desktop-schemas

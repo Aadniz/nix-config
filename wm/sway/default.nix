@@ -20,7 +20,6 @@ in
     dmenu
     firefox-wayland
     flameshot
-    gnome3.adwaita-icon-theme
     grim
     i3blocks
     pamixer
