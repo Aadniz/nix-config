@@ -16,6 +16,7 @@
       ./nix
       ./security/sshd.nix
       ./shell
+      ./ssh.nix
       ./wm
     ];
 
