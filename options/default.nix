@@ -6,6 +6,7 @@
   imports = [
     ./hardware.nix
     ./theme.nix
+    ./wms.nix
   ];
 
   options = {

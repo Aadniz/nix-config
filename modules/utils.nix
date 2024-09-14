@@ -4,6 +4,11 @@
   environment.systemPackages = with pkgs; [
     jq
     termdown
-    r
+    R
+    gotop
+    btop
+    neofetch
+    pfetch
+    git
   ];
 }
