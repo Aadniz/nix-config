@@ -3,10 +3,12 @@
 (load-file "~/.config/doom/system-vars.el")
 
 (defun set-theme-colors (theme)
-  (let ((background-color (cdr (assoc 'background theme)))
+  (let (
+        ;;   (background-color (cdr (assoc 'background theme)))
         (foreground-color (cdr (assoc 'foreground theme)))
         (secondary-color (cdr (assoc 'secondary theme)))
-        (comment-color (cdr (assoc 'color8 theme))))
+        (comment-color (cdr (assoc 'color8 theme)))
+        )
     (custom-set-faces
      ;; custom-set-faces was added by Custom.
      ;; If you edit it by hand, you could mess it up, so be careful.
