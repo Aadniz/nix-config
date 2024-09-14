@@ -2,13 +2,15 @@
 
 {
   environment.systemPackages = with pkgs; [
-    jq
-    termdown
     R
-    gotop
     btop
-    neofetch
-    pfetch
+    file
     git
+    gotop
+    jq
+    neofetch
+    nil
+    pfetch
+    termdown
   ];
 }
