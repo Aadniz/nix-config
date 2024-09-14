@@ -19,7 +19,7 @@
 
   # Don't need any additional config for the apps, just throw them in here
   environment.systemPackages = with pkgs; [
-    discord element-desktop
+    discord element-desktop anki
   ];
 
   username = "chiya";
