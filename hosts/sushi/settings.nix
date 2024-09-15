@@ -4,17 +4,18 @@
   imports = [
     ../../options
   ] ++ [  # Include the modules you want to have on this host
-    ../../modules/utils.nix
     ../../modules/home-manager.nix
     ../../modules/home.nix
     ../../modules/netdata.nix
     ../../modules/nh.nix
     ../../modules/nix.nix
-    ../../modules/zsh.nix
+    ../../modules/utils.nix
     ../../modules/wms
+    ../../modules/zsh.nix
   ] ++ [  # Include all apps you want to use on this host
-    ../../modules/apps/kitty
     ../../modules/apps/emacs
+    ../../modules/apps/kitty
+    ../../modules/apps/spotify.nix
   ];
 
   # Don't need any additional config for the apps, just throw them in here
