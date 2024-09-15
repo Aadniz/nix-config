@@ -15,6 +15,7 @@
   ] ++ [  # Include all apps you want to use on this host
     ../../modules/apps/emacs
     ../../modules/apps/kitty
+    ../../modules/apps/bingchat.nix
     ../../modules/apps/spotify.nix
   ];
 

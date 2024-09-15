@@ -1,0 +1,145 @@
+{ config, lib, pkgs, ... }:
+# Big creds to https://github.com/RicArch97/nixos-config/blob/b2a94a998b9ada4635ba1ce702691098f799b100/modules/desktop/sway.nix
+# and https://github.com/RaitoBezarius/nixos-home/blob/70a7d0503da62963c03cee40962f945f552dd6f1/sway.nix
+let
+  modifier = "Mod4";
+in
+{
+  imports = [
+  #  ./bar.nix
+    ./dunst.nix
+  #  ./hardware.nix
+    (import ./keybinds.nix { inherit config lib pkgs modifier; })
+  ];
+
+  config = lib.mkIf config.services.sway.enable {
+    hm.dconf.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      brillo
+      dmenu
+      firefox-wayland
+      flameshot
+      grim
+      i3blocks
+      pamixer
+      playerctl
+      qt5.qtwayland
+      slurp
+      swappy
+      sway-audio-idle-inhibit
+      sway-contrib.grimshot
+      swayidle
+      swaylock
+      swaysome
+      waypipe
+      wf-recorder
+      wl-clipboard
+      wofi
+      xdg-utils
+    ];
+
+
+    # Mako systemd service.
+    hm.wayland.windowManager.sway = {
+      enable = true;
+      wrapperFeatures = {
+        base = true;
+        gtk = true;
+      };
+      xwayland = true;
+      systemd.enable = true;
+      config = rec {
+        menu = "${lib.getExe pkgs.wofi} --show run | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+        inherit modifier;
+        terminal = lib.getExe config.terminal;
+
+        fonts = {
+          names = [  "Iosevka" "FontAwesome" "Font Awesome 6 Edited" "Font Awesome 6 Brands"];
+          size = 11.0;
+          style = "Normal";
+        };
+
+        startup = [
+          {command = "${pkgs.swaysome}/bin/swaysome init 1";}
+        ];
+
+        #floating.criteria = [
+        #  { app_id = "zenity"; }
+        #];
+        window = import ./windows.nix;
+        floating = {
+          border = 2;
+          titlebar = true;
+          criteria = import ./floating.nix;
+        };
+
+       colors.focused = {
+         border = config.theme.primary;
+         background = config.theme.primary;
+         text = config.theme.background;
+         indicator = config.theme.primary;
+         childBorder = config.theme.primary;
+       };
+       colors.unfocused = {
+         border = config.theme.background;
+         background = config.theme.background;
+         text = config.theme.foreground;
+         indicator = config.theme.background;
+         childBorder = config.theme.background;
+       };
+       colors.focusedInactive = {
+         border = config.theme.background;
+         background = config.theme.background;
+         text = config.theme.foreground;
+         indicator = config.theme.background;
+         childBorder = config.theme.background;
+       };
+       colors.urgent = {
+         border = config.theme.color5;
+         background = config.theme.color5;
+         text = config.theme.background;
+         indicator = config.theme.color5;
+         childBorder = config.theme.background;
+       };
+
+        modes.resize = {
+          Left = "resize shrink width 10px";
+          Down = "resize grow height 10px";
+          Up = "resize shrink height 10px";
+          Right = "resize grow width 10px";
+          Return = "mode default";
+          Escape = "mode default";
+        };
+      };
+        extraConfig = ''
+        floating_minimum_size 250 x 100
+        title_align center
+        smart_borders on
+        titlebar_padding 1
+        default_border normal 4
+        bindsym --whole-window {
+          ${modifier}+button4 gaps inner current plus 5
+          ${modifier}+button5 gaps inner current minus 5
+        }
+      '';
+    };
+
+    # Prevent locking when audio is playing
+    hm.systemd.user.services."sway-audio-idle-inhibit" = {
+      Unit = {
+        Description = "Inhibit audio idle suspend";
+        After = [ "graphical-session-pre.target" ];
+        PartOf = [ "graphical-session.target" ];
+      };
+
+      Service = {
+        ExecStart =
+          "${pkgs.sway-audio-idle-inhibit}/bin/sway-audio-idle-inhibit";
+        Restart = "on-failure";
+      };
+
+      Install.WantedBy = [ "graphical-session.target" ];
+    };
+  };
+}

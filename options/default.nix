@@ -28,6 +28,12 @@
       description = "The hostname of the machine";
     };
 
+    terminal = lib.mkOption {
+      type = lib.types.package;
+      default = pkgs.kitty;
+      description = "The terminal emulator to use";
+    };
+
     flakeDir = lib.mkOption {
       type = lib.types.str;
       default = "/home/${config.username}/.dotfiles";
