@@ -5,6 +5,7 @@
     R
     btop
     file
+    gdb
     git
     gotop
     jq
