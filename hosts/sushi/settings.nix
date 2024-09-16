@@ -4,12 +4,14 @@
   imports = [
     ../../options
   ] ++ [  # Include the modules you want to have on this host
+    ../../common
     ../../modules/home-manager.nix
     ../../modules/home.nix
     ../../modules/netdata.nix
     ../../modules/nh.nix
     ../../modules/nix.nix
     ../../modules/utils.nix
+    ../../modules/teamviewer.nix
     ../../modules/wms
     ../../modules/zsh.nix
   ] ++ [  # Include all apps you want to use on this host
@@ -21,7 +23,7 @@
 
   # Don't need any additional config for the apps, just throw them in here
   environment.systemPackages = with pkgs; [
-    discord element-desktop anki
+    discord element-desktop anki gparted
   ];
 
   username = "chiya";
