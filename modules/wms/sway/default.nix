@@ -8,7 +8,7 @@ in
   imports = [
   #  ./bar.nix
     ./dunst.nix
-  #  ./hardware.nix
+    ./hardware.nix
     (import ./keybinds.nix { inherit config lib pkgs modifier; })
   ];
 
@@ -16,28 +16,67 @@ in
     hm.dconf.enable = true;
 
     environment.systemPackages = with pkgs; [
+      bemenu # wayland clone of dmenu
       brillo
+      dbus   # make dbus-update-activation-environment available in the path
       dmenu
+      dracula-theme # gtk theme
       firefox-wayland
       flameshot
-      grim
+      glib # gsettings
+      grim # screenshot functionality
       i3blocks
+      mako # notification system developed by swaywm maintainer
       pamixer
       playerctl
       qt5.qtwayland
-      slurp
+      slurp # screenshot functionality
       swappy
       sway-audio-idle-inhibit
       sway-contrib.grimshot
       swayidle
       swaylock
       swaysome
+      wayland
       waypipe
+      wdisplays # tool to configure displays
       wf-recorder
-      wl-clipboard
+      wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
       wofi
-      xdg-utils
+      xdg-utils # for opening default programs when clicking links
     ];
+
+    services.pipewire = {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+    };
+
+    # xdg-desktop-portal works by exposing a series of D-Bus interfaces
+    # known as portals under a well-known name
+    # (org.freedesktop.portal.Desktop) and object path
+    # (/org/freedesktop/portal/desktop).
+    # The portal interfaces include APIs for file access, opening URIs,
+    # printing and others.
+    services.dbus.enable = true;
+    xdg.portal = {
+      enable = true;
+      wlr.enable = true;
+      # gtk portal needed to make gtk apps happy
+      # extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    };
+
+    # Needed for autologin
+    services.displayManager.autoLogin.enable = false;
+    services.displayManager.defaultSession = "sway";
+
+    # enable sway window manager
+    programs.sway = {
+      enable = true;
+      wrapperFeatures.gtk = true;
+    };
+
+    security.pam.services.swaylock = {};
 
 
     # Mako systemd service.
