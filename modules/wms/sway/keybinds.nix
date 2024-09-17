@@ -40,7 +40,7 @@ in
       "${modifier}+Escape" = "kill";
       "${modifier}+Delete" = "kill";
       # "${modifier}+q" = "exec ${lib.getExe pkgs.wofi} --insensitive --show drun";
-      "${modifier}+q" = "exec ${lib.getExe config.terminal} --app-id kitty-sway-launcher-desktop sh -c '${lib.getExe pkgs.sway-launcher-desktop}'";
+      "${modifier}+q" = "exec TERMINAL_COMMAND=' ' ${lib.getExe config.terminal} --app-id kitty-sway-launcher-desktop sh -c '${lib.getExe pkgs.sway-launcher-desktop}'";
       "${modifier}+Shift+c" = "reload";
       "${modifier}+space" = "floating toggle";
       "${modifier}+Backspace" = "exec ${lockCommand}";
