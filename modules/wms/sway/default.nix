@@ -6,7 +6,7 @@ let
 in
 {
   imports = [
-  #  ./bar.nix
+    ./bar.nix
     ./dunst.nix
     ./hardware.nix
     (import ./keybinds.nix { inherit config lib pkgs modifier; })

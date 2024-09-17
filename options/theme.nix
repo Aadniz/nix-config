@@ -63,6 +63,8 @@ let
     {
       foreground = palette.color15;
       background = palette.color0;
+      secondary = palette.color2;
+      third = palette.color3;
     }
   else
     theme;
