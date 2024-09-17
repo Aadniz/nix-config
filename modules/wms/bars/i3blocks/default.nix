@@ -12,6 +12,13 @@ let
   python-zmq = pkgs.python3.withPackages python-zmq-packages;
 in
 {
+  environment.systemPackages = with pkgs; [
+    sysstat
+    bc
+    playerctl
+    cmus
+    rhythmbox
+  ];
 
   hm.home.file."${dateScript}".source = ./date;
   hm.home.file."${audioScript}".source = ./volume-pulseaudio;

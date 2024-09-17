@@ -19,19 +19,19 @@ let
   color-picker = pkgs.writeShellScriptBin "color-picker" /* bash */ ''
     set -e
 
-    output=$(${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp} -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | grep -v "ImageMagick")
+    output=$(${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp} -p)" -t ppm - | ${lib.getExe pkgs.imagemagick} - -format '%[pixel:p{0,0}]' txt:- | grep -v "ImageMagick")
 
     HASH_COLOR=$(echo -n $output | awk '{print $3}' | tr -d '#')
     RGB_COLOR=$(echo -n $output | awk '{print $4}')
 
-    convert -size 100x100 xc:"#$HASH_COLOR" "/tmp/$HASH_COLOR.png"
+    ${lib.getExe pkgs.imagemagick} -size 100x100 xc:"#$HASH_COLOR" "/tmp/$HASH_COLOR.png"
     echo -n "#$HASH_COLOR" | wl-copy
     notify-send --icon="/tmp/$HASH_COLOR.png" --transient "Color Picker" "#$HASH_COLOR $RGB_COLOR"
   '';
 in
 {
   config = lib.mkIf config.services.sway.enable {
-    environment.systemPackages = [ color-picker ];
+    environment.systemPackages = [ color-picker pkgs.libnotify ];
     hm.wayland.windowManager.sway.config.keybindings = {
       "${modifier}+Return" = "exec ${lib.getExe config.terminal}";
       "${modifier}+KP_Enter" = "exec ${lib.getExe config.terminal}";
