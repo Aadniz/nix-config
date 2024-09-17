@@ -9,6 +9,7 @@ in
         xkb_layout = "us";
         xkb_variant = "altgr-intl";
         xkb_numlock = "enabled";
+        xkb_options = "grp:win_space_toggle";
         repeat_delay = "200";
         repeat_rate = "50";
       };
