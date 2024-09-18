@@ -3,6 +3,7 @@
 {
   imports = [
     ./fonts.nix
+    ./boot.nix
   ];
 
   environment.systemPackages = with pkgs; [
