@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+
+import os
+import zmq
+import json
+
+PROTOCOL = "tcp"
+HOST = "127.0.0.1"
+PORT = 5747
+
+highlight_color = os.environ.get('PRIMARY_COLOR', '#00FF00')
+loading_color = os.environ.get('SECONDARY_COLOR', '#44cc44')
+white_color = os.environ.get('FOREGROUND_COLOR', '#bcbcbc')
+error_color = "#FF0000"
+
+
+# Now for communicating with rust
+# Prepare our context and sockets
+context = zmq.Context()
+
+# Socket to talk to server
+socket = context.socket(zmq.DEALER)
+socket.connect(f"{PROTOCOL}://{HOST}:{PORT}")
+
+# Send request
+socket.send(b"service")
+
+# Get reply
+if socket.poll(310, zmq.POLLIN):  # wait for maximum 310ms
+    message = socket.recv_multipart()
+else:
+    exit(124)
+
+# Decode each byte string and join them together
+message_str = "".join(part.decode('utf-8') for part in message)
+
+data = json.loads(message_str)
+
+str_builder = ""
+for service in data:
+    if service["result"] == False:
+        str_builder += f'<span color="{loading_color}">I</span>'
+    elif service["successes"] >= 1.0:
+        str_builder += f'<span color="{highlight_color}">I</span>'
+    elif service["successes"] > 0.7:
+        str_builder += f'<span color="{white_color}">I</span>'
+    else:
+        str_builder += f'<span color="{error_color}">I</span>'
+
+
+print(str_builder)
+print(str_builder)
+print(white_color)

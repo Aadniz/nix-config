@@ -50,6 +50,8 @@ in
   (setq user-theme (list (cons 'foreground "''+config.theme.foreground+''")
                          (cons 'background "''+config.theme.background+''")
                          (cons 'primary "''+config.theme.primary+''")
+                         (cons 'secondary "''+config.theme.secondary+''")
+                         (cons 'third "''+config.theme.third+''")
                          (cons 'color0 "''+config.theme.color0+''")
                          (cons 'color1 "''+config.theme.color1+''")
                          (cons 'color2 "''+config.theme.color2+''")

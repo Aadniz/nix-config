@@ -10,8 +10,9 @@
     ../../modules/netdata.nix
     ../../modules/nh.nix
     ../../modules/nix.nix
-    ../../modules/utils.nix
+    ../../modules/status-checker.nix
     ../../modules/teamviewer.nix
+    ../../modules/utils.nix
     ../../modules/wms
     ../../modules/zsh.nix
   ] ++ [  # Include all apps you want to use on this host

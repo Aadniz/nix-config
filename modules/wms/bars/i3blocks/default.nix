@@ -7,7 +7,7 @@ let
   memoryScript = "${i3blocksConfigDir}/memory";
   cpuScript = "${i3blocksConfigDir}/cpu_usage";
   mediaplayerScript = "${i3blocksConfigDir}/mediaplayer";
-  statusScript = "${i3blocksConfigDir}/status_script";
+  statusScript = "${i3blocksConfigDir}/status-script";
   python-zmq-packages = ps: with ps; [ python.pkgs.pyzmq ];
   python-zmq = pkgs.python3.withPackages python-zmq-packages;
 in
@@ -25,7 +25,7 @@ in
   hm.home.file."${memoryScript}".source = ./memory;
   hm.home.file."${cpuScript}".source = ./cpu_usage;
   hm.home.file."${mediaplayerScript}".source = ./mediaplayer;
-  hm.home.file."${statusScript}".text = "";
+  hm.home.file."${statusScript}".source = ./status-script;
   hm.home.file."${i3blocksConfigFile}".text = ''
 # Global properties
 separator=false
@@ -49,9 +49,9 @@ signal=10
 command=perl ${mediaplayerScript}
 
 
-[status_script]
+[status-script]
 interval=10
-command=${python-zmq}/bin/python ${statusScript}
+command=[[ -f "/home/${config.username}/Documents/status-commands/settings.json" ]] && ${python-zmq}/bin/python ${statusScript}
 
 [cpu_usage]
 interval=3

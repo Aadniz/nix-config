@@ -4,7 +4,7 @@
 
 (defun set-theme-colors (theme)
   (let (
-        ;;   (background-color (cdr (assoc 'background theme)))
+        (background-color (cdr (assoc 'background theme)))
         (foreground-color (cdr (assoc 'foreground theme)))
         (secondary-color (cdr (assoc 'secondary theme)))
         (comment-color (cdr (assoc 'color8 theme)))
@@ -15,7 +15,7 @@
      ;; Your init file should contain only one such instance.
      ;; If there is more than one, they won't work right.
      `(default ((t(
-                   :background ,background-color
+                   ;;:background ,background-color
                    :foreground ,foreground-color
                    ))))
      `(font-lock-function-name-face ((t(:foreground ,secondary-color))))

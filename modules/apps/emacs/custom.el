@@ -81,4 +81,3 @@
 
 (defvar background-color (cdr (assoc 'background user-theme)))
 (defvar foreground-color (cdr (assoc 'foreground user-theme)))
-
