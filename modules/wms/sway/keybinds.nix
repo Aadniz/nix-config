@@ -49,6 +49,8 @@ in
       "XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer -t && pkill -RTMIN+1 i3blocks";
       "XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 1 && pkill -RTMIN+1 i3blocks";
       "XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 1 && pkill -RTMIN+1 i3blocks";
+      "--locked XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +5%";
+      "--locked XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 5%-";
       "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause && pkill -RTMIN+10 i3blocks";
       "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next && pkill -RTMIN+10 i3blocks";
       "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous && pkill -RTMIN+10 i3blocks";

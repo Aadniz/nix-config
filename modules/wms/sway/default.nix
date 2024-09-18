@@ -18,6 +18,7 @@ in
     environment.systemPackages = with pkgs; [
       arandr
       bemenu # wayland clone of dmenu
+      brightnessctl
       brillo
       dbus   # make dbus-update-activation-environment available in the path
       dmenu
