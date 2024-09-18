@@ -26,14 +26,14 @@
       # Main mini display
       "eDP-1" = {
         mode = "1200x1920@59.985Hz";
-        position = "0,0";
+        position = "1280 1440";
         transform = "90";
         scale = "1.5";
       };
       # Extra monitor
       "AOC AG271QG " = {  # Yes that is indeed an extra space
         mode = "2560x1440@59.951Hz";
-        position = "-1280 -1440"; # -1440
+        position = "0 0";
       };
       # Right monitor
       "*".bg = "${config.theme.wallpaper} fill";
