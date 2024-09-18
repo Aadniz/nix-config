@@ -12,7 +12,11 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 30;
+    editor = false;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "sushi"; # Define your hostname.
