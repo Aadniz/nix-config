@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  boot.cleanTmpDir = true
+  boot.cleanTmpDir = true;
 }
