@@ -1,5 +1,14 @@
 { config, lib, pkgs, ... }:
-
+let
+  hexToInt = hex: (builtins.fromTOML "a = 0x${hex}").a;
+  isBright = color: let
+    r = hexToInt (builtins.substring 1 2 color);
+    g = hexToInt (builtins.substring 3 2 color);
+    b = hexToInt (builtins.substring 5 2 color);
+    brightness = (r * 299 + g * 587 + b * 114) / 1000;
+  in
+    brightness > 186;
+in
 {
   environment.systemPackages = with pkgs; [
     zsh
@@ -52,6 +61,16 @@
     ];
 
     initExtraFirst = /* bash */ ''
+
+      function is_bright {
+        local color=$1
+        local r=$(echo $color | cut -c2-3)
+        local g=$(echo $color | cut -c4-5)
+        local b=$(echo $color | cut -c6-7)
+        local brightness=$(( (0x$r * 299 + 0x$g * 587 + 0x$b * 114) / 1000 ))
+        [ $brightness -gt 186 ]
+      }
+
       export BULLETTRAIN_PROMPT_ORDER=(
         status
         custom
@@ -72,10 +91,11 @@
       export BULLETTRAIN_PROMPT_CHAR=""
       export BULLETTRAIN_PROMPT_ADD_NEWLINE=false
       export BULLETTRAIN_CUSTOM_BG=${config.theme.primary}
-      export BULLETTRAIN_CUSTOM_FG=${config.theme.foreground}
+      export BULLETTRAIN_CUSTOM_FG=${if isBright config.theme.primary then config.theme.background else config.theme.foreground}
       export BULLETTRAIN_CUSTOM_MSG=${config.nickname}
+
       export BULLETTRAIN_DIR_BG=${config.theme.color8}
-      export BULLETTRAIN_DIR_FG=${config.theme.foreground}
+      export BULLETTRAIN_DIR_FG=${if isBright config.theme.color8 then config.theme.background else config.theme.foreground}
       export BULLETTRAIN_STATUS_ERROR_BG=${config.theme.color1}
       export BULLETTRAIN_STATUS_BG=${config.theme.color8}
     '';

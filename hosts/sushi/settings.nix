@@ -24,7 +24,7 @@
 
   # Don't need any additional config for the apps, just throw them in here
   environment.systemPackages = with pkgs; [
-    discord element-desktop anki gparted
+    discord element-desktop anki gparted krita
   ];
 
   username = "chiya";
@@ -32,5 +32,8 @@
   hostname = "sushi";
   flakeDir = "/home/${config.username}/.dots";
   wms = ["sway"];
-  theme = ../../wallpapers/kitan_7983.jpg;
+  theme.wallpaper = ../../wallpapers/kitan_7983.jpg;
+  theme.primary = "#EDC26E";
+  theme.secondary = "#CC7573";
+  theme.background = "#041520";
 }

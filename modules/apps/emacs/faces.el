@@ -15,7 +15,7 @@
      ;; Your init file should contain only one such instance.
      ;; If there is more than one, they won't work right.
      `(default ((t(
-                   ;;:background ,background-color
+                   :background ,background-color
                    :foreground ,foreground-color
                    ))))
      `(font-lock-function-name-face ((t(:foreground ,secondary-color))))

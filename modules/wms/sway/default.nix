@@ -16,6 +16,7 @@ in
     hm.dconf.enable = true;
 
     environment.systemPackages = with pkgs; [
+      arandr
       bemenu # wayland clone of dmenu
       brillo
       dbus   # make dbus-update-activation-environment available in the path
