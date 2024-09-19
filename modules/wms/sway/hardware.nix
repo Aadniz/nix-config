@@ -21,6 +21,7 @@
         accel_profile = "flat";
         pointer_accel = "-0.1";
       };
+      "1046:9111:Goodix_Capacitive_TouchScreen".map_to_output = "eDP-1";
     };
     output = {
       # Main mini display
