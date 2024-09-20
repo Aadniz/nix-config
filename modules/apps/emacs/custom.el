@@ -5,7 +5,8 @@
 (defun sync-to-unison ()
   "Sync org file with unison."
   (when (and (eq major-mode 'org-mode)
-             (string-prefix-p (expand-file-name "~/Documents/org") buffer-file-name))
+             (string-prefix-p (expand-file-name "~/Documents/org") buffer-file-name)
+             (file-exists-p (expand-file-name "~/.unison/org-files.prf")))
     (message "Syncing org files with unison...")
     (let ((_ (with-output-to-string
                (with-current-buffer standard-output

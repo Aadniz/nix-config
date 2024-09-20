@@ -20,5 +20,6 @@
     pfetch
     python3
     termdown
+    unison
   ];
 }
