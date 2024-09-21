@@ -16,10 +16,7 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    spotify-adblock = {
-      url = "github:abba23/spotify-adblock";
-      flake = false;
-    };
+    nur.url = "github:nix-community/NUR";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {

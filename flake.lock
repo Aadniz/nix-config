@@ -52,13 +52,28 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1726937676,
+        "narHash": "sha256-JveSFaqFgouN+Oua3+/Hq0zOdOzvs9KdYfR8skjaLRM=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "63e319d04b8487abce8cb47b28ab63a2fe25d134",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nur": "nur",
         "sops-nix": "sops-nix",
-        "spicetify-nix": "spicetify-nix",
-        "spotify-adblock": "spotify-adblock"
+        "spicetify-nix": "spicetify-nix"
       }
     },
     "sops-nix": {
@@ -102,22 +117,6 @@
       "original": {
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "type": "github"
-      }
-    },
-    "spotify-adblock": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1726391487,
-        "narHash": "sha256-OjbJAn/QWXxaARyiKDBLdxCRscC+ZdaCRoBhINkmfHM=",
-        "owner": "abba23",
-        "repo": "spotify-adblock",
-        "rev": "7391666109c8f9d0ccc8254dc0ff7e28139c663b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "abba23",
-        "repo": "spotify-adblock",
         "type": "github"
       }
     }
