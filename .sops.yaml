@@ -1,0 +1,9 @@
+keys:
+  - &matrix_key age1js3vfxe7z7vw23knhew33cp2vmwzdd4munnkqdh5zc2mraer0dcqhh9ydc
+  - &sushi_key age13k5uvpm4x6dszk0l03nlhhepgg2aujavx7xdq8p0paw7kvd09dhsfwh6ec
+creation_rules:
+  - path_regex: hosts/\S+/secrets/\S+\.(yaml|json|env|ini|bin)$$
+    key_groups:
+      - age:
+          - *matrix_key
+          - *sushi_key

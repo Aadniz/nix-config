@@ -16,9 +16,10 @@
     ../../modules/wms
     ../../modules/zsh.nix
   ] ++ [  # Include all apps you want to use on this host
+    ../../modules/apps/bingchat.nix
+    ../../modules/apps/detyx.nix
     ../../modules/apps/emacs
     ../../modules/apps/kitty
-    ../../modules/apps/bingchat.nix
     ../../modules/apps/spotify.nix
   ];
 
