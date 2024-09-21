@@ -25,7 +25,7 @@ TODO
 - You need to clone private status command repo to Documents
 - Make the `~/.unison/org-files.prf` configuration
 - Need to make sure the appropriate sops are set
- 1. Detyx
- 2. Borg
+  1. Detyx
+  2. Borg
 
 *The configuration is not broken because these things are not added. It's structured to accept both.*
