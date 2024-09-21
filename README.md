@@ -18,7 +18,9 @@ TODO
 
 TODO
 
-### If you are me
+# Extras
+
+## If you are me
 
 - You need to clone private status command repo to Documents
 - Make the `~/.unison/org-files.prf` configuration
