@@ -18,21 +18,22 @@ in
 
   environment.systemPackages = with pkgs; [
     # DOOM Emacs dependencies
-    binutils
     (ripgrep.override { withPCRE2 = true; })
-    gnutls
-    fd
-    imagemagick
-    zstd
-    nodePackages.javascript-typescript-langserver
-    sqlite
+    binutils
     editorconfig-core-c
-    emacs-all-the-icons-fonts
     emacs
+    emacs-all-the-icons-fonts
+    fd
     git
+    gnutls
+    imagemagick
     ispell
-    pandoc
     lldb # C++, Rust, C debugger
+    nodePackages.javascript-typescript-langserver
+    pandoc
+    python311Packages.python-lsp-server
+    sqlite
+    zstd
   ];
 
   hm.xdg.configFile."doom/system-vars.el".text = /* lisp */ ''
