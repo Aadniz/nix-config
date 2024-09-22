@@ -12,6 +12,7 @@
     ../../modules/nix.nix
     ../../modules/status-checker.nix
     ../../modules/teamviewer.nix
+    ../../modules/ssh.nix
     ../../modules/utils.nix
     ../../modules/wms
     ../../modules/zsh.nix

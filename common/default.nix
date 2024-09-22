@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./fonts.nix
     ./boot.nix
+    ./fonts.nix
   ];
 
   environment.systemPackages = with pkgs; [
