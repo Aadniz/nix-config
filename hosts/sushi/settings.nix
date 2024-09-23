@@ -3,6 +3,8 @@
 {
   imports = [
     ../../options
+  ] ++ [  # Extended settings config
+    ./wireguard.nix
   ] ++ [  # Include the modules you want to have on this host
     ../../common
     ../../modules/home-manager.nix
