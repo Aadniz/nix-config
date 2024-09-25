@@ -24,6 +24,7 @@
 
   hm.programs.ssh = {
     enable = true;
+    serverAliveInterval = 120;
     matchBlocks = let
       idFile = "~/.ssh/id_ed25519";
     in {
