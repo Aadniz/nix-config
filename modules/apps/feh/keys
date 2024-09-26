@@ -1,0 +1,14 @@
+# Unbinding
+reload_image
+toggle_exif
+toggle_filenames
+
+# Binding
+size_to_image f
+mirror w
+flip d
+next_img n Right
+prev_img b Left
+toggle_aliasing space
+orient_3 e
+orient_1 r

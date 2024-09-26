@@ -22,6 +22,7 @@
     ../../modules/apps/bingchat.nix
     ../../modules/apps/detyx.nix
     ../../modules/apps/emacs
+    ../../modules/apps/feh
     ../../modules/apps/kitty
     ../../modules/apps/spotify.nix
   ];
