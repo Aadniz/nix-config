@@ -72,7 +72,7 @@ When adding a new machine, you need to write a new host.
       ];
     };
 
-    # Machine1 with hostname "taco" for example
+    # Machine2 with hostname "taco" for example
     nixosConfigurations.taco = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
