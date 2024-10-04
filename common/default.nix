@@ -4,6 +4,7 @@
   imports = [
     ./boot.nix
     ./fonts.nix
+    ./networking.nix
   ];
 
   security.sudo.extraConfig = ''
