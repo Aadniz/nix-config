@@ -26,6 +26,7 @@
     ../../modules/apps/detyx.nix
     ../../modules/apps/emacs
     ../../modules/apps/feh
+    ../../modules/apps/jetbrains
     ../../modules/apps/kitty
     ../../modules/apps/spotify.nix
   ];
