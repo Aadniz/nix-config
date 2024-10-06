@@ -8,6 +8,7 @@
   ] ++ [  # Include the modules you want to have on this host
     ../../common
     ../../modules/audio.nix
+    ../../modules/fcitx5
     ../../modules/home-manager.nix
     ../../modules/home.nix
     ../../modules/netdata.nix
