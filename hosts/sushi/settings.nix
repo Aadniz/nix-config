@@ -7,14 +7,15 @@
     ./wireguard.nix
   ] ++ [  # Include the modules you want to have on this host
     ../../common
+    ../../modules/audio.nix
     ../../modules/home-manager.nix
     ../../modules/home.nix
     ../../modules/netdata.nix
     ../../modules/nh.nix
     ../../modules/nix.nix
+    ../../modules/ssh.nix
     ../../modules/status-checker.nix
     ../../modules/teamviewer.nix
-    ../../modules/ssh.nix
     ../../modules/utils.nix
     ../../modules/wms
     ../../modules/zsh.nix
