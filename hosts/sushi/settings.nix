@@ -29,6 +29,9 @@
     ../../modules/apps/jetbrains
     ../../modules/apps/kitty
     ../../modules/apps/spotify.nix
+  ] ++ [  # Include all programming languages needed
+    ../../modules/langs/html.nix
+    ../../modules/langs/php.nix
   ];
 
   # Don't need any additional config for the apps, just throw them in here
