@@ -13,6 +13,7 @@
     ../../modules/home-manager.nix
     ../../modules/home.nix
     ../../modules/netdata.nix
+    ../../modules/networking.nix
     ../../modules/nh.nix
     ../../modules/nix.nix
     ../../modules/ssh.nix
@@ -37,7 +38,7 @@
 
   # Don't need any additional config for the apps, just throw them in here
   environment.systemPackages = with pkgs; [
-    element-desktop anki gparted krita signal-desktop zoom-us
+    element-desktop anki gparted krita signal-desktop zoom-us userhosts
   ];
 
   username = "chiya";

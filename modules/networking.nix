@@ -2,13 +2,16 @@
 
 {
   imports = [
-    ../sops.nix
+    ./sops.nix
   ];
 
-  sops.secrets."extra_hosts" = {
+  sops.secrets."hosts" = {
     owner = config.username;
-    format = "json";
-    mode = "0777";
-    sopsFile = "${config.secret-dir}/secrets.json";
+    format = "binary";
+    mode = "0444";
+    sopsFile = ../secrets/hosts.bin;
   };
+
+  # Secret host files
+  environment.etc."hosts".source = lib.mkForce config.sops.secrets."hosts".path;
 }
