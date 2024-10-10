@@ -2,12 +2,12 @@
 
 {
   imports = [
+    ../../common
     ../../options
   ] ++ [  # Extended settings config
     ./tor.nix
     ./wireguard.nix
   ] ++ [  # Include the modules you want to have on this host
-    ../../common
     ../../modules/audio.nix
     ../../modules/fcitx5
     ../../modules/home-manager.nix
@@ -24,6 +24,7 @@
   ] ++ [  # Include all apps you want to use on this host
     ../../modules/apps/bingchat.nix
     ../../modules/apps/detyx.nix
+    ../../modules/apps/discord.nix
     ../../modules/apps/emacs
     ../../modules/apps/feh
     ../../modules/apps/jetbrains
@@ -36,7 +37,7 @@
 
   # Don't need any additional config for the apps, just throw them in here
   environment.systemPackages = with pkgs; [
-    discord element-desktop anki gparted krita signal-desktop zoom-us
+    element-desktop anki gparted krita signal-desktop zoom-us
   ];
 
   username = "chiya";
