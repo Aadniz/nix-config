@@ -36,6 +36,11 @@
         mode = "2560x1440@59.951Hz";
         position = "0 0";
       };
+      # XLP's monitor
+      "Hewlett Packard HP E272q CNK6281HHG" = {
+        mode = "2560x1440@59.951Hz";
+        position = "0 0";
+      };
       # Right monitor
       "*".bg = "${config.theme.wallpaper} fill";
     };
