@@ -7,19 +7,20 @@
       id = 0;
       settings = {
         # Basic
-        "browser.shell.checkDefaultBrowser" = false;                  # Let me handle the default.
         "browser.aboutConfig.showWarning" = false;                    # I know what I am doing, erm, most of the times...
-        "services.sync.engine.passwords" = false;                     # I manage my passwords separately.
-        "signon.rememberSignons" = false;                             # Do not ask me to remember any password...
-        "browser.urlbar.trimURLs" = false;                            # Always show http/https
-        "browser.tabs.firefox-view" = false;                          # I rarely have the need to sync tabs across devices. Plus, won't use a firefox account.
-        "services.sync.prefs.sync.layout.spellcheckDefault" = false;  # Do not spell-check
-        "browser.startup.homepage_override.mstone" = "ignore";        # Do not show the latest changes whenever there is an update
         "browser.disableResetPrompt" = true;                          # Never seen this myself
         "browser.download.alwaysOpenPanel" = false;                   # Do not automatically open the download panel.
         "browser.download.useDownloadDir" = false;                    # Let me decide where to download the files.
+        "browser.shell.checkDefaultBrowser" = false;                  # Let me handle the default.
+        "browser.startup.homepage_override.mstone" = "ignore";        # Do not show the latest changes whenever there is an update
+        "browser.tabs.firefox-view" = false;                          # I rarely have the need to sync tabs across devices. Plus, won't use a firefox account.
         "browser.toolbars.bookmarks.showInPrivateBrowsing" = true;    # Show bookmarks in private tabs as well.
+        "browser.translations.automaticallyPopup" = false;            # Never prompt to translate a website
+        "browser.urlbar.trimURLs" = false;                            # Always show http/https
         "extensions.autoDisableScopes" = "0";                         # Automatically enable extensions
+        "services.sync.engine.passwords" = false;                     # I manage my passwords separately.
+        "services.sync.prefs.sync.layout.spellcheckDefault" = false;  # Do not spell-check
+        "signon.rememberSignons" = false;                             # Do not ask me to remember any password...
 
         # Extra Security
         #"privacy.globalprivacycontrol.functionality.enabled" = true;  # Private as much as possible.
