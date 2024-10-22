@@ -17,6 +17,7 @@
 
   environment.systemPackages = with pkgs; [
     btop
+    dig
     file
     gdb
     git
@@ -30,5 +31,6 @@
     python3
     termdown
     unison
+    wget
   ];
 }
