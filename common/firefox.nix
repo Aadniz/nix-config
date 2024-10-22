@@ -47,8 +47,8 @@
           };
 
           "Kantan" = {
-            urls = [{template = "https://kantan.cat/search?q={searchTerms}";}];
-            iconUpdateURL = "https://kantan.cat/static/themes/oscar/img/favicon.png";
+            urls = [{template = "https://kantan.cat/?q={searchTerms}";}];
+            iconUpdateURL = "https://kantan.cat/static/themes/simple/img/favicon.svg";
             updateInterval = 24 * 60 * 60 * 1000; # every day
           };
 
@@ -67,7 +67,7 @@
 
           "hm options search" = {
             urls = [{template = "https://home-manager-options.extranix.com/?query={searchTerms}";}];
-            iconUpdateURL = "https://mipmip.github.io/home-manager-option-search/images/favicon.png";
+            iconUpdateURL = "https://home-manager-options.extranix.com/images/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = ["@hm"];
           };
