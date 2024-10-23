@@ -2,7 +2,7 @@
 
 let
   bingchat = pkgs.writeShellScriptBin "bingchat" ''
-    ${lib.getExe pkgs.microsoft-edge} --app='https://www.bing.com/search?q=Bing+AI&showconv=1'
+    ${pkgs.microsoft-edge}/bin/microsoft-edge-stable --app='https://www.bing.com/search?q=Bing+AI&showconv=1'
   '';
 in
 {

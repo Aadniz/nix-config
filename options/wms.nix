@@ -6,7 +6,7 @@
     services.hyprland.enable = lib.mkEnableOption "Enable Hyprland window manager";
     services.sway.enable = lib.mkEnableOption "Enable Sway window manager";
     wms = lib.mkOption {
-      type = lib.types.listOf lib.types.string;
+      type = lib.types.listOf lib.types.str;
       default = [ ];
       description = "What wms to have installed";
     };
