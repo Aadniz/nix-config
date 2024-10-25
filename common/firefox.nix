@@ -3,7 +3,7 @@
 {
   hm.programs.firefox = {
     enable = true;
-    profiles."3gylyv9k.default" = {  # TODO: change to default (instead of 3gylyv9k.default) the next time we reinstall
+    profiles."default" = {
       id = 0;
       settings = {
         # Basic
@@ -26,6 +26,15 @@
         #"privacy.globalprivacycontrol.functionality.enabled" = true;  # Private as much as possible.
         "privacy.trackingprotection.enabled" = true;                  # Do not track me.
         "privacy.donottrackheader.enabled" = true;                    # Do not track me.
+
+        # Remjove ads
+        "browser.newtabpage.activity-stream.showSponsored" = false;
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        "browser.newtabpage.enhanced" = false;
+        "browser.newtabpage.introShown" = true;
+        "browser.newtab.preload" = false;
+        "browser.newtabpage.directory.ping" = "";
+        "browser.newtabpage.directory.source" = "data:text/plain,{}";
 
         ## Disable Pocket
         "extensions.pocket.enabled" = false;
