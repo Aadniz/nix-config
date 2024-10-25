@@ -97,6 +97,10 @@ Then `nix-shell -p git nh`, then do `FLAKE=~/.dots nh os test --hostname <HOSTNA
 
 # Extras
 
+## DOOM EMACS
+
+NixOS won't install doom emacs for you, so you have to go to their install instructions for that to be installed: https://github.com/doomemacs/doomemacs?tab=readme-ov-file#install
+
 ## If you are me
 
 - You need to clone private status command repo to Documents
