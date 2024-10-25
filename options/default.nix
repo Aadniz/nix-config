@@ -46,4 +46,8 @@
       description = "List of authorized keys";
     };
   };
+
+  config = {
+    networking.hostName = lib.mkForce config.hostname;
+  };
 }
