@@ -31,5 +31,14 @@
       ];
     };
 
+    # One Mix 2s Yoga
+    nixosConfigurations.onemix = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./hosts/onemix/configuration.nix
+        home-manager.nixosModules.home-manager
+      ];
+    };
+
   };
 }
