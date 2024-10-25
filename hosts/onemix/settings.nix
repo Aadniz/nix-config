@@ -42,6 +42,7 @@
   ];
 
   username = "chiya";
+  nickname = "chiya@onemix";
   hostname = "onemix";
   flakeDir = "/home/${config.username}/.dots";
   wms = ["sway"];
