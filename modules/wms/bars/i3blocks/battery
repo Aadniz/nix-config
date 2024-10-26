@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+BATTERY_COLOR="${PRIMARY_COLOR}"
+FOREGROUND_COLOR="${FOREGROUND_COLOR}"
+URGENT_COLOR="#FF0000"
+
+BATTERY=0
+BATTERY_INFO=$(acpi -b | grep "Battery ${BATTERY}")
+BATTERY_STATE=$(echo "${BATTERY_INFO}" | grep -wo "Full\|Charging\|Discharging")
+BATTERY_POWER=$(echo "${BATTERY_INFO}" | grep -o '[0-9]\+%' | tr -d '%')
+BATTERY_ICON=0
+
+URGENT_VALUE=10
+URGENT_COLOR="#FF0000"
+
+if [[ "${BATTERY_POWER}" -le "${URGENT_VALUE}" ]]; then
+  BATTERY_ICON=""
+  BATTERY_COLOR="$URGENT_COLOR"
+elif [[ "${BATTERY_POWER}" -le 25 ]]; then
+  BATTERY_ICON=""
+elif [[ "${BATTERY_POWER}" -le 50 ]]; then
+  BATTERY_ICON=""
+elif [[ "${BATTERY_POWER}" -le 75 ]]; then
+  BATTERY_ICON=""
+elif [[ "${BATTERY_POWER}" -le 98 ]]; then
+  BATTERY_ICON=""
+else
+  echo ""
+  echo ""
+  echo "$FOREGROUND_COLOR"
+  exit
+fi
+
+
+
+CHARGING_ICON=""
+if [[ "${BATTERY_STATE}" = "Charging" ]]; then
+  CHARGING_ICON="+"
+elif [[ "${BATTERY_STATE}" = "Discharging" ]]; then
+  CHARGING_ICON="-"
+fi
+echo "<span color=\"$BATTERY_COLOR\">${BATTERY_ICON}</span> ${BATTERY_POWER}%${CHARGING_ICON}"
+echo "<span color=\"$BATTERY_COLOR\">${BATTERY_ICON}</span> ${BATTERY_POWER}%${CHARGING_ICON}"
+
+
+if [[ "${BATTERY_POWER}" -gt "${URGENT_VALUE}" ]]; then
+  echo "$color15"
+else
+  echo "$URGENT_COLOR"
+fi

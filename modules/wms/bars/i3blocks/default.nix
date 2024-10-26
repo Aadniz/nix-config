@@ -2,11 +2,12 @@
 let
   i3blocksConfigDir = "${config.hm.xdg.configHome}/i3blocks";
   i3blocksConfigFile = "${i3blocksConfigDir}/i3blocks.conf";
-  dateScript = "${i3blocksConfigDir}/date";
   audioScript = "${i3blocksConfigDir}/volume-pulseaudio";
-  memoryScript = "${i3blocksConfigDir}/memory";
+  batteryScript = "${i3blocksConfigDir}/battery";
   cpuScript = "${i3blocksConfigDir}/cpu_usage";
+  dateScript = "${i3blocksConfigDir}/date";
   mediaplayerScript = "${i3blocksConfigDir}/mediaplayer";
+  memoryScript = "${i3blocksConfigDir}/memory";
   statusScript = "${i3blocksConfigDir}/status-script";
   python-zmq-packages = ps: with ps; [ python.pkgs.pyzmq ];
   python-zmq = pkgs.python3.withPackages python-zmq-packages;
@@ -20,11 +21,12 @@ in
     rhythmbox
   ];
 
-  hm.home.file."${dateScript}".source = ./date;
   hm.home.file."${audioScript}".source = ./volume-pulseaudio;
-  hm.home.file."${memoryScript}".source = ./memory;
+  hm.home.file."${batteryScript}".source = ./battery;
   hm.home.file."${cpuScript}".source = ./cpu_usage;
+  hm.home.file."${dateScript}".source = ./date;
   hm.home.file."${mediaplayerScript}".source = ./mediaplayer;
+  hm.home.file."${memoryScript}".source = ./memory;
   hm.home.file."${statusScript}".source = ./status-script;
   hm.home.file."${i3blocksConfigFile}".text = ''
 # Global properties
@@ -67,6 +69,11 @@ command=bash ${cpuScript}
 LABEL=
 interval=30
 command=bash ${memoryScript}
+
+[battery]
+instance=0
+interval=5
+command=bash ${batteryScript}
 
 [volume-pulseaudio]
 min_width=X muted
