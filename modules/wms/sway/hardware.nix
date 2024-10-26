@@ -24,22 +24,26 @@
       "1046:9111:Goodix_Capacitive_TouchScreen".map_to_output = "eDP-1";
     };
     output = {
-      # Main mini display
-      "eDP-1" = {
-        mode = "1200x1920@59.985Hz";
-        position = "0 1440";
-        transform = "90";
-        scale = "1.5";
+      # Main display
+      "Samsung Display Corp. 0x4171 Unknown" = {
+        mode = "2880x1800@90.001Hz";
+        position = "0 720";
+        scale = "2";
       };
-      # Extra monitor
+      # Middle monitor
       "ASUSTek COMPUTER INC VG27A M1LMQS007922" = {
-        mode = "2560x1440@59.951Hz";
-        position = "0 0";
+        mode = "2560x1440@164.999Hz";
+        position = "1440 0";
+      };
+      # Right monitor
+      "AOC AG271QG " = {
+        mode = "2560x1440@164.999Hz";
+        position = "4000 0";
       };
       # XLP's monitor
       "Hewlett Packard HP E272q CNK6281HHG" = {
         mode = "2560x1440@59.951Hz";
-        position = "0 0";
+        position = "1440 0";
       };
       # Right monitor
       "*".bg = "${config.theme.wallpaper} fill";
