@@ -69,7 +69,8 @@ in
     };
 
     # Needed for autologin
-    services.displayManager.autoLogin.enable = false;
+    services.displayManager.autoLogin.enable = true;
+    services.displayManager.autoLogin.user = "chiya";
     services.displayManager.defaultSession = "sway";
 
     # enable sway window manager
