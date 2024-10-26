@@ -42,7 +42,7 @@
   ];
 
   username = "chiya";
-  nickname = "千夜";
+  nickname = "千屋";
   hostname = "sushi";
   flakeDir = "/home/${config.username}/.dots";
   wms = ["sway"];
