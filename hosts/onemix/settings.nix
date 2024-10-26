@@ -6,7 +6,6 @@
     ../../options
   ] ++ [  # Extended settings config
     ./tor.nix
-    ./wireguard.nix
   ] ++ [  # Include the modules you want to have on this host
     ../../modules/audio.nix
     ../../modules/fcitx5
