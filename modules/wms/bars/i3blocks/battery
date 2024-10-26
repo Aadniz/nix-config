@@ -39,8 +39,8 @@ if [[ "${BATTERY_STATE}" = "Charging" ]]; then
 elif [[ "${BATTERY_STATE}" = "Discharging" ]]; then
   CHARGING_ICON="-"
 fi
-echo "<span color=\"$BATTERY_COLOR\">${BATTERY_ICON}</span> ${BATTERY_POWER}%${CHARGING_ICON}"
-echo "<span color=\"$BATTERY_COLOR\">${BATTERY_ICON}</span> ${BATTERY_POWER}%${CHARGING_ICON}"
+echo "<span color=\"$BATTERY_COLOR\">${BATTERY_ICON}</span>  ${BATTERY_POWER}%${CHARGING_ICON}"
+echo "<span color=\"$BATTERY_COLOR\">${BATTERY_ICON}</span>  ${BATTERY_POWER}%${CHARGING_ICON}"
 
 
 if [[ "${BATTERY_POWER}" -gt "${URGENT_VALUE}" ]]; then
