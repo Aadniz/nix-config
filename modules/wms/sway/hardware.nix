@@ -32,12 +32,12 @@
       };
       # Middle monitor
       "ASUSTek COMPUTER INC VG27A M1LMQS007922" = {
-        mode = "2560x1440@164.999Hz";
+        mode = "2560x1440@119.998Hz";
         position = "1440 0";
       };
       # Right monitor
-      "AOC AG271QG " = {
-        mode = "2560x1440@164.999Hz";
+      "AOC AG271QG #ASM0HnQVlo3d" = {
+        mode = "2560x1440@165.000Hz";
         position = "4000 0";
       };
       # XLP's monitor
