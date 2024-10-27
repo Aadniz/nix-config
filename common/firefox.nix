@@ -73,6 +73,12 @@
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = ["@nx"];
           };
+          "MyNixOS" = {
+            urls = [{template = "https://mynixos.com/search?q={searchTerms}";}];
+            iconUpdateURL = "https://mynixos.com/favicon-16x16.png";
+            updateInterval = 24 * 60 * 60 * 1000; # every day
+            definedAliases = ["@my"];
+          };
 
           "hm options search" = {
             urls = [{template = "https://home-manager-options.extranix.com/?query={searchTerms}";}];
