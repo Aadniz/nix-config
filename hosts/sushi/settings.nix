@@ -33,6 +33,7 @@
     ../../modules/apps/spotify.nix
   ] ++ [  # Include all programming languages needed
     ../../modules/langs/html.nix
+    ../../modules/langs/javascript.nix
     ../../modules/langs/php.nix
   ];
 
