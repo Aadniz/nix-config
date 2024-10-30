@@ -21,6 +21,13 @@
         accel_profile = "flat";
         pointer_accel = "-0.1";
       };
+      "1267:12736:ASUE120B:00_04F3:31C0_Touchpad" = {
+        dwt = "enabled";
+        tap = "enabled";
+        natural_scroll = "enabled";
+        middle_emulation = "false";
+        scroll_factor = "1.0";
+      };
       "1046:9111:Goodix_Capacitive_TouchScreen".map_to_output = "eDP-1";
     };
     output = {
