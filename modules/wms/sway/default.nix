@@ -23,9 +23,11 @@ in
       dbus   # make dbus-update-activation-environment available in the path
       dmenu
       dracula-theme # gtk theme
+      ffmpeg
       firefox-wayland
       flameshot
       glib # gsettings
+      gnome.zenity
       grim # screenshot functionality
       i3blocks
       mako # notification system developed by swaywm maintainer

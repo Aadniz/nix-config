@@ -28,10 +28,59 @@ let
     echo -n "#$HASH_COLOR" | wl-copy
     notify-send --icon="/tmp/$HASH_COLOR.png" --transient "Color Picker" "#$HASH_COLOR $RGB_COLOR"
   '';
+
+  gif-recorder = pkgs.writeShellScriptBin "gif-recorder" /* bash */ ''
+    # If an instance of wf-recorder is running under this user kill it with SIGINT and exit
+    pkill --euid "$USER" --signal SIGINT wf-recorder && exit
+
+    # Define paths
+    DefaultSaveDir=$HOME'/Videos'
+    TmpPathPrefix='/tmp/gif-record'
+    TmpRecordPath=$TmpPathPrefix'-cap.mp4'
+    TmpPalettePath=$TmpPathPrefix'-palette.png'
+
+    # Trap for cleanup on exit
+    OnExit() {
+        [[ -f $TmpRecordPath ]] && rm -f "$TmpRecordPath"
+        [[ -f $TmpPalettePath ]] && rm -f "$TmpPalettePath"
+    }
+    trap OnExit EXIT
+
+    # Set umask so tmp files are only acessible to the user
+    umask 177
+
+    # Get selection and honor escape key
+    Coords=$(slurp) || exit
+
+    # Capture video using slup for screen area
+    # timeout and exit after 10 minutes as user has almost certainly forgotten it's running
+    timeout 600 wf-recorder -g "$Coords" -f "$TmpRecordPath" || exit
+
+    # Get the filename from the user and honor cancel
+    SavePath=$( zenity \
+        --file-selection \
+        --save \
+        --confirm-overwrite \
+        --file-filter=*.gif \
+        --filename="$DefaultSaveDir"'/.gif' \
+    ) || exit
+
+    # Append .gif to the SavePath if it's missing
+    [[ $SavePath =~ \.gif$ ]] || SavePath+='.gif'
+
+    # Produce a pallete from the video file
+    ffmpeg -i "$TmpRecordPath" -filter_complex "palettegen=stats_mode=full" "$TmpPalettePath" -y || exit
+
+    # Return umask to default
+    umask 022
+
+    # Use pallete to produce a gif from the video file
+    ffmpeg -i "$TmpRecordPath" -i "$TmpPalettePath" -filter_complex "paletteuse=dither=sierra2_4a" "$SavePath" -y || exit
+  '';
 in
 {
   config = lib.mkIf config.services.sway.enable {
-    environment.systemPackages = [ color-picker pkgs.libnotify ];
+    environment.systemPackages = [ color-picker gif-recorder pkgs.libnotify ];
     hm.wayland.windowManager.sway.config.keybindings = {
       "${modifier}+Return" = "exec ${lib.getExe config.terminal}";
       "${modifier}+KP_Enter" = "exec ${lib.getExe config.terminal}";
@@ -89,6 +138,7 @@ in
       "${modifier}+Print" = ''exec wl-copy < $(${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save screen "$HOME/Pictures/Shutter/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png")'';
       "Mod1+Print" = ''exec wl-copy < $(${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save active "$HOME/Pictures/Shutter/Screenshot_$(date +%Y-%m-%d_%H:%M:%S).png")'';
       "${modifier}+Bar" = "exec ${lib.getExe color-picker}";
+      "${modifier}+p" = "exec ${lib.getExe gif-recorder}";
 
       "${modifier}+v" = "splith";
       "${modifier}+c" = "splitv";

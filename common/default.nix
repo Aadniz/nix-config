@@ -28,8 +28,10 @@
     inetutils
     jq
     libreoffice
+    mpv
     neofetch
     nil
+    obs-studio
     pfetch
     python3
     termdown
