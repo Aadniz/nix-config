@@ -21,6 +21,7 @@
     ../../modules/status-checker.nix
     ../../modules/teamviewer.nix
     ../../modules/utils.nix
+    ../../modules/wine
     ../../modules/wms
     ../../modules/zsh.nix
   ] ++ [  # Include all apps you want to use on this host
@@ -32,6 +33,7 @@
     ../../modules/apps/jetbrains
     ../../modules/apps/kitty
     ../../modules/apps/spotify.nix
+    ../../modules/apps/waydroid.nix
   ] ++ [  # Include all programming languages needed
     ../../modules/langs/html.nix
     ../../modules/langs/javascript.nix
