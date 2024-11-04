@@ -95,7 +95,11 @@ When adding an existing machine, all you need to do is to overwrite the `hardwar
 
 Then `nix-shell -p git nh`, then do `FLAKE=~/.dots nh os test --hostname <HOSTNAME> -- --extra-experimental-features nix-command --extra-experimental-features flakes` confirm it's working, and then switch if it works with `FLAKE=~/.dots nh os switch --hostname <HOSTNAME> -- --extra-experimental-features nix-command --extra-experimental-features flakes`, then reboot.
 
-# Extras
+# Finishing touches
+
+## Tune hardware
+
+The setup may not be the same, and so it might be needed to tune the configs such as the [sway/hardware.nix](/modules/wms/sway/hardware.nix)
 
 ## DOOM EMACS
 
@@ -106,5 +110,6 @@ NixOS won't install doom emacs for you, so you have to go to their install instr
 - You need to clone private status command repo to Documents
 - Make the `~/.unison/org-files.prf` configuration
 - Need to make sure the appropriate sops are set
+- Set up borg backup ([borg.nix](/modules/borg.nix))
 
 *The configuration is not broken because these things are not added. It's structured to accept both.*
