@@ -25,6 +25,7 @@
   {class="Qemu-system-i386";}
   {class="Vlc";}
   {class="Week 39";}
+  {class="bruno";}
   {class="code-oss";}
   {class="obs";}
   {class="steam";}
