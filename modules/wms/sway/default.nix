@@ -1,6 +1,4 @@
 { config, lib, pkgs, ... }:
-# Big creds to https://github.com/RicArch97/nixos-config/blob/b2a94a998b9ada4635ba1ce702691098f799b100/modules/desktop/sway.nix
-# and https://github.com/RaitoBezarius/nixos-home/blob/70a7d0503da62963c03cee40962f945f552dd6f1/sway.nix
 let
   modifier = "Mod4";
 in
@@ -66,14 +64,22 @@ in
     xdg.portal = {
       enable = true;
       wlr.enable = true;
+      configPackages = [ pkgs.sway ];
       # gtk portal needed to make gtk apps happy
       # extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
 
-    # Needed for autologin
-    services.displayManager.autoLogin.enable = true;
-    services.displayManager.autoLogin.user = "chiya";
-    services.displayManager.defaultSession = "sway";
+    services.greetd = {
+      enable = true;
+      settings = {
+        default_session.command = "${lib.getExe pkgs.greetd.tuigreet} --time --cmd sway";
+        # Autologin
+        initial_session = {
+          command = "sway";
+          user = config.username;
+        };
+      };
+    };
 
     # enable sway window manager
     programs.sway = {
