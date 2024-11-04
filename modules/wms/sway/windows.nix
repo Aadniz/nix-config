@@ -17,6 +17,12 @@
     }
     {
       criteria = {
+        class="Emacs";
+      };
+      command = "floating enable, resize set 1400 px 1100 px, border pixel";
+    }
+    {
+      criteria = {
         app_id = "anki";
       };
       command = "floating enable, resize set 1400 px 1000 px";
