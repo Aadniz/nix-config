@@ -33,6 +33,7 @@
     ../../modules/apps/jetbrains
     ../../modules/apps/kitty
     ../../modules/apps/spotify.nix
+    ../../modules/apps/steam.nix
     ../../modules/apps/waydroid.nix
   ] ++ [  # Include all programming languages needed
     ../../modules/langs/html.nix
