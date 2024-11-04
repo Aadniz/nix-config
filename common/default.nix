@@ -24,6 +24,7 @@
     file
     gdb
     git
+    gnome.nautilus
     gotop
     inetutils
     jq
