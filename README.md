@@ -85,7 +85,12 @@ When adding a new machine, you need to write a new host.
 ```
 
 
-6. Enter shell `nix-shell -p git nh`, and do the command `FLAKE=~/.dots nh os test --hostname <HOSTNAME> -- --extra-experimental-features nix-command --extra-experimental-features flakes` to test it.
+6. Enter shell `nix-shell -p git nh`, and do the following command to test it:
+
+   ```shell
+   FLAKE=~/.dots nh os test --hostname <HOSTNAME> -- --extra-experimental-features nix-command --extra-experimental-features flakes
+   ```
+   
 7. If everything worked, do `FLAKE=~/.dots nh os switch`, then reboot.
 
 
@@ -93,7 +98,19 @@ When adding a new machine, you need to write a new host.
 
 When adding an existing machine, all you need to do is to overwrite the `hardware-configuration.nix` found in `/etc/nixos` with the configuration in the [hosts](/hosts) folder.
 
-Then `nix-shell -p git nh`, then do `FLAKE=~/.dots nh os test --hostname <HOSTNAME> -- --extra-experimental-features nix-command --extra-experimental-features flakes` confirm it's working, and then switch if it works with `FLAKE=~/.dots nh os switch --hostname <HOSTNAME> -- --extra-experimental-features nix-command --extra-experimental-features flakes`, then reboot.
+Then `nix-shell -p git nh`, entering a shell with git and nh available. Then do the following command to confirm it's working:
+
+```shell
+FLAKE=~/.dots nh os test --hostname <HOSTNAME> -- --extra-experimental-features nix-command --extra-experimental-features flakes
+```
+
+If it works, then you can apply it with `switch`:
+
+```shell
+FLAKE=~/.dots nh os switch --hostname <HOSTNAME> -- --extra-experimental-features nix-command --extra-experimental-features flakes
+```
+
+Then reboot.
 
 # Finishing touches
 
