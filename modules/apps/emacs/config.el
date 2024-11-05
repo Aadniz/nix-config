@@ -81,8 +81,6 @@
 (require 'tramp)
 (setq tramp-connection-timeout 15)
 
-;; Keybindings
-
 ;; Loading sensitive info
 ;; Put this in the sensitive.el file
 ;; (setq jiralib-url "https://jirainstance.com/jira")
@@ -96,7 +94,5 @@
 
 ;; C++
 ;; https://github.com/doomemacs/doomemacs/issues/7599#issuecomment-1914953178
-(use-package! apheleia)
-(setq +format-on-save-disabled-modes (add-to-list '+format-on-save-disabled-modes 'c++-mode))
 (require 'dap-lldb)
 (require 'dap-cpptools)

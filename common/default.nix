@@ -30,6 +30,7 @@
     jq
     libreoffice
     mpv
+    direnv
     neofetch
     nil
     obs-studio
