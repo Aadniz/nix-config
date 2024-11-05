@@ -39,6 +39,7 @@
     ../../modules/langs/html.nix
     ../../modules/langs/javascript.nix
     ../../modules/langs/php.nix
+    ../../modules/langs/rust.nix
   ];
 
   # Don't need any additional config for the apps, just throw them in here
