@@ -18,6 +18,7 @@
     };
     nur.url = "github:nix-community/NUR";
     nixcord.url = "github:kaylorben/nixcord";
+    nixcord.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
