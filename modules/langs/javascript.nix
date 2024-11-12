@@ -5,6 +5,7 @@
     nodejs
     typescript
     bun
+    terser
   ] ++ (with nodePackages; [
     webpack
     npm
