@@ -25,7 +25,7 @@ in
       firefox-wayland
       flameshot
       glib # gsettings
-      gnome.zenity
+      zenity
       grim # screenshot functionality
       i3blocks
       mako # notification system developed by swaywm maintainer

@@ -38,7 +38,7 @@ let
       sha256 = "on4Wt738v6uenHsic8vEMVlKXTJHt5W2hhvVnMiGfNs=";
     };
 
-    cargoSha256 = "lgzfMXS+Xnu1hXgQfd753P8jV/0MWxuo5hUpN2iVow8=";
+    cargoHash = "sha256-lgzfMXS+Xnu1hXgQfd753P8jV/0MWxuo5hUpN2iVow8=";
 
     buildInputs = [ pkgs.gcc ];
 

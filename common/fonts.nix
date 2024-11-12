@@ -64,7 +64,7 @@ in
     ipafont
     kochi-substitute
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     roboto
     source-code-pro
