@@ -77,7 +77,7 @@ command=bash ${batteryScript}
 
 [volume-pulseaudio]
 min_width=X muted
-interval=once
+interval=30
 signal=1
 align=center
 command=bash ${audioScript}
