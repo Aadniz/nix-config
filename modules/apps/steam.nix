@@ -2,12 +2,13 @@
 
 {
   environment.systemPackages = with pkgs; [
-   steam
+    steam
   ];
 
-  hardware.opengl = {
+  hardware.graphics = {
+
     ## radv: an open-source Vulkan driver from freedesktop
-    driSupport32Bit = true;
+    enable32Bit = true;
 
     ## amdvlk: an open-source Vulkan driver from AMD
     extraPackages = [ pkgs.amdvlk ];
