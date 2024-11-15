@@ -49,7 +49,7 @@
 
 
 /* Input blend in with chat background */
-div[class*="channelTextArea"], div[class*="scrollableContainer"] {
+div[class^="channelTextArea"], div[class^="scrollableContainer"] {
   margin-top: 7px;
   background: transparent;
 }
@@ -61,19 +61,19 @@ div#---new-messages-bar{
   margin-top: 10px !important;
   margin-bottom: 10px !important;
 }
-div[class*="divider"][role="separator"]{
+div[class^="divider"][role="separator"]{
   border-color: var(--accent-color);
   margin-top: 20px !important;
   margin-bottom: 20px !important;
 }
-div[class*="divider"] span[class*="content"]{
+div[class^="divider"] span[class^="content"]{
   font-size: 36px !important;
   color: var(--accent-color);
   margin-left: auto;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-span[class*="unreadPill"]{
+span[class^="unreadPill"]{
   right: unset;
   left: 0;
   overflow: hidden;
@@ -84,10 +84,10 @@ span[class*="unreadPill"]{
 
 
 /* Hide decoration shit */
-[class*="avatarDecoration"]{
+[class^="avatarDecoration"]{
   display: none;
 }
-div[class*="modeSelected"] div[class*="channelName"]{
+div[class^="modeSelected"] div[class^="channelName"]{
   color: var(--background-accent);
 }
 div[class^="profileEffects_"] {
@@ -95,20 +95,31 @@ div[class^="profileEffects_"] {
 }
 
 
+/* Hide distractions */
+div[class^="scroller_"] > div[style*="height: 56px"] {
+    display: table-cell;
+}
+div[class^="unreadMentionsIndicatorBottom_"] {
+    display: none;
+}
+div[class^="unreadMentionsIndicatorTop_"] {
+    display: none;
+}
+
 /* Hide nitro shit */
-div[class*="buttons_"] > div[aria-label*="Nitro"] {
+div[class^="buttons_"] > div[aria-label*="Nitro"] {
   display: none;
 }
-div[class*="premiumTrialAcknowledgedBadge_"] {
+div[class^="premiumTrialAcknowledgedBadge_"] {
   display: none;
 }
-div:has(+ div[class*="premiumTab_"]) {
+div:has(+ div[class^="premiumTab_"]) {
   display: none;
 }
-div[class*="premiumTab_"] {
+div[class^="premiumTab_"] {
   display: none;
 }
-div[class*="premiumTab_"] + * {
+div[class^="premiumTab_"] + * {
   display: none;
 }
 /* These depends on the language (German) */
