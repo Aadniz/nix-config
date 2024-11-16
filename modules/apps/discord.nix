@@ -113,6 +113,12 @@ div[class^="buttons_"] > div[aria-label*="Nitro"] {
 div[class^="premiumTrialAcknowledgedBadge_"] {
   display: none;
 }
+li[class^="channel_"]:has(a[href="/store"]) {
+  display: none;
+}
+li[class^="channel_"]:has(a[href="/shop"]) {
+  display: none;
+}
 div:has(+ div[class^="premiumTab_"]) {
   display: none;
 }
@@ -120,6 +126,9 @@ div[class^="premiumTab_"] {
   display: none;
 }
 div[class^="premiumTab_"] + * {
+  display: none;
+}
+div[aria-controls="nitro-server-boost-tab"] {
   display: none;
 }
 /* These depends on the language (German) */
@@ -136,9 +145,6 @@ div[aria-label="Zahlungsabwicklung"] {
   display: none;
 }
 div[aria-label="Zahlungsabwicklung"] + * {
-  display: none;
-}
-div[aria-controls="nitro-server-boost-tab"] {
   display: none;
 }
 
