@@ -17,6 +17,7 @@
     ../../modules/networking.nix
     ../../modules/nh.nix
     ../../modules/nix.nix
+    ../../modules/random
     ../../modules/ssh.nix
     ../../modules/status-checker.nix
     ../../modules/teamviewer.nix
