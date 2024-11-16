@@ -1,4 +1,4 @@
-{ config, lib, python3Packages, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
 
