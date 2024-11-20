@@ -46,7 +46,7 @@
   # Don't need any additional config for the apps, just throw them in here
   environment.systemPackages = with pkgs; [
     element-desktop anki gparted krita signal-desktop zoom-us userhosts
-    bruno kdePackages.elisa
+    bruno kdePackages.elisa nicotine-plus vlc
   ];
 
   username = "chiya";
