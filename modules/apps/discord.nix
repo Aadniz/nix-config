@@ -148,6 +148,20 @@ div[aria-label="Zahlungsabwicklung"] + * {
   display: none;
 }
 
+/* Since nitro button is hidden in chat input box */
+div.expression-picker-chat-input-button:has(button[class^="emojiButtonNormal_"]){
+  margin-left: -100%;
+}
+div[class^="inner_"] > div[class^="buttons_"] {
+  margin-right: -43px;
+}
+div[class^="channelAppLauncher_"] {
+  margin-left: 0;
+}
+div[class^="channelTextArea_"] > div[class^="scrollableContainer_"] {
+  overflow-y: unset;
+}
+
 '';
      config = {
        themeLinks = [ "https://raw.githubusercontent.com/DiscordStyles/RadialStatus/deploy/RadialStatus.theme.css" ];
