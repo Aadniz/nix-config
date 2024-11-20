@@ -10,6 +10,7 @@ let
   aaaaaaaaa = pkgs.rustPlatform.buildRustPackage rec {
     name = "AAAAAAAAA";
     src = aaaaaaaaaPackage;
+    # The repo is lacking a Cargo.lock file
     postPatch = ''
         ln -s ${./Cargo.lock} Cargo.lock
       '';
