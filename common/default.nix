@@ -6,6 +6,7 @@
     ./firefox.nix
     ./fonts.nix
     ./networking.nix
+    ./nautilus.nix
   ];
 
   security.sudo.extraConfig = ''
@@ -24,7 +25,6 @@
     file
     gdb
     git
-    nautilus
     gotop
     inetutils
     jq
