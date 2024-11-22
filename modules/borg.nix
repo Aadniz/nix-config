@@ -51,7 +51,7 @@ in
       "*/.cache"
       "*/.Trash-*"
     ];
-    startAt = "daily";
+    startAt = "05:50:00";
     persistentTimer = true;
     prune.keep = {
       daily = 7;
