@@ -157,6 +157,8 @@ div[class^="inner_"] > div[class^="buttons_"] {
 }
 div[class^="channelAppLauncher_"] {
   margin-left: 0;
+  margin-bottom: auto;
+  margin-top: 16px;
 }
 div[class^="channelTextArea_"] > div[class^="scrollableContainer_"] {
   overflow-y: unset;
