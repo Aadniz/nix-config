@@ -163,6 +163,9 @@ div[class^="channelAppLauncher_"] {
 div[class^="channelTextArea_"] > div[class^="scrollableContainer_"] {
   overflow-y: unset;
 }
+div[class^="channelTextArea_"] > div[class^="scrollableContainer_"] div[class^="textArea_"] {
+  margin-right: 40px;
+}
 
 '';
      config = {
