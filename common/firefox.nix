@@ -26,6 +26,7 @@
         #"privacy.globalprivacycontrol.functionality.enabled" = true;  # Private as much as possible.
         "privacy.trackingprotection.enabled" = true;                  # Do not track me.
         "privacy.donottrackheader.enabled" = true;                    # Do not track me.
+        "geo.enabled" = false;                                        # Pretty much never give location data
 
         # Remjove ads
         "browser.newtabpage.activity-stream.showSponsored" = false;
