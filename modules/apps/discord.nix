@@ -149,11 +149,10 @@ div[aria-label="Zahlungsabwicklung"] + * {
 }
 
 /* Since nitro button is hidden in chat input box */
-div.expression-picker-chat-input-button:has(button[class^="emojiButtonNormal_"]){
-  margin-left: -100%;
+div.expression-picker-chat-input-button:has(button[class^="emojiButton"]){
+  order: -1;
 }
 div[class^="inner_"] > div[class^="buttons_"] {
-  margin-right: -43px;
 }
 div[class^="channelAppLauncher_"] {
   margin-left: 0;
