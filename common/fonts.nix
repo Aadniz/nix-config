@@ -51,8 +51,7 @@ in
   ];
 
   fonts.packages = with pkgs; [
-    #(nerdfonts.override { fonts = [ "DroidSansMono" ]; })
-    (nerdfonts.override { fonts = [ "CascadiaCode" "JetBrainsMono" "FiraCode" ]; })
+    #(nerdfonts.override { fonts = [ "CascadiaCode" "JetBrainsMono" "FiraCode" ]; })
     carlito
     dejavu_fonts
     emacs-all-the-icons-fonts
@@ -74,5 +73,10 @@ in
     source-sans-pro
     source-serif-pro
     ttf_bitstream_vera
-  ];
+  ] ++ (with nerd-fonts; [
+    fira-code
+    jetbrains-mono
+    iosevka
+    caskaydia-mono
+  ]);
 }
