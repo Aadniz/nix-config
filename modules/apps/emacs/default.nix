@@ -34,6 +34,8 @@ in
     python311Packages.python-lsp-server
     sqlite
     zstd
+    emacsPackages.apheleia
+    emacsPackages.prettier
   ];
 
   hm.xdg.configFile."doom/system-vars.el".text = /* lisp */ ''
