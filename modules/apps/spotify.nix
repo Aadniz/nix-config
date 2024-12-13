@@ -1,8 +1,8 @@
 {
   inputs,
-  config,
+  pkgs,
   ...
 }: {
-  imports = [inputs.nur.nixosModules.nur];
-  environment.systemPackages = [config.nur.repos.nltch.spotify-adblock];
+  imports = [inputs.nur.modules.nixos.default];
+  environment.systemPackages = [pkgs.nur.repos.nltch.spotify-adblock];
 }
