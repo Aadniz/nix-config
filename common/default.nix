@@ -22,15 +22,16 @@
     acpi
     btop
     dig
+    direnv
     file
     gdb
     git
     gotop
     inetutils
     jq
+    kdePackages.ark
     libreoffice
     mpv
-    direnv
     neofetch
     nil
     obs-studio
