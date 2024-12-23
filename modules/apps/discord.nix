@@ -171,8 +171,8 @@ div[class^="channelTextArea_"] > div[class^="scrollableContainer_"] div[class^="
        themeLinks = [ "https://raw.githubusercontent.com/DiscordStyles/RadialStatus/deploy/RadialStatus.theme.css" ];
        useQuickCss = true;
        plugins = {
-         callTimer.enable = true;
-         crashHandler.enable = true;
+         #callTimer.enable = true;
+         #crashHandler.enable = true;
          fakeNitro.enable = true;
          friendsSince.enable = true;
          notificationVolume.enable = true;
