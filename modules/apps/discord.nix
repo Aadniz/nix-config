@@ -107,6 +107,9 @@ div[class^="unreadMentionsIndicatorTop_"] {
 }
 
 /* Hide nitro shit */
+div[class^="base_"] > div[class*="colorPremium_"] {
+  display: none;
+}
 div[class^="buttons_"] > div[aria-label*="Nitro"] {
   display: none;
 }
