@@ -54,6 +54,16 @@
         mode = "2560x1440@59.951Hz";
         position = "1440 0";
       };
+      # Danulf's monitor
+      "AOC AG322QWS4R4 0x00000133" = {
+        mode = "2560x1440@143.912Hz";
+        position = "1440 0";
+      };
+      # Danulf's monitor 2
+      "BNQ BenQ GL2450H P4F01438019" = {
+        mode = "1920x1080@60.000Hz";
+        position = "4000 360";
+      };
       # Right monitor
       "*".bg = "${config.theme.wallpaper} fill";
     };
