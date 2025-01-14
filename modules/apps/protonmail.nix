@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
+  # If thunderbird prompts that the password is incorrect, it most likely isn't incorrect
+  # It is most likely a failure in the network chain: 127.0.0.1:9050 -> onion
   hm.systemd.user.services.hydroxide = {
     Unit = {
       Description = "Protonmail (Hydroxide)";
