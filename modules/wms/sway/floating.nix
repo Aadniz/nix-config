@@ -1,5 +1,6 @@
 [
   {app_id=".arandr-wrapped";}
+  {app_id=".virt-manager-wrapped";}
   {app_id="Waydroid";}
   {app_id="com.obsproject.Studio";}
   {app_id="deluge";}
@@ -15,6 +16,7 @@
   {app_id="org.kde.gwenview";}
   {app_id="radeon-profile";}
   {app_id="subl";}
+  {app_id="thunderbird";}
   {app_id="transmission-gtk";}
   {app_id="xdg-desktop-portal";}
   {app_id="xdg-desktop-portal-gtk";}
