@@ -22,6 +22,7 @@
     ../../modules/status-checker.nix
     ../../modules/teamviewer.nix
     ../../modules/utils.nix
+    ../../modules/virtualization.nix
     ../../modules/wine
     ../../modules/wms
     ../../modules/zsh.nix
@@ -39,6 +40,7 @@
     ../../modules/apps/thunderbird.nix
     ../../modules/apps/waydroid.nix
   ] ++ [  # Include all programming languages needed
+    ../../modules/langs/go.nix
     ../../modules/langs/html.nix
     ../../modules/langs/javascript.nix
     ../../modules/langs/php.nix
