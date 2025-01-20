@@ -11,7 +11,7 @@
         repeat_rate = "50";
       };
       "1:1:AT_Translated_Set_2_keyboard" = {
-        xkb_options = "caps:swapescape";
+      #  xkb_options = "caps:swapescape";
       };
       "5426:123:Razer_Razer_Viper_Ultimate_Dongle" = {
         dwt = "enabled";
