@@ -111,7 +111,7 @@ in
         };
 
         startup = [
-          {command = "${pkgs.swaysome}/bin/swaysome init 1";}
+          {command = "${lib.getExe pkgs.swaysome} init 1";}
         ];
 
         #floating.criteria = [
