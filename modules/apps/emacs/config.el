@@ -81,6 +81,19 @@
 (require 'tramp)
 (setq tramp-connection-timeout 15)
 
+;; https://www.youtube.com/watch?v=M_zMoHlbZBY
+(use-package nix-mode
+  :ensure t
+  :hook
+  (nix-mode . lsp-deferred)) ;; So that envrc mode will work
+
+(use-package nix-mode
+  :after lsp-mode
+  :custom
+  (lsp-disabled-clients '((nix-mode . nix-nil))) ;; Disable nil so that nixd will be used as lsp-server
+  :config
+  (setq lsp-nix-nixd-server-path "nixd"))
+
 ;; Loading sensitive info
 ;; Put this in the sensitive.el file
 ;; (setq jiralib-url "https://jirainstance.com/jira")

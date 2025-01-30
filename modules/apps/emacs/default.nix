@@ -23,19 +23,20 @@ in
     editorconfig-core-c
     emacs
     emacs-all-the-icons-fonts
+    emacsPackages.apheleia
+    emacsPackages.prettier
     fd
     git
     gnutls
     imagemagick
     ispell
     lldb # C++, Rust, C debugger
+    nixd
     nodePackages.javascript-typescript-langserver
     pandoc
     python311Packages.python-lsp-server
     sqlite
     zstd
-    emacsPackages.apheleia
-    emacsPackages.prettier
   ];
 
   hm.xdg.configFile."doom/system-vars.el".text = /* lisp */ ''
