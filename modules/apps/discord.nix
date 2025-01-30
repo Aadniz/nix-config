@@ -43,8 +43,6 @@
 * {
   border-radius: 0 !important;
   image-rendering: pixelated !important;
-  scrollbar-color: var(--accent-color) #181c20 !important;
-  scrollbar-width: 10px !important;
 }
 
 
