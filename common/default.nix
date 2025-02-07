@@ -37,6 +37,7 @@
     obs-studio
     pfetch
     python3
+    screen
     termdown
     unison
     wget
