@@ -30,9 +30,11 @@ in
     gnutls
     imagemagick
     ispell
-    lldb # C++, Rust, C debugger
+    (lldb.overrideAttrs (old:{
+      dontCheckForBrokenSymlinks = true;
+    })) # C++, Rust, C debugger
     nixd
-    nodePackages.javascript-typescript-langserver
+    nodePackages.typescript-language-server
     pandoc
     python311Packages.python-lsp-server
     sqlite
