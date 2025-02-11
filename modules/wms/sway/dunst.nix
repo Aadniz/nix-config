@@ -44,7 +44,7 @@ let
       origin = "top-right";
 
       # Offset from the origin
-      offset = "30x60";
+      offset = "(30, 60)";
 
       # Scale factor. It is auto-detected if value is 0.
       scale = 0;
