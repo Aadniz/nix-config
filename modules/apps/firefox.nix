@@ -6,6 +6,12 @@
     profiles."default" = {
       id = 0;
       settings = {
+        # If you're having issues finding the option for the setting you want to change, you can save before and after, then diff
+        # 1. cat ~/.mozilla/firefox/default/prefs.js > /tmp/prefs_before.js
+        # 2. Change the setting(s)
+        # 3. cat ~/.mozilla/firefox/default/prefs.js > /tmp/prefs_after.js
+        # 4. diff /tmp/prefs_before.js /tmp/prefs_after.js
+
         # Basic
         "browser.aboutConfig.showWarning" = false;                    # I know what I am doing, erm, most of the times...
         "browser.disableResetPrompt" = true;                          # Never seen this myself
@@ -27,6 +33,12 @@
         "privacy.trackingprotection.enabled" = true;                  # Do not track me.
         "privacy.donottrackheader.enabled" = true;                    # Do not track me.
         "geo.enabled" = false;                                        # Pretty much never give location data
+
+        # Max DNS protection
+        "doh-rollout.disable-heuristics" = true;
+        "network.trr.mode" = "3";
+        "network.trr.custom_uri" = "https://dns.njal.la/dns-query";
+        "network.trr.uri" = "https://dns.njal.la/dns-query";
 
         # Remjove ads
         "browser.newtabpage.activity-stream.showSponsored" = false;
