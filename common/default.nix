@@ -3,7 +3,6 @@
 {
   imports = [
     ./boot.nix
-    ./firefox.nix
     ./fonts.nix
     ./networking.nix
     ./nautilus.nix

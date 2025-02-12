@@ -27,6 +27,7 @@
     ../../modules/apps/discord.nix
     ../../modules/apps/emacs
     ../../modules/apps/feh
+    ../../modules/apps/firefox.nix
     ../../modules/apps/jetbrains
     ../../modules/apps/kitty
     ../../modules/apps/spotify.nix
