@@ -30,9 +30,7 @@ in
     gnutls
     imagemagick
     ispell
-    (lldb.overrideAttrs (old:{
-      dontCheckForBrokenSymlinks = true;
-    })) # C++, Rust, C debugger
+    lldb # C++, Rust, C debugger
     nixd
     nodePackages.typescript-language-server
     pandoc
