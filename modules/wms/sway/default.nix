@@ -5,7 +5,7 @@ in
 {
   imports = [
     ./bar.nix
-    ./dunst.nix
+    ./mako.nix
     ./hardware.nix
     (import ./keybinds.nix { inherit config lib pkgs modifier; })
   ];
