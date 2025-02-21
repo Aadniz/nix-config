@@ -21,13 +21,13 @@ in
     textColor = fg;
     extraConfig = /* ini */ ''
       [urgency=high]
-      border-color = ${urgent}
-      border-size = 3
-      default-timeout = 0
+      border-color=${urgent}
+      border-size=3
+      default-timeout=0
       [urgency=critical]
-      border-color = ${urgent}
-      border-size = 3
-      default-timeout = 0
+      border-color=${urgent}
+      border-size=3
+      default-timeout=0
     '';
   };
 }
