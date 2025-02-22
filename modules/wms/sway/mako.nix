@@ -13,11 +13,14 @@ in
     progressColor = "over ${hi}FF";
     borderSize = 0;
     width = 400;
+    height = 300;
     padding = "16";
     #margin = "60,30";
     defaultTimeout = 7000;
     font = "Monospace 12";
     layer = "overlay";
+    sort = "+time";
+    maxVisible = 6;
     textColor = fg;
     extraConfig = /* ini */ ''
       [urgency=high]
