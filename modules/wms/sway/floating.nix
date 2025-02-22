@@ -7,7 +7,6 @@
   {app_id="electrum";}
   {app_id="file-roller";}
   {app_id="lutris";}
-  {app_id="msedge-www.bing.com__search-Default";}
   {app_id="nemo";}
   {app_id="org.getmonero.monero-wallet-gui";}
   {app_id="org.gnome.Nautilus";}
@@ -35,6 +34,8 @@
   {class="zoom";}
   {instance="Godot_ProjectList"; }
   {instance="Toolkit";}
+  {instance="copilot.microsoft.com";}
+  {instance="x.com__i_grok";}
   {title="Developer Tools —";}
   {window_role="pop-up";}
   {window_role="toolbox";}

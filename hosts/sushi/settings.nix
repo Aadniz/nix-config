@@ -33,6 +33,7 @@
     ../../modules/apps/emacs
     ../../modules/apps/feh
     ../../modules/apps/firefox.nix
+    ../../modules/apps/grok.nix
     ../../modules/apps/jetbrains
     ../../modules/apps/kitty
     ../../modules/apps/protonmail.nix

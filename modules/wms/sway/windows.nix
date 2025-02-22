@@ -11,7 +11,13 @@
     }
     {
       criteria = {
-        app_id = "msedge-www.bing.com__search-Default";
+        instance = "copilot.microsoft.com";
+      };
+      command = "move scratchpad, resize set 1200 px 1300 px, border pixel, scratchpad show";
+    }
+    {
+      criteria = {
+        instance = "x.com__i_grok";
       };
       command = "move scratchpad, resize set 1200 px 1300 px, border pixel, scratchpad show";
     }
