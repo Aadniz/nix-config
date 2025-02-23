@@ -49,11 +49,102 @@
         "browser.newtabpage.directory.ping" = "";
         "browser.newtabpage.directory.source" = "data:text/plain,{}";
 
-        ## Disable Pocket
+        # Disable Pocket
         "extensions.pocket.enabled" = false;
         "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
+
+        # Allows changing of firefox CSS
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
 
+      userContent = /* css */ ''
+          @namespace url("http://www.w3.org/1999/xhtml");
+          @-moz-document url("about:home") ,url("about:blank"), url("about:newtab") {
+            :root {
+              --newtab-background-color-secondary: #2b2a30 !important;
+            }
+
+            body {
+              /* background-color: ${config.theme.background} !important; */
+              background-color: #424146 !important;
+            }
+            div.search-wrapper {
+              padding: unset !important;
+            }
+            div.non-collapsible-section {
+              margin-top: -30px;
+            }
+            div.logo-and-wordmark {
+              margin-block: 20px -35px !important;
+              background: no-repeat url("${../../assets/sussuro_logo.png}?raw=true") center;
+              background-size: contain;
+              height: 30vh;
+            }
+            div.logo-and-wordmark .logo,
+            div.logo-and-wordmark .wordmark {
+              display: none !important;
+            }
+            div.search-inner-wrapper {
+              width: 100% !important;
+              padding: 0 7px;
+            }
+            button.search-handoff-button {
+              border-color: #e1746d !important;
+            }
+            .top-site-button > div.tile {
+              outline-color: #e1746d;
+              background-color: transparent !important;
+              height: unset !important;
+              width: unset !important;
+              box-shadow: none !important;
+            }
+            div.top-site-icon {
+              background-color: transparent !important;
+            }
+          }
+      '';
+
+      userChrome = ''
+
+          /* Disable elements  */
+          #context-navigation,
+          #context-savepage,
+          #context-pocket,
+          #context-sendpagetodevice,
+          #context-sendlinktodevice,
+          #context-openlinkinusercontext-menu,
+          #context-bookmarklink,
+          #context-savelink,
+          #context-savelinktopocket,
+          #context-sendlinktodevice,
+          #context-searchselect,
+          #context-sendimage,
+          #context-inspect-a11y,
+          #context-print-selection {
+            display: none !important;
+          }
+
+          #context_bookmarkTab,
+          #context_moveTabOptions,
+          #context_sendTabToDevice,
+          #context_reopenInContainer,
+          #context_selectAllTabs,
+          #context_closeTabOptions {
+            display: none !important;
+          }
+
+          /* Remove titlebar close button */
+          .titlebar-buttonbox-container,
+          .titlebar-spacer[type="post-tabs"] {
+            display: none !important;
+          }
+
+          /* Remove space around the address box*/
+          #nav-bar toolbarspring {
+            min-width: 0px !important;
+            max-width: 0px !important;
+          }
+      '';
 
       search = {
         force = true;
@@ -62,8 +153,8 @@
 
         engines = {
           "Invidious" = {
-            urls = [{template = "https://yewtu.be/search?q={searchTerms}";}];
-            iconUpdateURL = "https://yewtu.be/favicon-32x32.png";
+            urls = [{template = "https://inv.nadeko.net/search?q={searchTerms}";}];
+            iconUpdateURL = "https://inv.nadeko.net/favicon-32x32.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = ["@iv"];
           };
