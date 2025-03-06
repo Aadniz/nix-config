@@ -10,6 +10,7 @@
   ] ++ [  # Include the modules you want to have on this host
     ../../modules/audio.nix
     ../../modules/borg.nix
+    ../../modules/docker.nix
     ../../modules/fcitx5
     ../../modules/home-manager.nix
     ../../modules/home.nix
