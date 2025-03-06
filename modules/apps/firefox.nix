@@ -92,7 +92,7 @@
               border-color: #e1746d !important;
             }
             .top-site-button > div.tile {
-              outline-color: #e1746d;
+              outline-color: #e1746d !important;
               background-color: transparent !important;
               height: unset !important;
               width: unset !important;
