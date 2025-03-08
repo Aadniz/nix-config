@@ -23,8 +23,6 @@ in
     editorconfig-core-c
     emacs
     emacs-all-the-icons-fonts
-    emacsPackages.apheleia
-    emacsPackages.prettier
     fd
     git
     gnutls
@@ -34,7 +32,7 @@ in
     nixd
     nodePackages.typescript-language-server
     pandoc
-    python311Packages.python-lsp-server
+    python313Packages.python-lsp-server
     sqlite
     zstd
   ];
