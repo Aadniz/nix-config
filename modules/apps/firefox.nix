@@ -154,47 +154,47 @@
         engines = {
           "Invidious" = {
             urls = [{template = "https://inv.nadeko.net/search?q={searchTerms}";}];
-            iconUpdateURL = "https://inv.nadeko.net/favicon-32x32.png";
+            icon = "https://inv.nadeko.net/favicon-32x32.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = ["@iv"];
           };
 
           "Kantan" = {
             urls = [{template = "https://kantan.cat/?q={searchTerms}";}];
-            iconUpdateURL = "https://kantan.cat/static/themes/simple/img/favicon.svg";
+            icon = "https://kantan.cat/static/themes/simple/img/favicon.svg";
             updateInterval = 24 * 60 * 60 * 1000; # every day
           };
 
           "nixpkgs" = {
             urls = [{template = "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}";}];
-            iconUpdateURL = "https://nixos.org/favicon.png";
+            icon = "https://nixos.org/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = ["@np"];
           };
           "NixOS" = {
             urls = [{template = "https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}";}];
-            iconUpdateURL = "https://nixos.org/favicon.png";
+            icon = "https://nixos.org/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = ["@nx"];
           };
           "MyNixOS" = {
             urls = [{template = "https://mynixos.com/search?q={searchTerms}";}];
-            iconUpdateURL = "https://mynixos.com/favicon-16x16.png";
+            icon = "https://mynixos.com/favicon-16x16.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = ["@my"];
           };
 
           "hm options search" = {
             urls = [{template = "https://home-manager-options.extranix.com/?query={searchTerms}";}];
-            iconUpdateURL = "https://home-manager-options.extranix.com/images/favicon.png";
+            icon = "https://home-manager-options.extranix.com/images/favicon.png";
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = ["@hm"];
           };
-          "Bing".metaData.hidden = true;
-          "Google".metaData.hidden = true;
-          "Amazon.com".metaData.hidden = true;
-          "DuckDuckGo".metaData.hidden = true;
-          "eBay".metaData.hidden = true;
+          "bing".metaData.hidden = true;
+          "google".metaData.hidden = true;
+          "amazondotcom-us".metaData.hidden = true;
+          "ddg".metaData.hidden = true;
+          "ebay".metaData.hidden = true;
         };
       };
     };
