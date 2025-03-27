@@ -1,13 +1,23 @@
 { config, lib, pkgs, ... }:
 let
   hexToInt = hex: (builtins.fromTOML "a = 0x${hex}").a;
-  isBright = color: let
+
+  # Calculate brightness of a hex color (0-255)
+  brightness = color: let
     r = hexToInt (builtins.substring 1 2 color);
     g = hexToInt (builtins.substring 3 2 color);
     b = hexToInt (builtins.substring 5 2 color);
-    brightness = (r * 299 + g * 587 + b * 114) / 1000;
-  in
-    brightness > 186;
+  in (r * 299 + g * 587 + b * 114) / 1000;
+
+  # Return the brightest of two colors
+  brightest = color1: color2:
+    if (brightness color1) > (brightness color2)
+    then color1 else color2;
+
+  # Return the darkest of two colors
+  darkest = color1: color2:
+    if (brightness color1) < (brightness color2)
+    then color1 else color2;
 in
 {
   environment.systemPackages = with pkgs; [
@@ -60,6 +70,14 @@ in
       }
     ];
 
+    zplug = {
+      enable = true;
+      plugins = [
+        { name = "joshskidmore/zsh-fzf-history-search"; }
+        { name = "spwhitt/nix-zsh-completions"; }
+      ];
+    };
+
     initExtraFirst = /* bash */ ''
 
       function is_bright {
@@ -90,14 +108,17 @@ in
       export BULLETTRAIN_PROMPT_SEPARATE_LINE=false
       export BULLETTRAIN_PROMPT_CHAR=""
       export BULLETTRAIN_PROMPT_ADD_NEWLINE=false
-      export BULLETTRAIN_CUSTOM_BG=${config.theme.primary}
-      export BULLETTRAIN_CUSTOM_FG=${if isBright config.theme.primary then config.theme.background else config.theme.foreground}
+      export BULLETTRAIN_CUSTOM_BG=${brightest config.theme.primary config.theme.background}
+      export BULLETTRAIN_CUSTOM_FG=${darkest config.theme.primary config.theme.background}
       export BULLETTRAIN_CUSTOM_MSG=${config.nickname}
-
-      export BULLETTRAIN_DIR_BG=${config.theme.color8}
-      export BULLETTRAIN_DIR_FG=${if isBright config.theme.color8 then config.theme.background else config.theme.foreground}
+      export BULLETTRAIN_DIR_BG=${darkest config.theme.third config.theme.foreground}
+      export BULLETTRAIN_DIR_FG=${brightest config.theme.third config.theme.foreground}
       export BULLETTRAIN_STATUS_ERROR_BG=${config.theme.color1}
       export BULLETTRAIN_STATUS_BG=${config.theme.color8}
+      export BULLETTRAIN_EXEC_TIME_BG=${config.theme.color0}
+      export BULLETTRAIN_EXEC_TIME_FG=${config.theme.foreground}
+      export BULLETTRAIN_GIT_BG=${config.theme.color8}
+      export BULLETTRAIN_GIT_FG=${config.theme.foreground}
     '';
 
     initExtra = ''

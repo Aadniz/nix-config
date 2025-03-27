@@ -64,5 +64,6 @@
   theme.wallpaper = ../../wallpapers/kitan_7983.jpg;
   theme.primary = "#EDC26E";
   theme.secondary = "#CC7573";
+  theme.third = "#A3895C";
   theme.background = "#041520";
 }
