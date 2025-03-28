@@ -64,8 +64,8 @@ in
         src = pkgs.fetchFromGitHub {
           owner = "Aadniz";
           repo = "bullet-train.zsh";
-          rev = "d566ed5e1a48507ef1c04da2b194bda14e07dbe7";
-          sha256 = "sha256-hK43dI47yLXKGs2TuKoTrchkoHg1+pUtwR8LtQQplk4=";
+          rev = "c3a422f43cb995f168a3fcfa72beaf53b7271d6f";
+          sha256 = "sha256-VLJQryaIwU9Hsnr3wAgw1je+WmigFsIBS795TfCNJEk=";
         };
       }
     ];
@@ -105,6 +105,7 @@ in
         hg
         cmd_exec_time
       )
+      export BULLETTRAIN_STATUS_EXIT_SHOW=true
       export BULLETTRAIN_PROMPT_SEPARATE_LINE=false
       export BULLETTRAIN_PROMPT_CHAR=""
       export BULLETTRAIN_PROMPT_ADD_NEWLINE=false
