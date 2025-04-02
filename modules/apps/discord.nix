@@ -23,63 +23,12 @@
        package = pkgs.vesktop;
      };
      quickCss = /* css */ ''
-.theme-dark {
-  --accent-color: ${config.theme.primary};
-  --background-1: ${config.theme.background};
-  --background-2: ${config.theme.background};
-  --background-accent: ${config.theme.foreground}11;
-  --border-color: #273034;
-}
-.theme-light {
-  --accent-color: ${config.theme.primary};
-  --background-1: #ffffff;
-  --background-2: #f5f7fa;
-  --background-accent: var(--background-2);
-  --border-color: transparent;
-}
-
 
 /* We <3 Squares! <> */
 * {
   border-radius: 0 !important;
   image-rendering: pixelated !important;
 }
-
-
-/* Input blend in with chat background */
-div[class^="channelTextArea"], div[class^="scrollableContainer"] {
-  margin-top: 7px;
-  background: transparent;
-}
-button[aria-label="Apps"] {
-  background-color: transparent;
-}
-div#---new-messages-bar{
-  border-color: var(--accent-color);
-  margin-top: 10px !important;
-  margin-bottom: 10px !important;
-}
-div[class^="divider"][role="separator"]{
-  border-color: var(--accent-color);
-  margin-top: 20px !important;
-  margin-bottom: 20px !important;
-}
-div[class^="divider"] span[class^="content"]{
-  font-size: 36px !important;
-  color: var(--accent-color);
-  margin-left: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-span[class^="unreadPill"]{
-  right: unset;
-  left: 0;
-  overflow: hidden;
-  background-color: var(--accent-color);
-  color: var(--background-1);
-  padding:4px;
-}
-
 
 /* Hide decoration shit */
 [class^="avatarDecoration"]{
