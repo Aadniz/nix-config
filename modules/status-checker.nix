@@ -15,7 +15,7 @@ let
   statusChecker = pkgs.rustPlatform.buildRustPackage rec {
     name = "status";
     src = statusPackage;
-    cargoHash = "sha256-owFG9Il289NqXNaV45CbZrKcqQl2py6dLKzX+d+j1wo=";
+    cargoHash = "sha256-fXxbt2gG24zx6B+Bc0F6pCWqyUgSvNT2XAQuWy4WpFA=";
     postInstall = ''
       ls target/release-tmp
       mkdir -p $out/bin
