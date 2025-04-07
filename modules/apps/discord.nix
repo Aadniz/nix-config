@@ -40,6 +40,9 @@ div[class^="modeSelected"] div[class^="channelName"]{
 div[class^="profileEffects_"] {
   display: none;
 }
+div[class^="member__"] > div[class^="childContainer__"] > div[class^="container__"] {
+    display: none;
+}
 
 
 /* Hide distractions */
