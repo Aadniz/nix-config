@@ -37,8 +37,8 @@
         # Max DNS protection
         "doh-rollout.disable-heuristics" = true;
         "network.trr.mode" = "3";
-        "network.trr.custom_uri" = "https://dns.njal.la/dns-query";
-        "network.trr.uri" = "https://dns.njal.la/dns-query";
+        "network.trr.custom_uri" = "https://dns.mullvad.net/dns-query";
+        "network.trr.uri" = "https://dns.mullvad.net/dns-query";
 
         # Remjove ads
         "browser.newtabpage.activity-stream.showSponsored" = false;
