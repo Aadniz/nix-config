@@ -13,15 +13,15 @@
      enable = true;
      # disable discord (enabled by default)
      discord = {
-       enable = false;
-       vencord.enable = false;
+       enable = true;
+       vencord.enable = true;
        openASAR.enable = false;
      };
      # use vesktop instead (wayland optimized discord client)
-     vesktop = {
-       enable = true;
-       package = pkgs.vesktop;
-     };
+     #vesktop = {
+     #  enable = true;
+     #  package = pkgs.vesktop;
+     #};
      quickCss = /* css */ ''
 
 /* We <3 Squares! <> */
