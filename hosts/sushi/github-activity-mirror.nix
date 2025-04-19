@@ -49,7 +49,8 @@ in
     path = with pkgs; [ git openssh ];
     serviceConfig = {
       ExecStart = "${githubActivityMirror}/bin/github-activity-mirror ${settingsPath}";
-      Type = "oneshot";
+      Type = "simple";  # Takes many minutes to finish, use "simple" instead
+      Restart = "no";
       User = config.username;
     };
   };
