@@ -84,6 +84,9 @@ div[class^="premiumTab_"] + * {
 div[aria-controls="nitro-server-boost-tab"] {
   display: none;
 }
+div[class^="upsellContainer__"] {
+  display: none;
+}
 /* These depends on the language (German) */
 button[aria-label="Ein Geschenk senden"] {
   display: none;
@@ -100,6 +103,7 @@ div[aria-label="Zahlungsabwicklung"] {
 div[aria-label="Zahlungsabwicklung"] + * {
   display: none;
 }
+
 
 /* Since nitro button is hidden in chat input box */
 div.expression-picker-chat-input-button:has(button[class^="emojiButton"]){
