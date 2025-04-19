@@ -7,6 +7,7 @@
   ] ++ [  # Extended settings config
     ./tor.nix
     ./wireguard.nix
+    ./github-activity-mirror.nix
   ] ++ [  # Include the modules you want to have on this host
     ../../modules/audio.nix
     ../../modules/borg.nix
@@ -40,7 +41,6 @@
     ../../modules/apps/protonmail.nix
     ../../modules/apps/spotify.nix
     ../../modules/apps/steam.nix
-    ../../modules/apps/thunderbird.nix
     ../../modules/apps/waydroid.nix
   ] ++ [  # Include all programming languages needed
     ../../modules/langs/go.nix
@@ -52,8 +52,8 @@
 
   # Don't need any additional config for the apps, just throw them in here
   environment.systemPackages = with pkgs; [
-    element-desktop anki gparted krita signal-desktop zoom-us userhosts
-    bruno kdePackages.elisa nicotine-plus vlc transmission_4-gtk
+    element-desktop anki gparted krita signal-desktop-bin zoom-us userhosts
+    bruno kdePackages.elisa nicotine-plus vlc transmission_4-gtk thunderbird
   ];
 
   username = "chiya";
