@@ -28,10 +28,10 @@
     matchBlocks = let
       idFile = "~/.ssh/id_ed25519";
     in {
-      #"gitlab.com" = {
-      #  user = "git";
-      #  identityFile = idFile;
-      #};
+      "codeberg.org" = {
+        user = "git";
+        identityFile = idFile;
+      };
       "github.com" = {
         user = "git";
         identityFile = idFile;
