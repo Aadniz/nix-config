@@ -13,8 +13,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "Aadniz";
       repo = "github-activity-mirror";
-      rev = "13cf98aa5aa9bc170e4c43ea7717af6911a47293";
-      sha256 = "wtkJVTLGr2CqBtHQ8SzqFwa4E68rFL+kucMAEv9p8ro=";
+      rev = "d3ff07fec39ccf307c5b500178d32d7b4700e53b";
+      sha256 = "RLcCJZD29SgwpmAt7QIyY2A13T/DN29qThbpguKEV+Y=";
     };
     cargoHash = "sha256-JwFx51ADqP1ONP4bvRL5IL8KDEH2ExY4Mb4of61+vSc=";
     postInstall = ''
@@ -44,7 +44,6 @@ in
   systemd.services.github-activity-mirror = {
     description = "Mirror off-platform Git activity from various platforms to Github";
     after = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
     unitConfig.ConditionPathExists = settingsPath;
     path = with pkgs; [ git openssh ];
     serviceConfig = {
