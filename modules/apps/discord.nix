@@ -6,7 +6,7 @@
   #];
 
    hm.imports = [
-     inputs.nixcord.homeManagerModules.nixcord
+     inputs.nixcord.homeModules.nixcord
    ];
 
    hm.programs.nixcord = {

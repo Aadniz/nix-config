@@ -78,7 +78,7 @@ in
       ];
     };
 
-    initExtraFirst = /* bash */ ''
+    initContent = lib.mkBefore /* bash */ ''
 
       function is_bright {
         local color=$1
@@ -120,9 +120,7 @@ in
       export BULLETTRAIN_EXEC_TIME_FG=${config.theme.foreground}
       export BULLETTRAIN_GIT_BG=${config.theme.color8}
       export BULLETTRAIN_GIT_FG=${config.theme.foreground}
-    '';
 
-    initExtra = ''
       bindkey  "^[[H"    beginning-of-line
       bindkey  "^[[F"    end-of-line
       bindkey  "^[[3~"   delete-char
