@@ -33,21 +33,21 @@
       "1046:9111:Goodix_Capacitive_TouchScreen".map_to_output = "eDP-1";
     };
     output = {
+      # Left monitor
+      "ASUSTek COMPUTER INC VG27A M1LMQS007922" = {
+        mode = "2560x1440@119.998Hz";
+        position = "0 0";
+      };
+      # Middle monitor
+      "AOC AG271QG #ASM0HnQVlo3d" = {
+        mode = "2560x1440@165.000Hz";
+        position = "2560 0";
+      };
       # Main display
       "Samsung Display Corp. 0x4171 Unknown" = {
         mode = "2880x1800@90.001Hz";
-        position = "0 720";
+        position = "5120 720";
         scale = "2";
-      };
-      # Middle monitor
-      "ASUSTek COMPUTER INC VG27A M1LMQS007922" = {
-        mode = "2560x1440@119.998Hz";
-        position = "1440 0";
-      };
-      # Right monitor
-      "AOC AG271QG #ASM0HnQVlo3d" = {
-        mode = "2560x1440@165.000Hz";
-        position = "4000 0";
       };
       # XLP's monitor
       "Hewlett Packard HP E272q CNK6281HHG" = {
@@ -64,7 +64,6 @@
         mode = "1920x1080@60.000Hz";
         position = "4000 360";
       };
-      # Right monitor
       "*".bg = "${config.theme.wallpaper} fill";
     };
   };
