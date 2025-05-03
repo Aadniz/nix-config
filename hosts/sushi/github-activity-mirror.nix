@@ -10,11 +10,10 @@ let
     name = "github-activity-mirror";
     nativeBuildInputs = with pkgs; [ pkg-config openssl.dev ];
     PKG_CONFIG_PATH="${pkgs.openssl.dev}/lib/pkgconfig";
-    src = pkgs.fetchFromGitHub {
-      owner = "Aadniz";
-      repo = "github-activity-mirror";
-      rev = "d3ff07fec39ccf307c5b500178d32d7b4700e53b";
-      sha256 = "RLcCJZD29SgwpmAt7QIyY2A13T/DN29qThbpguKEV+Y=";
+    src = pkgs.fetchgit {
+      url = "https://codeberg.org/Aadniz/github-activity-mirror.git";
+      rev = "cc0c25e614a3ea98979a20df7851e86c8468755c";
+      sha256 = "sha256-PV/vfdOepPdQJgiTxCyEQnDcLbt+gX/NgC67exKIK1Q=";
     };
     cargoHash = "sha256-JwFx51ADqP1ONP4bvRL5IL8KDEH2ExY4Mb4of61+vSc=";
     postInstall = ''
