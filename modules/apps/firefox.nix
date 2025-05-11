@@ -108,7 +108,6 @@
 
           /* Disable elements  */
           #context-navigation,
-          #context-savepage,
           #context-pocket,
           #context-sendpagetodevice,
           #context-sendlinktodevice,
@@ -117,7 +116,6 @@
           #context-savelink,
           #context-savelinktopocket,
           #context-sendlinktodevice,
-          #context-searchselect,
           #context-sendimage,
           #context-inspect-a11y,
           #context-print-selection {
