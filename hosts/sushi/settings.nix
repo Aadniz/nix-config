@@ -39,6 +39,8 @@
     ../../modules/apps/jetbrains
     ../../modules/apps/kitty
     ../../modules/apps/protonmail.nix
+    ../../modules/apps/rmpc.nix
+    ../../modules/apps/mpd.nix
     ../../modules/apps/spotify.nix
     ../../modules/apps/steam.nix
     ../../modules/apps/waydroid.nix

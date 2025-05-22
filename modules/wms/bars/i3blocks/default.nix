@@ -50,6 +50,11 @@ interval=5
 signal=10
 command=perl ${mediaplayerScript}
 
+[mediaplayer]
+instance=mpd
+interval=5
+signal=10
+command=perl ${mediaplayerScript}
 
 [status-script]
 interval=10

@@ -54,9 +54,9 @@ if ($BLOCK_INSTANCE) {
     if ($label_set == False){
         if ($BLOCK_INSTANCE eq "spotify"){
             $label = "";
-        }elsif ($BLOCK_INSTANCE eq "elisa") {
-			$label = "";
-		}
+        } elsif ($BLOCK_INSTANCE eq "elisa") {
+            $label = "";
+        }
     }
 }
 
@@ -134,10 +134,31 @@ sub cmus {
 }
 
 sub mpd {
-    my $data = qx(mpc current);
+    my $data = qx(mpc);
     if (not $data eq '') {
         buttons("mpd");
-        print($data);
+
+        # Extract current song info (first line)
+        my ($song_info) = $data =~ /^(.*?)\n/;
+        chomp $song_info;
+
+        # Extract shuffle (random) and repeat status
+        my ($random) = $data =~ /random:\s*(\w+)/;
+        my ($repeat) = $data =~ /repeat:\s*(\w+)/;
+
+        my $shuffle_icon = "";
+        my $repeat_icon = "";
+
+        if (defined $random && $random eq 'on') {
+            $shuffle_icon = "  <span color='".SECONDARY_COLOR."'></span>";
+        }
+
+        if (defined $repeat && $repeat eq 'on') {
+            $repeat_icon = "  <span color='".SECONDARY_COLOR."'></span>";
+        }
+
+        $song_info =~ s/&/&amp;/g;
+        print("<span color='".PRIMARY_COLOR."'>$label</span>  ", "$song_info", "$shuffle_icon", "$repeat_icon\n");
         exit 0;
     }
 }
