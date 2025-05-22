@@ -2,7 +2,7 @@
 
 let
   bingchat = pkgs.writeShellScriptBin "bingchat" ''
-    ${lib.getExe pkgs.microsoft-edge} --app='https://copilot.microsoft.com/'
+    ${lib.getExe pkgs.chromium} --app='https://copilot.microsoft.com/'
   '';
 in
 {
