@@ -58,7 +58,7 @@ command=perl ${mediaplayerScript}
 
 [status-script]
 interval=10
-command=[[ -f "/home/${config.username}/Documents/status-commands/settings.json" ]] && ${python-zmq}/bin/python ${statusScript}
+command=[[ -f "/home/${config.username}/Dev/python/status-commands/settings.json" ]] && ${python-zmq}/bin/python ${statusScript}
 
 [cpu_usage]
 interval=3

@@ -4,7 +4,7 @@ let
 
   # NOTE this goes outside the scope of the repo (because this is private)
   # If this file doesn't exist, the systemd service won't run (ConditionPathExists takes care of that)
-  settingsPath = "/home/${config.username}/Documents/status-commands/settings.json";
+  settingsPath = "/home/${config.username}/Dev/python/status-commands/settings.json";
 
   statusPackage = pkgs.fetchFromGitHub {
       owner = "Aadniz";
