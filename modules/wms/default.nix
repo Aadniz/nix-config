@@ -9,8 +9,5 @@
   ];
 
   # GDM default login manager
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-  };
+  services.displayManager.gdm.enable = true;
 }
