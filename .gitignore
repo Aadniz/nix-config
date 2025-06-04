@@ -1,7 +1,6 @@
 .DS_Store
 .idea
 *.log
-*.raw.bin
 tmp/
 
 
